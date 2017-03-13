@@ -32,7 +32,7 @@ export function postAuth() {
             .catch(err => {
                 dispatchFetchError(err, authActions.POST_LOGIN.ERROR, dispatch);
                 // only for test purpose
-                dispatch(getApplicationContext());
+                //dispatch(getApplicationContext());
                 //
             });
     }

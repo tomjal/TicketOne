@@ -1,15 +1,20 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import { Route } from 'react-router';
+// eslint-disable-next-line
+import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+import { history } from './../../../store/createHistory';
 
-import ClientApp, { ClientAppWS } from './clientApp';
+import DashboardPage from './../../dashboard/dashboardPage';
+// eslint-disable-next-line
+import RoomsPage from './../../rooms/roomsPage';
 
 const ClientRouting = () => (
-  <Router>
-    <Route exact path="/" component={ClientAppWS} />
-  </Router>
+  <ConnectedRouter history={history}>
+    <div>
+      <Route exact path="/" component={DashboardPage} />
+    </div>
+  </ConnectedRouter>
 );
 
 export default ClientRouting;

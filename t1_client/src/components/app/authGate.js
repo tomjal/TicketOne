@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { getApplicationContext, postAuth } from './../../actions/authActionCreators';
 import { authManager } from './../../services/authManager';
 
-import ClientRouting from './client/clientRouting';
-import EmployeeRouting from './employee/employeeRouting';
+import { ClientAppWS } from './client/clientApp';
+import { EmployeeAppWS } from './employee/employeeApp';
 import LoginApp from './../login/loginApp';
 
 const mapStateToProps = (state) => {
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class AuthGate extends Component {
   componentDidMount() {
-    //this.props.getApplicationContext();
+    this.props.getApplicationContext();
   }
   render() {
     const { role, postAuth } = this.props;
@@ -33,9 +33,9 @@ class AuthGate extends Component {
       <div>
         {!authManager.isRoleAllowed(role) && accessNotAllowed}
         {authManager.isClient(role) &&
-          <ClientRouting />}
+          <ClientAppWS />}
         {authManager.isEmployee(role) &&
-          <EmployeeRouting />}
+          <EmployeeAppWS />}
         {authManager.isUnspecified(role) &&
           <LoginApp authCallback={postAuth} />}
       </div>
