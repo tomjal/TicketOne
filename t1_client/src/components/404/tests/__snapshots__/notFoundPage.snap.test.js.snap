@@ -1,0 +1,7 @@
+exports[`test NotFoundPage snapshot 1`] = `
+<div>
+  <h2>
+    404 not found
+  </h2>
+</div>
+`;
