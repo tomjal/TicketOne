@@ -26,18 +26,24 @@ class AuthGate extends Component {
   componentDidMount() {
     this.props.getApplicationContext();
   }
+  getAuthenticatedApp(role, postAuth) {
+    if (authManager.isClient(role)) {
+      return <ClientAppWS />;
+    } else if (authManager.isEmployee(role)) {
+      return <EmployeeAppWS />;
+    } else if (authManager.isUnspecified(role)) {
+      return <LoginApp authCallback={postAuth} />;
+    }
+  }
   render() {
     const { role, postAuth } = this.props;
-    const accessNotAllowed = <div>Access forbidden</div>;
+    const accessNotAllowedLabel = <div>Access forbidden</div>;
+    const authenticatedApp = this.getAuthenticatedApp(role, postAuth);
+
     return (
       <div>
-        {!authManager.isRoleAllowed(role) && accessNotAllowed}
-        {authManager.isClient(role) &&
-          <ClientAppWS />}
-        {authManager.isEmployee(role) &&
-          <EmployeeAppWS />}
-        {authManager.isUnspecified(role) &&
-          <LoginApp authCallback={postAuth} />}
+        {!authManager.isRoleAllowed(role) && accessNotAllowedLabel}
+        {authenticatedApp}
       </div>
     );
   }
