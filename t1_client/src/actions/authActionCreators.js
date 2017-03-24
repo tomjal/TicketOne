@@ -12,7 +12,7 @@ export function getApplicationContext() {
             })
             .catch(err => {
                 // only for test purpose
-                const mockAuthEmployee = { role: "client" };
+                const mockAuthEmployee = { role: "employee" };
                 dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuthEmployee });
                 //
                 dispatchFetchError(err, authActions.GET_AUTH_CONTEXT.ERROR, dispatch);
