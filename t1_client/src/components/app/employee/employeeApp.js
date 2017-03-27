@@ -10,7 +10,7 @@ export class EmployeeAppWS extends Component {
       <div>
         <ModuleHeader label={"Employee panel"} />
         <EmployeeRouting />
-        <WebsocketGate subscription={"echo.websocket.org"} />
+        <WebsocketGate subscription={"localhost:8080"} />
       </div>
     );
   }

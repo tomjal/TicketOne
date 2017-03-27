@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getApplicationContext, postAuth } from './../../actions/authActionCreators';
+import {
+  //getApplicationContext, 
+  setApplicationContextAsMockClient,
+  setApplicationContextAsMockEmployee,
+  postAuth
+} from './../../actions/authActionCreators';
 import { authManager } from './../../services/authManager';
 
 import { ClientAppWS } from './client/clientApp';
@@ -17,14 +22,16 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getApplicationContext,
+    //getApplicationContext,
+    setApplicationContextAsMockClient,
+    setApplicationContextAsMockEmployee,
     postAuth
   }, dispatch);
 };
 
 class AuthGate extends Component {
   componentDidMount() {
-    this.props.getApplicationContext();
+    //this.props.getApplicationContext();
   }
   getAuthenticatedApp(role, postAuth) {
     if (authManager.isClient(role)) {
@@ -32,7 +39,10 @@ class AuthGate extends Component {
     } else if (authManager.isEmployee(role)) {
       return <EmployeeAppWS />;
     } else if (authManager.isUnspecified(role)) {
-      return <LoginApp authCallback={postAuth} />;
+      return <LoginApp
+        mockClientCallback={this.props.setApplicationContextAsMockClient}
+        mockEmployeeCallback={this.props.setApplicationContextAsMockEmployee}
+        authCallback={postAuth} />;
     }
   }
   render() {

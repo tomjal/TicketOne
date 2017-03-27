@@ -8,11 +8,18 @@ class LoginApp extends Component {
   submitAction() {
     this.props.authCallback();
   }
+  clientSubmitAction() {
+    var id = this.textInput.value ? this.textInput.value : "default";
+    this.props.mockClientCallback(id);
+  }
   render() {
+    const { mockClientCallback, mockEmployeeCallback } = this.props;
     return (
       <div>
-        <div>Please log in:</div>
-        <button onClick={this.submitAction.bind(this)}>Send</button>
+        <div>Log in as: (refresh browser to log out mock user)</div>
+        <input ref={(input) => { this.textInput = input; }}></input>
+        <button onClick={this.clientSubmitAction.bind(this)}>Named mock client</button>
+        <button onClick={mockEmployeeCallback}>Mock employee</button>
       </div>
     );
   }

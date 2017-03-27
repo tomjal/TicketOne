@@ -13,3 +13,27 @@ export function getAllMessages() {
             .catch(err => dispatchFetchError(err, dispatch));
     }
 }
+
+export function getMessagesByRoom(channelId) {
+    return function (dispatch) {
+        return apiSchema.messages.getByRoom(channelId)
+            .then(res => checkIfFetchStatusOk(res))
+            .then(res => res.json())
+            .then(data => {
+                dispatch({ type: messagesActions.GET_MESSAGES_ALL.SUCCESS, data });
+            })
+            .catch(err => dispatchFetchError(err, dispatch));
+    }
+}
+
+export function sendMessage(message, channelId, senderRole, senderId) {
+    return function (dispatch) {
+        return apiSchema.messages.post(message, channelId, senderRole, senderId)
+            .then(res => checkIfFetchStatusOk(res))
+            .then(res => res.json())
+            .then(data => {
+                //dispatch({ type: messagesActions.GET_MESSAGES_ALL.SUCCESS, data });
+            })
+            .catch(err => dispatchFetchError(err, dispatch));
+    }
+}

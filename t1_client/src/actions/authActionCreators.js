@@ -2,6 +2,18 @@ import { checkIfFetchStatusOk, dispatchFetchError } from "./actionFetchHelpers";
 import { apiSchema } from "./../api/apiSchema";
 import { authActions } from "./actionTypes";
 
+export function setApplicationContextAsMockClient(ident) {
+    const mockAuth = { role: "client", id: ident };
+    return function (dispatch) {
+        dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuth })
+    };
+}
+
+export function setApplicationContextAsMockEmployee() {
+    const mockAuth = { role: "employee", id: "emp1" };
+    return { type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuth };
+}
+
 export function getApplicationContext() {
     return function (dispatch) {
         return apiSchema.context.get()
@@ -11,10 +23,6 @@ export function getApplicationContext() {
                 dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data });
             })
             .catch(err => {
-                // only for test purpose
-                const mockAuthEmployee = { role: "employee" };
-                dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuthEmployee });
-                //
                 dispatchFetchError(err, authActions.GET_AUTH_CONTEXT.ERROR, dispatch);
             });
     }
@@ -31,9 +39,6 @@ export function postAuth() {
             })
             .catch(err => {
                 dispatchFetchError(err, authActions.POST_LOGIN.ERROR, dispatch);
-                // only for test purpose
-                //dispatch(getApplicationContext());
-                //
             });
     }
 }

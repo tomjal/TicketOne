@@ -1,4 +1,16 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+  return {
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+  }, dispatch);
+};
 
 class DashboardPage extends Component {
   render() {
@@ -10,4 +22,7 @@ class DashboardPage extends Component {
   }
 }
 
-export default DashboardPage;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardPage);

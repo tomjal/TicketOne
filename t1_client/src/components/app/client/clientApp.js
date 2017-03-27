@@ -10,7 +10,7 @@ export class ClientAppWS extends Component {
       <div>
         <ModuleHeader label={"Client panel"} />
         <ClientRouting />
-        <WebsocketGate subscription={"echo.websocket.org"} />
+        <WebsocketGate subscription={"localhost:8080"} />
       </div>
     );
   }
