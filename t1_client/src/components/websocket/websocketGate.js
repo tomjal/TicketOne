@@ -69,10 +69,25 @@ class WebsocketGate extends Component {
     console.log(e);
   }
   render() {
+    const moduleConnectionFooter = {
+      position: "fixed",
+      bottom: "30",
+      left: "0",
+      textAlign: "left",
+      margin: "10px",
+      fontSize: "1.7rem"
+    };
     return (
-      <div>
-        {!this.state.isOpened && <div>Connecting to WS channel</div>}
-        {this.state.isOpened && <div>Subscribed to WS channel</div>}
+      <div style={moduleConnectionFooter}>
+        {!this.state.isOpened &&
+          <div>
+            <span className="label label-warning">Connecting to TicketOne system...</span>
+          </div>}
+        {this.state.isOpened &&
+          <div>
+            <span className="label label-success">Connected to TicketOne system</span>
+          </div>
+        }
       </div>
     );
   }

@@ -8,7 +8,6 @@ export class ClientAppWS extends Component {
   render() {
     return (
       <div>
-        <ModuleHeader label={"Client panel"} />
         <ClientRouting />
         <WebsocketGate subscription={"localhost:8080"} />
       </div>

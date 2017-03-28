@@ -4,7 +4,7 @@ class ModuleShell extends Component {
   render() {
     const { children } = this.props;
     return (
-      <div className="jumbotron">
+      <div className="App-module">
         {children}
       </div>
     );
