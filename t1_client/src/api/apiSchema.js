@@ -19,16 +19,16 @@ function postAuthLogin(login, pass) {
 }
 
 function getMessagesAll() {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/all/" + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
+    return fetch(apiPrefix + apiURIs.ROOMS + "/all" + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
 }
 
 function getMessagesByRoom(channelId) {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + "/" + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
 }
 
 function postMessage(message, channelId, senderRole, senderId) {
     const data = { message: message, senderRole: senderRole, senderId: senderId };
-    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + "/" + apiURIs.MESSAGES, buildReqOptions(httpVerbs.POST, data));
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES, buildReqOptions(httpVerbs.POST, data));
 }
 
 function getRoomsAll() {
