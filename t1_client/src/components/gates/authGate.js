@@ -10,9 +10,9 @@ import {
 } from './../../actions/authActionCreators';
 import { authManager } from './../../services/authManager';
 
-import { ClientAppWS } from './client/clientApp';
-import { EmployeeAppWS } from './employee/employeeApp';
-import LoginApp from './../login/loginApp';
+import { ClientAppWS } from './../app/client/clientApp';
+import { EmployeeAppWS } from './../app/employee/employeeApp';
+import LoginPage from './../login/loginPage';
 
 const mapStateToProps = (state) => {
   return {
@@ -39,7 +39,7 @@ class AuthGate extends Component {
     } else if (authManager.isEmployee(role)) {
       return <EmployeeAppWS />;
     } else if (authManager.isUnspecified(role)) {
-      return <LoginApp
+      return <LoginPage
         mockClientCallback={this.props.setApplicationContextAsMockClient}
         mockEmployeeCallback={this.props.setApplicationContextAsMockEmployee}
         authCallback={this.props.postAuthorizationData} />;

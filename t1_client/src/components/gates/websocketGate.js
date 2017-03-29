@@ -81,8 +81,8 @@ class WebsocketGate extends Component {
   render() {
     const moduleConnectionFooter = {
       position: "fixed",
-      bottom: "30",
-      left: "0",
+      bottom: "30px",
+      left: "0px",
       textAlign: "left",
       margin: "10px",
       fontSize: "1.7rem",

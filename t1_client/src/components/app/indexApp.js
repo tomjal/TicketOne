@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import ModuleShell from './moduleShell';
-import AuthGate from './authGate';
+import AuthGate from './../gates/authGate';
 
 import packageJson from './../../../package.json';
 

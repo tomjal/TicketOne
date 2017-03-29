@@ -29,7 +29,7 @@ export class ClientRoomPage extends Component {
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
   }
   componentDidMount() {
-    this.props.getClientRoom();
+    //this.props.getClientRoom();
     this.props.getMessagesByRoom(this.props.id);
   }
   sendMessageCallback(message, id) {

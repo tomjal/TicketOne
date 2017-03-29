@@ -1,0 +1,43 @@
+/*
+* === App skeleton style ===
+*/
+
+.App {
+  text-align: center;
+  width: "100%";
+  height: "100%";
+}
+
+.App-header {
+  background-color: #222;
+  height: 45px;
+  padding: 10px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.App-intro {
+}
+
+.App-module {
+  position: absolute;
+  width: 100%;
+  top: 45px;
+  bottom: 30px;
+  overflow: auto;
+  margin: 0px;
+  background: #ddd;
+  padding: 20px;
+}
+
+.App-footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: #222;
+  height: 30px;
+  padding: 5px;
+  color: white;
+  font-size: 1.5rem;
+}

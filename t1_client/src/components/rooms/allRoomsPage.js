@@ -9,9 +9,9 @@ import Room from './room';
 
 const mapStateToProps = (state) => {
   return {
-    rooms: state.rooms,
     id: state.context.id,
     role: state.context.role,
+    rooms: state.rooms,
     messages: state.messages
   }
 };
@@ -36,26 +36,27 @@ export class AllRoomsPage extends Component {
   sendMessageCallback(message, id) {
     this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
   }
-  render() {
-    const { role, rooms, messages } = this.props;
-    const flexMarginStyle = { margin: "15px" };
-    let me = this;
-
-    let maxNumbersOfRoomInRow = 4;
-    let emptyElemsNumber = maxNumbersOfRoomInRow - (rooms.length % maxNumbersOfRoomInRow);
+  getEmptyFlexFillers(numbInRow, numbOfAll) {
+    let emptyElemsNumber = numbInRow - (numbOfAll % numbInRow);
     let emptyFlexElems = [];
     for (let i = 0; i < emptyElemsNumber; i++) {
       emptyFlexElems.push({ id: i });
     }
+    return emptyFlexElems;
+  }
+  render() {
+    const { role, rooms, messages } = this.props;
+    const flexChildMarginStyle = { margin: "15px" };
 
+    const emptyFlexElems = this.getEmptyFlexFillers(4, rooms.length);
+    let me = this;
     return (
       <div>
-        {rooms.length === 0 && <div className="widget-header-text thumbnail">No client rooms</div>}
         {rooms.length !== 0 && <div className="room-flex-container">
           {rooms.map(function (roomId, i) {
             let localMessages = [];
             if (messages[roomId]) localMessages = messages[roomId];
-            return <div style={flexMarginStyle} key={i}>
+            return <div style={flexChildMarginStyle} key={i}>
               <Room
                 sendMessageCallback={me.sendMessageCallback}
                 id={roomId}
@@ -64,7 +65,7 @@ export class AllRoomsPage extends Component {
             </div>;
           })}
           {emptyFlexElems.map(function (roomId, i) {
-            return <div className="room-flex-filling"></div>;
+            return <div key={"filler-"+i} className="room-flex-filling"></div>;
           })}
         </div>
         }

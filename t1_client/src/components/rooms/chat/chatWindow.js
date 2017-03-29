@@ -22,7 +22,7 @@ class ChatWindow extends Component {
     const { id, role, messages } = this.props;
     const chatWindowStyle = { marginTop: "10xp", marginBottom: "10px" };
     const inputSpanStyle = { marginLeft: "10px", marginRight: "10px" };
-    const inputBoxStyle = { display: "inline-block", width: "270px", fontSize: "1.5rem", marginRight: "20px" }
+    const inputBoxStyle = { display: "inline-block", width: "270px", fontSize: "1.5rem", marginRight: "20px" };
 
     return (
       <div style={chatWindowStyle}>

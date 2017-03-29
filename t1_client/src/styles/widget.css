@@ -1,0 +1,58 @@
+/*
+* === Reusable widget style ===
+*/
+
+.widget {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+}
+
+.widget>div {
+  margin-bottom: 10px;
+}
+
+.widget>div:last-of-type {
+  margin-bottom: 0px;
+}
+
+.widget input, .widget button, .widget .inputStyle {
+  width: 240px;
+}
+
+.widget-header-text {
+  font-size: 1.8rem;
+}
+
+.widget-body {
+  
+}
+
+.widget-block-span {
+  
+}
+
+.widget-block-span>div {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.widget-input-label {
+  color: #a9a9b1;
+  margin-right: 5px;
+}
+
+.widget-input {
+
+}
+
+.widget-input-button {
+  
+}
+
+.widget-action-group {
+  
+}
+
+.widget-action-button {
+  
+}

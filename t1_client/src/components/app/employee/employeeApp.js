@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WebsocketGate from './../../websocket/websocketGate';
+import WebsocketGate from './../../gates/websocketGate';
 import EmployeeRouting from './employeeRouting';
 
 // eslint-disable-next-line

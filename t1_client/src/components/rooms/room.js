@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { authManager } from './../../services/authManager';
-import ChatWindow from './chatWindow';
+import ChatWindow from './chat/chatWindow';
 
 class Room extends Component {
   constructor() {
@@ -18,7 +18,7 @@ class Room extends Component {
     return (
       <div className="room">
         {isClientRoom && <div className="widget-header-text">Hello {id} - how can we help you?</div>}
-        {!isClientRoom && <div className="widget-header-text">Room with client - {id}</div>}
+        {!isClientRoom && <div className="widget-header-text">id: {id}</div>}
         <div>
           {this.state.isOpened &&
             <ChatWindow

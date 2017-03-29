@@ -20,6 +20,10 @@ export const messagesActions = {
         SUCCESS: "GET_MESSAGES_ALL_SUCCESS",
         ERROR: "GET_MESSAGES_ALL_ERROR"
     },
+    GET_MESSAGES_BY_ROOM: {
+        SUCCESS: "GET_MESSAGES_BY_ROOM_SUCCESS",
+        ERROR: "GET_MESSAGES_BY_ROOM_ERROR"
+    },
     POST_MESSAGE: {
         SUCCESS: "POST_MESSAGE_SUCCESS",
         ERROR: "POST_MESSAGE_ERROR"
@@ -39,4 +43,10 @@ export const roomsActions = {
         SUCCESS: "UNSUBSCRIBE_ROOM_SUCCESS",
         ERROR: "UNSUBSCRIBE_ROOM_ERROR"
     }
+}
+
+export const websocketActions = {
+}
+
+export const combinedActions = {
 }

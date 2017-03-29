@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { history } from './../../../store/createHistory';
 
@@ -14,7 +14,7 @@ const EmployeeRouting = () => (
   <ConnectedRouter history={history}>
     <div>
       {/*<RoutingMenu />*/}
-      <Redirect to="/" />
+      {/*<Redirect to="/" />*/}
       {/*<Route exact path="/" component={DashboardPage} />*/}
       <Route path="/" component={AllRoomsPage} />
     </div>

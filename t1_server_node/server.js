@@ -2,33 +2,36 @@ var WebSocketServer = require("ws").Server
 var http = require("http")
 var bodyParser = require('body-parser')
 var express = require("express")
+
 var app = express()
 var port = process.env.PORT || 8080
 
 app.use(express.static(__dirname + "/react_build/"))
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 const server = http.createServer(app)
 server.listen(port)
 
-var router = express.Router();
+const router = express.Router();
 
-const COMMANDS = {
+const ROLES = {
     CLIENT: "client",
     EMPLOYEE: "employee",
-    REGISTER: "register",
-    CREATE_ROOM: "create_room",
-    JOIN_ROOM: "join_room",
-    LEAVE_ROOM: "leave_room"
-};
+}
 
-let currentlyOpenedRooms = {};
+const COMMANDS = {
+    REGISTER: "new_message",
+    JOIN_ROOM: "new_room",
+};
 
 function handleError(res, reason, message, code) {
     console.log("ERROR: " + reason);
     res.status(code || 500).json({ "error": message });
 }
+
+// out "in-memory storage"
+let currentlyOpenedRooms = {};
 
 router.get('/rooms/all', function (req, res) {
     let listOfRooms = [];
@@ -60,7 +63,11 @@ router.post('/rooms/all/messages', function (req, res) {
 
 router.get('/rooms/:id/messages', function (req, res) {
     let channel = req.params.id;
-    res.json(currentlyOpenedRooms[channel].messages);
+    let tempRes = [];
+    if (currentlyOpenedRooms[channel]) {
+        tempRes = currentlyOpenedRooms[channel].messages
+    }
+    res.json(tempRes);
 });
 
 router.post('/rooms/:id/messages', function (req, res) {
@@ -76,7 +83,7 @@ router.post('/rooms/:id/messages', function (req, res) {
     }
 
     //{ message: message, senderRole: senderRole, senderId: senderId };
-    res.send(200);
+    res.status(200).json({ status: "ok" });
 
     wss.clients.forEach((client) => {
         client.send("new_message:" + channel);

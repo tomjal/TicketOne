@@ -20,7 +20,7 @@ export function getMessagesByRoom(channelId) {
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())
             .then(data => {
-                dispatch({ type: messagesActions.GET_MESSAGES_ALL.SUCCESS, data });
+                dispatch({ type: messagesActions.GET_MESSAGES_BY_ROOM.SUCCESS, data });
             })
             .catch(err => dispatchFetchError(err, dispatch));
     }
