@@ -41,7 +41,7 @@ export class RoomsPage extends Component {
     let me = this;
     return (
       <div>
-        {rooms.length == 0 && <div className="widget-header-text thumbnail">No client rooms!</div>}
+        {rooms.length == 0 && <div className="widget-header-text thumbnail">No client rooms</div>}
         {rooms.length != 0 && <div className="room-flex-container">
           {rooms.map(function (roomId, i) {
             let localMessages = [];

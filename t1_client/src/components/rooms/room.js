@@ -10,19 +10,19 @@ class Room extends Component {
   sendMessage(message) {
     this.props.sendMessageCallback(message, this.props.id);
   }
-  isMyRoom(role) {
-    if (role == this.props.role) {
+  isClientRoom(role) {
+    if (role == "client") {
       return true;
     }
     return false;
   }
   render() {
     const { id, role, messages } = this.props;
-
+    const isClientRoom = this.isClientRoom(role);
     return (
       <div className="room">
-        {this.isMyRoom(id) && <div className="widget-header-text">Hello {id} - how can we help you?</div>}
-        {!this.isMyRoom(id) && <div className="widget-header-text">Room with client - {id}</div>}
+        {isClientRoom && <div className="widget-header-text">Hello {id} - how can we help you?</div>}
+        {!isClientRoom && <div className="widget-header-text">Room with client - {id}</div>}
         <div>
           {this.state.isOpened &&
             <ChatWindow
