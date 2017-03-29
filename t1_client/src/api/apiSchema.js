@@ -13,7 +13,7 @@ function getAuthContext() {
     return fetch(apiPrefix + apiURIs.CONTEXT, buildReqOptions(httpVerbs.GET));
 }
 
-function postAuthLogin(login, pass) {
+function postAuthData(login, pass) {
     const authObject = { login: login, pass: pass };
     return fetch(apiPrefix + apiURIs.AUTH, buildReqOptions(httpVerbs.POST, authObject));
 }
@@ -26,7 +26,7 @@ function getMessagesByRoom(channelId) {
     return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
 }
 
-function postMessage(message, channelId, senderRole, senderId) {
+function postMessageToRoom(message, channelId, senderRole, senderId) {
     const data = { message: message, senderRole: senderRole, senderId: senderId };
     return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES, buildReqOptions(httpVerbs.POST, data));
 }
@@ -44,12 +44,12 @@ export const apiSchema = {
         get: getAuthContext
     },
     auth: {
-        post: postAuthLogin
+        post: postAuthData
     },
     messages: {
         getAll: getMessagesAll,
         getByRoom: getMessagesByRoom,
-        post: postMessage
+        post: postMessageToRoom
     },
     rooms: {
         getAll: getRoomsAll,

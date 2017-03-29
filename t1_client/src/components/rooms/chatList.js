@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 
-/*
-message schema
-{ body: "", author: { id: "", role: "senderRole" }, timestamp: "" }
-*/
-
 class ChatList extends Component {
   componentDidMount() {
     this.scrollToBottom();
   }
-
   componentDidUpdate() {
     this.scrollToBottom();
   }
@@ -28,7 +22,7 @@ class ChatList extends Component {
     return timeString + ' ' + dateString;
   }
   isMyBubble(role) {
-    if (role == this.props.role) {
+    if (role === this.props.role) {
       return true;
     }
     return false;

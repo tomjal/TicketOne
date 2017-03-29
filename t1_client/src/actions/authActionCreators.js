@@ -11,7 +11,9 @@ export function setApplicationContextAsMockClient(ident) {
 
 export function setApplicationContextAsMockEmployee() {
     const mockAuth = { role: "employee", id: "Employee_TicketOne" };
-    return { type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuth };
+    return function (dispatch) {
+        dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuth })
+    };
 }
 
 export function getApplicationContext() {
@@ -28,7 +30,7 @@ export function getApplicationContext() {
     }
 }
 
-export function postAuth() {
+export function postAuthorizationData() {
     return function (dispatch) {
         return apiSchema.auth.post()
             .then(res => checkIfFetchStatusOk(res))

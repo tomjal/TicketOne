@@ -4,6 +4,7 @@ class LoginApp extends Component {
   constructor() {
     super();
     this.clientSubmitAction = this.clientSubmitAction.bind(this);
+    this.employeeSubmitAction = this.employeeSubmitAction.bind(this);
     this.state = { login: "", pass: "" };
   }
   submitAction() {
@@ -13,8 +14,10 @@ class LoginApp extends Component {
     var id = this.textInput.value ? this.textInput.value : "Default Client";
     this.props.mockClientCallback(id);
   }
+  employeeSubmitAction() {
+    this.props.mockEmployeeCallback()
+  }
   render() {
-    const { mockClientCallback, mockEmployeeCallback } = this.props;
     const loginWidgetInnerStyle = { padding: "20px", paddingLeft: "70px", height: "100%", textAlign: "left" };
     const rowInput = { verticalAlign: "top", height: "35px", margin: "5px", marginLeft: "0px", fontSize: "1.5rem" };
 
@@ -38,7 +41,7 @@ class LoginApp extends Component {
               <div className="row widget-block-span">
                 <div><div className="widget-input-label">Employee id:</div>
                 <div style={rowInput} className="inputStyle">Employee_TicketOne</div></div>
-                <div><button className="btn btn-default" onClick={mockEmployeeCallback}>
+                <div><button className="btn btn-default" onClick={this.employeeSubmitAction}>
                   Log in as TicketOne employee</button></div>
               </div>
             </div>

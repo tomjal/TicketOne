@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getClientRoom } from './../../actions/roomsActionCreators';
-import { getMessagesByRoom, sendMessage } from './../../actions/messagesActionCreators';
+import { getMessagesByRoom, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
 import Room from './room';
 
@@ -19,12 +19,12 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getClientRoom,
     getMessagesByRoom,
-    sendMessage
+    sendMessageToRoom
   }, dispatch);
 };
 
 export class ClientRoomPage extends Component {
-  constructor(){
+  constructor() {
     super();
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
   }
@@ -33,17 +33,17 @@ export class ClientRoomPage extends Component {
     this.props.getMessagesByRoom(this.props.id);
   }
   sendMessageCallback(message, id) {
-    this.props.sendMessage(message, id, this.props.role, this.props.id);
+    this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
   }
   render() {
     const { id, role, messages } = this.props;
     return (
       <div className="room-flex-container">
-          <Room
-            sendMessageCallback={this.sendMessageCallback}
-            id={id}
-            role={role}
-            messages={messages} />
+        <Room
+          id={id}
+          role={role}
+          sendMessageCallback={this.sendMessageCallback}
+          messages={messages} />
       </div>
     );
   }

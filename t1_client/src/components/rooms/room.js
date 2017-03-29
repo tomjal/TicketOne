@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { authManager } from './../../services/authManager';
 import ChatWindow from './chatWindow';
 
 class Room extends Component {
@@ -11,15 +12,9 @@ class Room extends Component {
   sendMessage(message) {
     this.props.sendMessageCallback(message, this.props.id);
   }
-  isClientRoom(role) {
-    if (role == "client") {
-      return true;
-    }
-    return false;
-  }
   render() {
     const { id, role, messages } = this.props;
-    const isClientRoom = this.isClientRoom(role);
+    const isClientRoom = authManager.isClient(role);
     return (
       <div className="room">
         {isClientRoom && <div className="widget-header-text">Hello {id} - how can we help you?</div>}

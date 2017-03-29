@@ -10,11 +10,7 @@ export function getAllRooms() {
             .then(data => {
                 dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data });
             })
-            .catch(err => {
-                //roomlist mock
-                //dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data: roomsList });
-                //dispatchFetchError(err, dispatch)
-            });
+            .catch(err => dispatchFetchError(err, dispatch));
     }
 }
 
@@ -26,8 +22,6 @@ export function getClientRoom() {
             .then(data => {
                 dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data });
             })
-            .catch(err => {
-                //dispatchFetchError(err, dispatch)
-            });
+            .catch(err => dispatchFetchError(err, dispatch));
     }
 }

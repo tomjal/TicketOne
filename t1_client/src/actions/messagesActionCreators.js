@@ -26,13 +26,13 @@ export function getMessagesByRoom(channelId) {
     }
 }
 
-export function sendMessage(message, channelId, senderRole, senderId) {
+export function sendMessageToRoom(message, channelId, senderRole, senderId) {
     return function (dispatch) {
         return apiSchema.messages.post(message, channelId, senderRole, senderId)
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())
             .then(data => {
-                //dispatch({ type: messagesActions.GET_MESSAGES_ALL.SUCCESS, data });
+                dispatch({ type: messagesActions.POST_MESSAGE.SUCCESS, data });
             })
             .catch(err => dispatchFetchError(err, dispatch));
     }

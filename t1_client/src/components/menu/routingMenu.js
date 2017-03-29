@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 
+// eslint-disable-next-line
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => (
   <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
     <div className={match ? 'active' : ''}>
@@ -18,8 +19,8 @@ export class RoutingMenu extends Component {
     return (
       <div>
         <nav>
-          <MenuLink activeOnlyWhenExact={true} to="/" label="Dashboard" />
-          <MenuLink to="/rooms" label="Rooms" />
+          {/*<MenuLink activeOnlyWhenExact={true} to="/" label="Dashboard" />
+          <MenuLink to="/rooms" label="Rooms" />*/}
         </nav>
       </div>
     );

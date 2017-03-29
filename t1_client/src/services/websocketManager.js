@@ -17,13 +17,10 @@ class WebsocketManager {
         this.connection.close();
         this.connection = null;
     }
-    batchSubscribe(channelsList, role, id) {
-        if (role === "client") {
-            this.sendOnChannel(
-                role + ":" + id + "|"
-            )
-        }
-        if (role === "employee") { }
+    createChannel(role, id) {
+        this.sendOnChannel(
+            role + ":" + id + "|"
+        )
     }
     sendOnChannel(message) {
         this.connection.send(message);

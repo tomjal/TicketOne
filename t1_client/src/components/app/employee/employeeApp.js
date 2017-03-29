@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import WebsocketGate from './../../websocket/websocketGate';
 import EmployeeRouting from './employeeRouting';
 
+// eslint-disable-next-line
 import { ModuleHeader } from './../moduleHeader';
 
 export class EmployeeAppWS extends Component {

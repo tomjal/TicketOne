@@ -3,8 +3,10 @@ import { Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { history } from './../../../store/createHistory';
 
-import { RoutingMenu } from './../routingMenu';
+// eslint-disable-next-line
+import { RoutingMenu } from './../../menu/routingMenu';
 
+// eslint-disable-next-line
 import DashboardPage from './../../dashboard/dashboardPage';
 import AllRoomsPage from './../../rooms/allRoomsPage';
 

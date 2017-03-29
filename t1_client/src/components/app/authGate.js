@@ -3,10 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {
-  //getApplicationContext, 
   setApplicationContextAsMockClient,
   setApplicationContextAsMockEmployee,
-  postAuth
+  getApplicationContext,
+  postAuthorizationData
 } from './../../actions/authActionCreators';
 import { authManager } from './../../services/authManager';
 
@@ -22,10 +22,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    //getApplicationContext,
     setApplicationContextAsMockClient,
     setApplicationContextAsMockEmployee,
-    postAuth
+    getApplicationContext,
+    postAuthorizationData
   }, dispatch);
 };
 
@@ -33,7 +33,7 @@ class AuthGate extends Component {
   componentDidMount() {
     //this.props.getApplicationContext();
   }
-  getAuthenticatedApp(role, postAuth) {
+  getAuthenticatedApp(role) {
     if (authManager.isClient(role)) {
       return <ClientAppWS />;
     } else if (authManager.isEmployee(role)) {
@@ -42,13 +42,13 @@ class AuthGate extends Component {
       return <LoginApp
         mockClientCallback={this.props.setApplicationContextAsMockClient}
         mockEmployeeCallback={this.props.setApplicationContextAsMockEmployee}
-        authCallback={postAuth} />;
+        authCallback={this.props.postAuthorizationData} />;
     }
   }
   render() {
-    const { role, postAuth } = this.props;
+    const { role } = this.props;
     const accessNotAllowedLabel = <div>Access forbidden</div>;
-    const authenticatedApp = this.getAuthenticatedApp(role, postAuth);
+    const authenticatedApp = this.getAuthenticatedApp(role);
 
     return (
       <div>

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getAllRooms } from './../../actions/roomsActionCreators';
-import { getAllMessages, sendMessage } from './../../actions/messagesActionCreators';
+import { getAllMessages, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
 import Room from './room';
 
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getAllRooms,
     getAllMessages,
-    sendMessage
+    sendMessageToRoom
   }, dispatch);
 };
 
@@ -34,10 +34,10 @@ export class AllRoomsPage extends Component {
     this.props.getAllMessages();
   }
   sendMessageCallback(message, id) {
-    this.props.sendMessage(message, id, this.props.role, this.props.id);
+    this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
   }
   render() {
-    const { id, role, rooms, messages } = this.props;
+    const { role, rooms, messages } = this.props;
     const flexMarginStyle = { margin: "15px" };
     let me = this;
 
@@ -50,8 +50,8 @@ export class AllRoomsPage extends Component {
 
     return (
       <div>
-        {rooms.length == 0 && <div className="widget-header-text thumbnail">No client rooms</div>}
-        {rooms.length != 0 && <div className="room-flex-container">
+        {rooms.length === 0 && <div className="widget-header-text thumbnail">No client rooms</div>}
+        {rooms.length !== 0 && <div className="room-flex-container">
           {rooms.map(function (roomId, i) {
             let localMessages = [];
             if (messages[roomId]) localMessages = messages[roomId];

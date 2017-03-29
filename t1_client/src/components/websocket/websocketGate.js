@@ -6,13 +6,15 @@ import { getAllRooms } from './../../actions/roomsActionCreators';
 import { getMessagesByRoom, getAllMessages } from './../../actions/messagesActionCreators';
 
 import { websocketManager } from './../../services/websocketManager';
+import { authManager } from './../../services/authManager';
 
-import { WS } from './../../config/servers'
+import { WS_COMMANDS } from './../../consts/commands';
+import { WS } from './../../config/servers';
 
 const mapStateToProps = (state) => {
   return {
-    role: state.context.role,
     id: state.context.id,
+    role: state.context.role,
     rooms: state.rooms
   }
 };
@@ -34,8 +36,9 @@ class WebsocketGate extends Component {
     this.initGate(WS.SERVER_ADDRESS);
   }
   componentDidUpdate() {
-    websocketManager.batchSubscribe(
-      this.props.rooms, this.props.role, this.props.id);
+    if (authManager.isClient(this.props.role)) {
+      websocketManager.createChannel(this.props.role, this.props.id);
+    }
   }
   initGate(addr) {
     websocketManager.initNewConnection(
@@ -49,22 +52,27 @@ class WebsocketGate extends Component {
     this.setState({ isOpened: true });
   }
   onMessage(e) {
-    console.log("onMessage");
     console.log(e);
-    if (e.data.split(":")[0] === "new_message") {
-      if (this.props.role === "client") {
-        this.props.getMessagesByRoom(e.data.split(":")[1])
-      }
-      if (this.props.role === "employee") {
-        this.props.getAllMessages()
-      }
+    let data = e.data;
+    if (data.split(":")[0] === WS_COMMANDS.NEW_MESSAGE) {
+      this.onNewMessageAction(data);
     }
-
-    if (e.data.split(":")[0] === "new_room") {
-      if (this.props.role === "employee") {
-        this.props.getAllRooms();
-        this.props.getAllMessages();
-      }
+    if (data.split(":")[0] === WS_COMMANDS.NEW_ROOM) {
+      this.onNewRoomAction(data);
+    }
+  }
+  onNewMessageAction(data) {
+    if (authManager.isClient(this.props.role)) {
+      this.props.getMessagesByRoom(data.split(":")[1])
+    }
+    if (authManager.isEmployee(this.props.role)) {
+      this.props.getAllMessages()
+    }
+  }
+  onNewRoomAction(data) {
+    if (authManager.isEmployee(this.props.role)) {
+      this.props.getAllRooms();
+      this.props.getAllMessages();
     }
   }
   onClose(e) {
