@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 };
 
-export class RoomsPage extends Component {
+export class AllRoomsPage extends Component {
   constructor(props) {
     super(props)
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
@@ -38,7 +38,16 @@ export class RoomsPage extends Component {
   }
   render() {
     const { id, role, rooms, messages } = this.props;
+    const flexMarginStyle = { margin: "15px" };
     let me = this;
+
+    let maxNumbersOfRoomInRow = 4;
+    let emptyElemsNumber = maxNumbersOfRoomInRow - (rooms.length % maxNumbersOfRoomInRow);
+    let emptyFlexElems = [];
+    for (let i = 0; i < emptyElemsNumber; i++) {
+      emptyFlexElems.push({ id: i });
+    }
+
     return (
       <div>
         {rooms.length == 0 && <div className="widget-header-text thumbnail">No client rooms</div>}
@@ -46,13 +55,16 @@ export class RoomsPage extends Component {
           {rooms.map(function (roomId, i) {
             let localMessages = [];
             if (messages[roomId]) localMessages = messages[roomId];
-            return <div key={i}>
+            return <div style={flexMarginStyle} key={i}>
               <Room
                 sendMessageCallback={me.sendMessageCallback}
                 id={roomId}
                 role={role}
                 messages={localMessages} />
             </div>;
+          })}
+          {emptyFlexElems.map(function (roomId, i) {
+            return <div className="room-flex-filling"></div>;
           })}
         </div>
         }
@@ -64,4 +76,4 @@ export class RoomsPage extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RoomsPage);
+)(AllRoomsPage);

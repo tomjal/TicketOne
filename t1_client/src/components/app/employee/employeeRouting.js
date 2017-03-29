@@ -6,7 +6,7 @@ import { history } from './../../../store/createHistory';
 import { RoutingMenu } from './../routingMenu';
 
 import DashboardPage from './../../dashboard/dashboardPage';
-import RoomsPage from './../../rooms/roomsPage';
+import AllRoomsPage from './../../rooms/allRoomsPage';
 
 const EmployeeRouting = () => (
   <ConnectedRouter history={history}>
@@ -14,7 +14,7 @@ const EmployeeRouting = () => (
       {/*<RoutingMenu />*/}
       <Redirect to="/" />
       {/*<Route exact path="/" component={DashboardPage} />*/}
-      <Route path="/" component={RoomsPage} />
+      <Route path="/" component={AllRoomsPage} />
     </div>
   </ConnectedRouter>
 );

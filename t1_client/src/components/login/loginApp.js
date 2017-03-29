@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 class LoginApp extends Component {
   constructor() {
     super();
+    this.clientSubmitAction = this.clientSubmitAction.bind(this);
     this.state = { login: "", pass: "" };
   }
   submitAction() {
@@ -26,7 +27,7 @@ class LoginApp extends Component {
               <div className="row widget-block-span">
                 <div><div className="widget-input-label">Client id:</div>
                 <input style={rowInput} type="text" className="form-control" ref={(input) => { this.textInput = input; }}></input></div>
-                <div><button className="btn btn-default" onClick={this.clientSubmitAction.bind(this)}>
+                <div><button className="btn btn-default" onClick={this.clientSubmitAction}>
                   Log in as TicketOne client</button></div>
               </div>
             </div>

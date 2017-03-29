@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import ChatList from './chatList';
 
 class ChatWindow extends Component {
+  constructor() {
+    super();
+    this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.submitSendMessage = this.submitSendMessage.bind(this);
+  }
   submitSendMessage() {
     var message = this.chatInput.value;
     if (message && message.length > 0) {
@@ -24,8 +29,8 @@ class ChatWindow extends Component {
         <ChatList id={id} role={role} messages={messages} />
         <div style={inputSpanStyle}>
           <input style={inputStyle} type="text" className="form-control"
-            onKeyUp={this.handleKeyUp.bind(this)} ref={(input) => { this.chatInput = input; }}></input>
-          <button className="btn btn-default" onClick={this.submitSendMessage.bind(this)}>Send message</button>
+            onKeyUp={this.handleKeyUp} ref={(input) => { this.chatInput = input; }}></input>
+          <button className="btn btn-default" onClick={this.submitSendMessage}>Send message</button>
         </div>
       </div>
     );

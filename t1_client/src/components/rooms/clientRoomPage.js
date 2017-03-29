@@ -24,6 +24,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export class ClientRoomPage extends Component {
+  constructor(){
+    super();
+    this.sendMessageCallback = this.sendMessageCallback.bind(this);
+  }
   componentDidMount() {
     this.props.getClientRoom();
     this.props.getMessagesByRoom(this.props.id);
@@ -36,7 +40,7 @@ export class ClientRoomPage extends Component {
     return (
       <div className="room-flex-container">
           <Room
-            sendMessageCallback={this.sendMessageCallback.bind(this)}
+            sendMessageCallback={this.sendMessageCallback}
             id={id}
             role={role}
             messages={messages} />

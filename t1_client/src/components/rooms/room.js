@@ -5,6 +5,7 @@ import ChatWindow from './chatWindow';
 class Room extends Component {
   constructor() {
     super();
+    this.sendMessage = this.sendMessage.bind(this);
     this.state = { isOpened: true };
   }
   sendMessage(message) {
@@ -27,7 +28,7 @@ class Room extends Component {
           {this.state.isOpened &&
             <ChatWindow
               role={role}
-              sendMessage={this.sendMessage.bind(this)}
+              sendMessage={this.sendMessage}
               messages={messages} />}
         </div>
       </div>
