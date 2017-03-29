@@ -32,16 +32,14 @@ export class ClientRoomPage extends Component {
     this.props.sendMessage(message, id, this.props.role, this.props.id);
   }
   render() {
-    const { id, messages } = this.props;
+    const { id, role, messages } = this.props;
     return (
-      <div>
-        <div className="well">Client room Page</div>
-        <div>
+      <div className="room-flex-container">
           <Room
             sendMessageCallback={this.sendMessageCallback.bind(this)}
             id={id}
+            role={role}
             messages={messages} />
-        </div>
       </div>
     );
   }

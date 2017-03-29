@@ -11,10 +11,10 @@ import RoomsPage from './../../rooms/roomsPage';
 const EmployeeRouting = () => (
   <ConnectedRouter history={history}>
     <div>
-      <RoutingMenu />
+      {/*<RoutingMenu />*/}
       <Redirect to="/" />
-      <Route exact path="/" component={DashboardPage} />
-      <Route path="/rooms" component={RoomsPage} />
+      {/*<Route exact path="/" component={DashboardPage} />*/}
+      <Route path="/" component={RoomsPage} />
     </div>
   </ConnectedRouter>
 );

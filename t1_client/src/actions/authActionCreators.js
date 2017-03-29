@@ -10,7 +10,7 @@ export function setApplicationContextAsMockClient(ident) {
 }
 
 export function setApplicationContextAsMockEmployee() {
-    const mockAuth = { role: "employee", id: "emp1" };
+    const mockAuth = { role: "employee", id: "Employee_TicketOne" };
     return { type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuth };
 }
 

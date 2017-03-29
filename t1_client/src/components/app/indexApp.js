@@ -17,7 +17,7 @@ class IndexApp extends Component {
           <AuthGate />
         </ModuleShell>
         <div className="App-footer">
-          version {version} (refresh browser to log out mock user)
+          version {version} (F5 - refresh page to log out mock user)
         </div>
       </div>
     );

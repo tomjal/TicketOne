@@ -9,7 +9,7 @@ export class ClientAppWS extends Component {
     return (
       <div>
         <ClientRouting />
-        <WebsocketGate subscription={"192.168.0.12:8080"} />
+        <WebsocketGate />
       </div>
     );
   }

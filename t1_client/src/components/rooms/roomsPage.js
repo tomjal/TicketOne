@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export class RoomsPage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
   }
@@ -37,20 +37,20 @@ export class RoomsPage extends Component {
     this.props.sendMessage(message, id, this.props.role, this.props.id);
   }
   render() {
-    const { id, rooms, messages } = this.props;
+    const { id, role, rooms, messages } = this.props;
     let me = this;
     return (
       <div>
-        <div className="well">Chatrooms Page</div>
-        {rooms.length == 0 && <div>No client rooms!</div>}
-        {rooms.length != 0 && <div>
+        {rooms.length == 0 && <div className="widget-header-text thumbnail">No client rooms!</div>}
+        {rooms.length != 0 && <div className="room-flex-container">
           {rooms.map(function (roomId, i) {
             let localMessages = [];
-            if(messages[roomId]) localMessages = messages[roomId];
+            if (messages[roomId]) localMessages = messages[roomId];
             return <div key={i}>
               <Room
                 sendMessageCallback={me.sendMessageCallback}
                 id={roomId}
+                role={role}
                 messages={localMessages} />
             </div>;
           })}

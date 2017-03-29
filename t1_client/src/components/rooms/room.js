@@ -10,15 +10,26 @@ class Room extends Component {
   sendMessage(message) {
     this.props.sendMessageCallback(message, this.props.id);
   }
+  isMyRoom(role) {
+    if (role == this.props.role) {
+      return true;
+    }
+    return false;
+  }
   render() {
-    const { id, messages } = this.props;
+    const { id, role, messages } = this.props;
 
     return (
-      <div>Room - {id} - number of messages - {messages.length}
-        {this.state.isOpened &&
-          <ChatWindow
-            sendMessage={this.sendMessage.bind(this)}
-            messages={messages} />}
+      <div className="room">
+        {this.isMyRoom(id) && <div className="widget-header-text">Hello {id} - how can we help you?</div>}
+        {!this.isMyRoom(id) && <div className="widget-header-text">Room with client - {id}</div>}
+        <div>
+          {this.state.isOpened &&
+            <ChatWindow
+              role={role}
+              sendMessage={this.sendMessage.bind(this)}
+              messages={messages} />}
+        </div>
       </div>
     );
   }

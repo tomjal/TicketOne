@@ -7,6 +7,8 @@ import { getMessagesByRoom, getAllMessages } from './../../actions/messagesActio
 
 import { websocketManager } from './../../services/websocketManager';
 
+import { WS } from './../../config/servers'
+
 const mapStateToProps = (state) => {
   return {
     role: state.context.role,
@@ -29,7 +31,7 @@ class WebsocketGate extends Component {
     this.state = { isOpened: false };
   }
   componentDidMount() {
-    this.initGate(this.props.subscription);
+    this.initGate(WS.SERVER_ADDRESS);
   }
   componentDidUpdate() {
     websocketManager.batchSubscribe(
@@ -49,17 +51,17 @@ class WebsocketGate extends Component {
   onMessage(e) {
     console.log("onMessage");
     console.log(e);
-    if (e.data.split(":")[0] == "new_message") {
-      if (this.props.role == "client") {
+    if (e.data.split(":")[0] === "new_message") {
+      if (this.props.role === "client") {
         this.props.getMessagesByRoom(e.data.split(":")[1])
       }
-      if (this.props.role == "employee") {
+      if (this.props.role === "employee") {
         this.props.getAllMessages()
       }
     }
 
-    if (e.data.split(":")[0] == "new_room") {
-      if (this.props.role == "employee") {
+    if (e.data.split(":")[0] === "new_room") {
+      if (this.props.role === "employee") {
         this.props.getAllRooms();
         this.props.getAllMessages();
       }
@@ -75,7 +77,8 @@ class WebsocketGate extends Component {
       left: "0",
       textAlign: "left",
       margin: "10px",
-      fontSize: "1.7rem"
+      fontSize: "1.7rem",
+      zIndex: "1000"
     };
     return (
       <div style={moduleConnectionFooter}>

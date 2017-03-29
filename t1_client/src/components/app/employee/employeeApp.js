@@ -9,7 +9,7 @@ export class EmployeeAppWS extends Component {
     return (
       <div>
         <EmployeeRouting />
-        <WebsocketGate subscription={"192.168.0.12:8080"} />
+        <WebsocketGate />
       </div>
     );
   }

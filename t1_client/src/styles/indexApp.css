@@ -50,6 +50,14 @@
   margin-bottom: 10px;
 }
 
+.widget>div:last-of-type {
+  margin-bottom: 0px;
+}
+
+.widget input, .widget button, .widget .inputStyle {
+  width: 240px;
+}
+
 .widget-header-text {
   font-size: 1.8rem;
 }
@@ -92,3 +100,34 @@
 /*
 * === Chatroom specific style ===
 */
+
+.room-flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.room {
+  width: 450px;
+  height: 360px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.room-chat-list {
+  width: 450px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.room-chat-input {
+  width: 450px;
+  height: 400px;
+  overflow: hidden;
+}
