@@ -78,6 +78,12 @@ router.post('/rooms/:id/messages', function (req, res) {
     });
 });
 
+// reset mock storage - just for testing purpose
+router.get('/reset', function (req, res) {
+    currentlyOpenedRooms = {};
+    res.status(200).json({ status: "ok" });
+});
+
 // rest prefix
 app.use('/api/v1', router);
 

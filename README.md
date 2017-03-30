@@ -1,8 +1,8 @@
 ## TicketOne client
 
-work in progress
+WORK IN PROGRESS
 
-client: yarn -> yarn start || yarn build
-node mock server: node server.js
+Client - React/Redux
+Server - Node.js mock
 
-JS project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+[Deployed on Heroku](http://ticketone.herokuapp.com)
