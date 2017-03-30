@@ -19,7 +19,7 @@ function postAuthData(login, pass) {
 }
 
 function getMessagesAll() {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/all" + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
+    return fetch(apiPrefix + apiURIs.ROOMS + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
 }
 
 function getMessagesByRoom(channelId) {
@@ -32,7 +32,7 @@ function postMessageToRoom(message, channelId, senderRole, senderId) {
 }
 
 function getRoomsAll() {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/all", buildReqOptions(httpVerbs.GET));
+    return fetch(apiPrefix + apiURIs.ROOMS, buildReqOptions(httpVerbs.GET));
 }
 
 function getClientRoom() {
