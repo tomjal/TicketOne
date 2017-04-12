@@ -11,7 +11,6 @@ import './styles/widget.css';
 import './styles/room.css';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import 'react-notifications/lib/notifications.css';
 
 ReactDOM.render(
   <Provider store={appStore}>

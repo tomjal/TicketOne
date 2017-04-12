@@ -1,5 +1,3 @@
-const WS_PREFIX = "ws://";
-
 class WebsocketManager {
     constructor(count) {
         this.connection = null;
@@ -19,7 +17,7 @@ class WebsocketManager {
     }
     createChannel(role, id) {
         this.sendOnChannel(
-            role + ":" + id + "|"
+            `${role}:${id}|`
         )
     }
     sendOnChannel(message) {

@@ -3,7 +3,7 @@ import { apiSchema } from "./../api/apiSchema";
 import { roomsActions } from "./actionTypes";
 
 export function getAllRooms() {
-    return function (dispatch) {
+    return (dispatch) => {
         return apiSchema.rooms.getAll()
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())
@@ -15,7 +15,7 @@ export function getAllRooms() {
 }
 
 export function getClientRoom() {
-    return function (dispatch) {
+    return (dispatch) => {
         return apiSchema.rooms.getClient()
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())

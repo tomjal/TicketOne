@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { Route, HashRouter } from 'react-router-dom';
 import { history } from './../../../store/createHistory';
 
 // eslint-disable-next-line
@@ -11,14 +10,14 @@ import DashboardPage from './../../dashboard/dashboardPage';
 import AllRoomsPage from './../../rooms/allRoomsPage';
 
 const EmployeeRouting = () => (
-  <ConnectedRouter history={history}>
+  <HashRouter history={history}>
     <div>
       {/*<RoutingMenu />*/}
-      {/*<Redirect to="/" />*/}
-      {/*<Route exact path="/" component={DashboardPage} />*/}
-      <Route path="/" component={AllRoomsPage} />
+      {/*<Redirect to='/' />*/}
+      {/*<Route exact path='/' component={DashboardPage} />*/}
+      <Route path='/' component={AllRoomsPage} />
     </div>
-  </ConnectedRouter>
+  </HashRouter>
 );
 
 export default EmployeeRouting;

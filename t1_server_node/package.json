@@ -1,8 +1,8 @@
 {
   "name": "t1_server_node",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "engines": {
-    "node": "7.5.0"
+    "node": "7.9.0"
   },
   "description": "",
   "main": "server.js",
@@ -16,7 +16,8 @@
     "body-parser": "^1.17.1",
     "bufferutil": "^3.0.0",
     "express": "^4.15.2",
+    "logger": "^0.0.1",
     "utf-8-validate": "^3.0.1",
-    "ws": "^2.2.2"
+    "ws": "^2.2.3"
   }
 }

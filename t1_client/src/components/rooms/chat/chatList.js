@@ -36,18 +36,17 @@ class ChatList extends Component {
     const headerMessageStyle = { color: "gray", fontSize: "1.2rem" };
     const bodyMessageStyle = { color: "black", fontSize: "1.4rem", wordWrap: "break-word" };
 
-    let me = this;
     return (
       <div className="room-chat-body" style={chatListStyle} ref={(div) => { this.messageList = div; }}>
         {messages &&
           <div >
             {
-              messages.map(function (message, i) {
-                let isMe = me.isMyBubble(message.author.role);
-                let dateString = timestampToDateString(message.timestamp);
-                let bubbleStyle = (isMe === true) ? { ...baseBubbleStyle, ...rightBubbleStyle } : { ...baseBubbleStyle, ...leftBubbleStyle };
+              messages.map((message, i) => {
+                const isMe = this.isMyBubble(message.author.role);
+                const dateString = timestampToDateString(message.timestamp);
+                const bubbleStyle = isMe ? { ...baseBubbleStyle, ...rightBubbleStyle } : { ...baseBubbleStyle, ...leftBubbleStyle };
                 return <div style={bubbleStyle} key={i}>
-                  <div style={headerMessageStyle}>{!isMe&&<span>{message.author.id} - </span>}{dateString}:</div>
+                  <div style={headerMessageStyle}>{!isMe && <span>{message.author.id} - </span>}{dateString}:</div>
                   <div style={bodyMessageStyle}>{message.body}</div>
                 </div>;
               })

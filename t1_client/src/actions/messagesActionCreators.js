@@ -3,7 +3,7 @@ import { apiSchema } from "./../api/apiSchema";
 import { messagesActions } from "./actionTypes";
 
 export function getAllMessages() {
-    return function (dispatch) {
+    return (dispatch) => {
         return apiSchema.messages.getAll()
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())
@@ -15,7 +15,7 @@ export function getAllMessages() {
 }
 
 export function getMessagesByRoom(channelId) {
-    return function (dispatch) {
+    return (dispatch) => {
         return apiSchema.messages.getByRoom(channelId)
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())
@@ -27,7 +27,7 @@ export function getMessagesByRoom(channelId) {
 }
 
 export function sendMessageToRoom(message, channelId, senderRole, senderId) {
-    return function (dispatch) {
+    return (dispatch) => {
         return apiSchema.messages.post(message, channelId, senderRole, senderId)
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())

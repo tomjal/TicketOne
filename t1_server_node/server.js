@@ -1,128 +1,187 @@
-const WebSocketServer = require("ws").Server
-const http = require("http")
+const WebSocketServer = require('ws').Server
+const http = require('http')
 const bodyParser = require('body-parser')
-const express = require("express")
+const express = require('express')
+const logger = require('logger').createLogger();
 
+const router = express.Router()
 const app = express()
-let port = process.env.PORT || 8080
+const port = process.env.PORT || 8080
 
-app.use(express.static(__dirname + "/react_build/"))
+app.use(express.static(__dirname + '/react_build/'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+
+// REST prefix
+app.use('/api/v1', router)
 
 const server = http.createServer(app)
 server.listen(port)
 
-const router = express.Router();
-
+// consts
 const ROLES = {
-    CLIENT: "client",
-    EMPLOYEE: "employee",
+    CLIENT: 'client',
+    EMPLOYEE: 'employee',
 }
 
 const COMMANDS = {
-    NEW_MESSAGE: "new_message",
-    NEW_ROOM: "new_room",
-};
-
-function handleError(res, reason, message, code) {
-    console.log("ERROR: " + reason);
-    res.status(code || 500).json({ "error": message });
+    NEW_MESSAGE: 'new_message',
+    NEW_ROOM: 'new_room'
 }
 
-// map - in-memory storage
-let currentlyOpenedRooms = {};
+const STATUS = {
+    OK: 'ok'
+}
 
-// rest api
-router.get('/rooms', function (req, res) {
-    let listOfRooms = Object.keys(currentlyOpenedRooms);
-    res.json(listOfRooms);
-});
+const SEPARATORS = {
+    MES: ':',
+    COM: '|'
+}
 
-router.get('/rooms/messages', function (req, res) {
-    let listOfAllMessages = {};
-    let listOfRooms = Object.keys(currentlyOpenedRooms);
-    listOfRooms.forEach(function (room) {
-        listOfAllMessages[room] = currentlyOpenedRooms[room].messages;
-    })
-    res.json(listOfAllMessages);
-});
+// error handling
+function handleError(res, reason, message, code) {
+    logger.error(reason);
+    res.status(code || 500).json({ error: message });
+}
 
-router.get('/rooms/:id/messages', function (req, res) {
-    let room = req.params.id;
-    let messagesById = [];
-    if (currentlyOpenedRooms[room]) {
-        messagesById = currentlyOpenedRooms[room].messages;
+// in-memory storage
+class InMemoryStorage {
+    constructor() {
+        this.innerMap = {};
     }
-    res.json(messagesById);
-});
+    getAllRooms() {
+        return Object.keys(this.innerMap);
+    }
+    addRoom(roomId) {
+        const newRoom = { subscribers: [], messages: [] };
+        this.innerMap[roomId] = newRoom;
+    }
+    hasRoom(roomId) {
+        return this.innerMap[roomId] ? true : false;
+    }
+    getAllMessages() {
+        const listOfRooms = this.getAllRooms();
+        let listOfAllMessages = {};
+        listOfRooms.forEach(roomId => {
+            listOfAllMessages[roomId] = this.innerMap[roomId].messages;
+        })
+        return listOfAllMessages;
+    }
+    getAllMessagesByRoomId(roomId) {
+        let messagesById = [];
+        if (this.innerMap[roomId]) {
+            messagesById = this.innerMap[roomId].messages;
+        }
+        return messagesById;
+    }
+    addMessage(roomId, message) {
+        if (this.hasRoom(roomId)) {
+            this.innerMap[roomId].messages.push(message);
+        }
+    }
+    clearMemory() {
+        this.innerMap = {};
+    }
+}
 
-router.post('/rooms/:id/messages', function (req, res) {
-    let message = req.body.message;
-    let senderId = req.body.senderId;
-    let senderRole = req.body.senderRole;
-    let room = req.params.id;
+const inMemoryStorage = new InMemoryStorage();
 
-    // server timestamp
-    let newMessage = { body: message, author: { id: senderId, role: senderRole }, timestamp: Date.now() };
+// roles service
+function isClient(role) {
+    return role === ROLES.CLIENT;
+}
+
+// WS service
+function broadcastNewMessage(roomId) {
+    wss.clients.forEach(client => {
+        client.send(COMMANDS.NEW_MESSAGE + SEPARATORS.MES + roomId);
+    });
+}
+
+function broadcastNewRoom(roomId) {
+    wss.clients.forEach(client => {
+        client.send(COMMANDS.NEW_ROOM + SEPARATORS.MES + roomId);
+    });
+}
+
+function handleNewWsMessage(message) {
+
+    // message command parser
+    const commandsList = message.split(SEPARATORS.COM);
+    const role = commandsList[0].split(SEPARATORS.MES)[0];
+    const userId = commandsList[0].split(SEPARATORS.MES)[1]; // chatroom id
+
+    // logic for client
+    if (isClient(role)) {
+        // if room does not exist, create
+        if (!inMemoryStorage.hasRoom(userId)) {
+            inMemoryStorage.addRoom(userId);
+            logger.info('websocket new room created');
+            // inform everyone about new room
+            broadcastNewRoom(userId);
+        }
+    }
+}
+
+// API REST
+router.get('/rooms', (req, res) => {
+    const listOfRooms = inMemoryStorage.getAllRooms();
+    res.status(200).json(listOfRooms);
+})
+
+router.get('/rooms/messages', (req, res) => {
+    const listOfAllMessages = inMemoryStorage.getAllMessages();
+    res.status(200).json(listOfAllMessages);
+})
+
+router.get('/rooms/:id/messages', (req, res) => {
+    const roomId = req.params.id;
+    const listOfMessagesById = inMemoryStorage.getAllMessagesByRoomId(roomId);
+    res.status(200).json(listOfMessagesById);
+})
+
+router.post('/rooms/:id/messages', (req, res) => {
+    const message = req.body.message;
+    const senderId = req.body.senderId;
+    const senderRole = req.body.senderRole;
+    const roomId = req.params.id;
+
+    // create new message
+    const newMessage = {
+        body: message,
+        author: { id: senderId, role: senderRole },
+        timestamp: new Date().getTime()
+    };
 
     // push message to storage
-    if (currentlyOpenedRooms[room]) {
-        currentlyOpenedRooms[room].messages.push(newMessage);
-    }
-    res.status(200).json({ status: "ok" });
+    inMemoryStorage.addMessage(roomId, newMessage);
+    res.status(200).json({ status: STATUS.OK });
 
     // inform subscribers
-    wss.clients.forEach((client) => {
-        client.send(COMMANDS.NEW_MESSAGE + ":" + room);
-    });
-});
+    broadcastNewMessage(roomId);
+})
 
 // reset mock storage - just for testing purpose
-router.get('/reset', function (req, res) {
-    currentlyOpenedRooms = {};
-    res.status(200).json({ status: "ok" });
-});
+router.get('/reset', (req, res) => {
+    inMemoryStorage.clearMemory();
+    res.status(200).json({ status: STATUS.OK });
+})
 
-// rest prefix
-app.use('/api/v1', router);
+logger.info('http server listening on', port);
 
-console.log("http server listening on %d", port)
-
-// websocket server
+// WS server
 const wss = new WebSocketServer({ server: server })
+logger.info('websocket server created');
 
-console.log("websocket server created")
+// WS handlers
+wss.on('connection', connection => {
+    logger.info('websocket connection open');
 
-// websocket handlers
-wss.on("connection", function (conn) {
-    console.log("websocket connection open")
-
-    conn.on("message", function (message) {
-
-        // message command parser
-        let commandsList = message.split("|");
-        let role = commandsList[0].split(":")[0];
-        let userId = commandsList[0].split(":")[1]; // chatroom id
-
-        // logic for client
-        if (role === ROLES.CLIENT) {
-
-            // if room does not exist, create
-            if (!currentlyOpenedRooms[userId]) {
-                let newRoom = { subscribers: [], messages: [] };
-                currentlyOpenedRooms[userId] = newRoom;
-
-                console.log("websocket new room created")
-
-                // inform everyone about new room
-                wss.clients.forEach((client) => {
-                    client.send(COMMANDS.NEW_ROOM + ":" + userId);
-                });
-            }
-        }
+    connection.on("message", message => {
+        handleNewWsMessage(message);
     })
-    conn.on("close", function () {
-        console.log("websocket connection close")
+
+    connection.on('close', () => {
+        logger.info('websocket connection close');
     })
 })

@@ -1,9 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  authCallback: PropTypes.func.isRequired
+};
 
 class LoginPage extends Component {
   constructor() {
     super();
-    this.state = { login: "", pass: "" };
+    this.state = { login: '', pass: '' };
     this.clientSubmitAction = this.clientSubmitAction.bind(this);
     this.employeeSubmitAction = this.employeeSubmitAction.bind(this);
   }
@@ -11,7 +16,7 @@ class LoginPage extends Component {
     this.props.authCallback();
   }
   clientSubmitAction() {
-    var id = this.textInput.value ? this.textInput.value : "Default Client";
+    var id = this.textInput.value ? this.textInput.value : 'Default Client';
     this.props.mockClientCallback(id);
   }
   employeeSubmitAction() {
@@ -54,6 +59,4 @@ class LoginPage extends Component {
 
 export default LoginPage;
 
-LoginPage.PropTypes = {
-  authCallback: PropTypes.func.isRequired
-}
+LoginPage.propTypes = propTypes;

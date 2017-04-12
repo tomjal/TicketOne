@@ -1,20 +1,24 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  label: PropTypes.string,
+};
+
+const defaultProps = {
+  label: ''
+};
 
 export class ModuleHeader extends PureComponent {
   render() {
     return (
       <div>
-        <p className="App-intro">
+        <p className='App-intro'>
         </p>
       </div>
     );
   }
 }
 
-ModuleHeader.propTypes = {
-  label: PropTypes.string,
-};
-
-ModuleHeader.defaultProps = {
-  label: ""
-};
+ModuleHeader.propTypes = propTypes;
+ModuleHeader.defaultProps = defaultProps;

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-const modalStyle = {};
+const propTypes = {
+  onHide: PropTypes.func
+};
 
 export const ModalWrapper = InnerComponent =>
   class extends Component {
@@ -17,7 +20,7 @@ export const ModalWrapper = InnerComponent =>
 
     render() {
       return (
-        <div style={modalStyle}>
+        <div>
           <button onClick={this.hide}>Close</button>
           <InnerComponent {...this.props} />
         </div>
@@ -27,6 +30,4 @@ export const ModalWrapper = InnerComponent =>
 
 export default ModalWrapper;
 
-ModalWrapper.propTypes = {
-  onHide: React.PropTypes.func
-};
+ModalWrapper.propTypes = propTypes;

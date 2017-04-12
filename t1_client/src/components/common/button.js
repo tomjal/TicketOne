@@ -1,10 +1,20 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  label: PropTypes.string,
+  action: PropTypes.func.isRequired
+};
+
+const defaultProps = {
+  label: ''
+};
 
 class Button extends PureComponent {
   render() {
     const { label, action };
     return (
-      <button className="btn btn-default" onClick={action}>
+      <button className='btn btn-default' onClick={action}>
         {label}
       </button>
     );
@@ -13,11 +23,5 @@ class Button extends PureComponent {
 
 export default Button;
 
-Button.propTypes = {
-  label: React.PropTypes.string,
-  action: React.PropTypes.func.isRequired
-};
-
-Button.defaultProps = {
-  label: ""
-};
+Button.propTypes = propTypes;
+Button.defaultProps = defaultProps;

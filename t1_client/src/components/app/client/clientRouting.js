@@ -1,17 +1,16 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { Route, HashRouter } from 'react-router-dom';
 import { history } from './../../../store/createHistory';
 
 import ClientRoomPage from './../../rooms/clientRoomPage';
 
 const ClientRouting = () => (
-  <ConnectedRouter history={history}>
+  <HashRouter history={history}>
     <div>
-      {/*<Redirect to="/" />*/}
-      <Route exact path="/" component={ClientRoomPage} />
+      {/*<Redirect to='/' />*/}
+      <Route exact path='/' component={ClientRoomPage} />
     </div>
-  </ConnectedRouter>
+  </HashRouter>
 );
 
 export default ClientRouting;

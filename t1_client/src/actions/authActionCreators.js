@@ -4,20 +4,20 @@ import { authActions } from "./actionTypes";
 
 export function setApplicationContextAsMockClient(ident) {
     const mockAuth = { role: "client", id: ident };
-    return function (dispatch) {
+    return (dispatch) => {
         dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuth })
     };
 }
 
 export function setApplicationContextAsMockEmployee() {
     const mockAuth = { role: "employee", id: "Employee_TicketOne" };
-    return function (dispatch) {
+    return (dispatch) => {
         dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuth })
     };
 }
 
 export function getApplicationContext() {
-    return function (dispatch) {
+    return (dispatch) => {
         return apiSchema.context.get()
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())
@@ -31,7 +31,7 @@ export function getApplicationContext() {
 }
 
 export function postAuthorizationData() {
-    return function (dispatch) {
+    return (dispatch) => {
         return apiSchema.auth.post()
             .then(res => checkIfFetchStatusOk(res))
             .then(res => res.json())

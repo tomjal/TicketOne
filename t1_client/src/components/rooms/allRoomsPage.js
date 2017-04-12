@@ -49,23 +49,23 @@ export class AllRoomsPage extends Component {
     const flexChildMarginStyle = { margin: "15px" };
 
     const emptyFlexElems = this.getEmptyFlexFillers(4, rooms.length);
-    let me = this;
+
     return (
       <div>
         {rooms.length !== 0 && <div className="room-flex-container">
-          {rooms.map(function (roomId, i) {
+          {rooms.map((roomId, i) => {
             let localMessages = [];
             if (messages[roomId]) localMessages = messages[roomId];
             return <div style={flexChildMarginStyle} key={i}>
               <Room
-                sendMessageCallback={me.sendMessageCallback}
+                sendMessageCallback={this.sendMessageCallback}
                 id={roomId}
                 role={role}
                 messages={localMessages} />
             </div>;
           })}
-          {emptyFlexElems.map(function (roomId, i) {
-            return <div key={"filler-"+i} className="room-flex-filling"></div>;
+          {emptyFlexElems.map((roomId, i) => {
+            return <div key={`filler-${i}`} className="room-flex-filling"></div>;
           })}
         </div>
         }

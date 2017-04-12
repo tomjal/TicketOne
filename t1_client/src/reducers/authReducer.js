@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import update from 'react-addons-update';
+import update from 'immutability-helper';
 import { authActions } from '../actions/actionTypes';
 import { ROLES } from './../consts/roles';
 
