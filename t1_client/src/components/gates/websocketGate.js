@@ -3,7 +3,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getAllRooms } from './../../actions/roomsActionCreators';
-import { getMessagesByRoom, getAllMessages } from './../../actions/messagesActionCreators';
+import {
+  getMessagesByRoom,
+  getAllMessages
+} from './../../actions/messagesActionCreators';
+import {
+  notifyAboutNewMessage,
+  notifyAboutNewRoom
+} from './../../actions/notificationsActionCreators';
 
 import { websocketManager } from './../../services/websocketManager';
 import { authManager } from './../../services/authManager';
@@ -23,7 +30,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getMessagesByRoom,
     getAllRooms,
-    getAllMessages
+    getAllMessages,
+    notifyAboutNewRoom
   }, dispatch);
 };
 
@@ -63,7 +71,7 @@ class WebsocketGate extends Component {
   }
   onNewMessageAction(data) {
     if (authManager.isClient(this.props.role)) {
-      this.props.getMessagesByRoom(data.split(":")[1])
+      this.props.getMessagesByRoom(data.split(":")[1]);
     }
     if (authManager.isEmployee(this.props.role)) {
       this.props.getAllMessages()
@@ -73,6 +81,7 @@ class WebsocketGate extends Component {
     if (authManager.isEmployee(this.props.role)) {
       this.props.getAllRooms();
       this.props.getAllMessages();
+      this.props.notifyAboutNewRoom(data.split(":")[1]);
     }
   }
   onClose(e) {

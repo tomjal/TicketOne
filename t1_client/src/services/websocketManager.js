@@ -5,9 +5,9 @@ class WebsocketManager {
     initNewConnection(addr, openCallback, messageCallback, errorCallback) {
         if (!this.connections) {
             let newConnection = new WebSocket(addr);
-            newConnection.onopen = (e) => { openCallback(e) };
-            newConnection.onmessage = (e) => { messageCallback(e) };
-            newConnection.onerror = (e) => { errorCallback(e) };
+            newConnection.onopen = e => openCallback(e);
+            newConnection.onmessage = e => messageCallback(e);
+            newConnection.onerror = e => errorCallback(e);
             this.connection = newConnection;
         }
     }
