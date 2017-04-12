@@ -1,0 +1,6 @@
+describe('actions - notificationsActionCreators', () => {
+
+  it('', () => {
+
+  });
+})

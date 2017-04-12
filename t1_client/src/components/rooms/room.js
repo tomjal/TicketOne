@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { authManager } from './../../services/authManager';
 import ChatWindow from './chat/chatWindow';
 
-class Room extends Component {
+export class Room extends Component {
   constructor() {
     super();
     this.sendMessage = this.sendMessage.bind(this);
