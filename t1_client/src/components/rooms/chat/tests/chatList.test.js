@@ -3,11 +3,11 @@ import { shallow } from 'enzyme';
 
 import { ChatList } from './../chatList';
 
-describe('ChatWindow', () => {
+describe('ChatList', () => {
   it('should find room chat body', () => {
-    const wrap = shallow(<ChatWindow />);
+    const wrap = shallow(<ChatList />);
     const buttonText = 'Send message';
 
-    expect(wrap.find('.room-chat-body')).toExist();
+    expect(wrap.find('.room-chat-body')).toBeTruthy();
   });
 })

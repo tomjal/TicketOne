@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ChatList from './chatList';
 
-class ChatWindow extends Component {
+export class ChatWindow extends Component {
   constructor() {
     super();
     this.handleKeyUp = this.handleKeyUp.bind(this);

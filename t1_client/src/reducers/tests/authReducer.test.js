@@ -12,7 +12,7 @@ describe('reducers - authReducer', () => {
     it('should return the proper role', () => {
 
         // Act
-        const reducer = authReducer(init_value, {
+        const reducer = authReducer(initState, {
             type: authActions.GET_AUTH_CONTEXT.SUCCESS,
             data: newContext
         });

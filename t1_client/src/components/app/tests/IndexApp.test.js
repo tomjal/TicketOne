@@ -1,8 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import IndexApp from './../IndexApp';
+import { shallow } from 'enzyme';
 
-it('IndexApp renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<IndexApp />, div);
-});
+import { IndexApp } from './../indexApp';
+
+describe('IndexApp', () => {
+  it('renders without crashing', () => {
+    shallow(<IndexApp />)
+  });
+})

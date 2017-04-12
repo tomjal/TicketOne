@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { timestampToDateString } from './../../../helpers/timeUtils';
 
-class ChatList extends Component {
+export class ChatList extends Component {
   componentDidMount() {
     this.scrollToBottom();
   }

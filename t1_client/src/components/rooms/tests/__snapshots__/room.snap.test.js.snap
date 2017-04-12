@@ -1,0 +1,13 @@
+exports[`test Room snapshot 1`] = `
+<div
+  className="room">
+  <div
+    className="widget-header-text">
+    id: 
+  </div>
+  <div>
+    <ChatWindow
+      sendMessage={[Function]} />
+  </div>
+</div>
+`;

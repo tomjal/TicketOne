@@ -1,0 +1,7 @@
+exports[`test ClientRoomPage snapshot 1`] = `
+<div
+  className="room-flex-container">
+  <Room
+    sendMessageCallback={[Function]} />
+</div>
+`;

@@ -5,7 +5,8 @@ import { shallowToJson } from 'enzyme-to-json';
 import { AllRoomsPage } from './../allRoomsPage';
 
 test('AllRoomsPage snapshot', () => {
-  const wrap = shallow(<AllRoomsPage />);
+  const props = { rooms: [] };
+  const wrap = shallow(<AllRoomsPage {...props}/>);
 
   expect(shallowToJson(wrap)).toMatchSnapshot();
 });

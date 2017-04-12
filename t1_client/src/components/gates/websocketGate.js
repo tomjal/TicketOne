@@ -8,7 +8,6 @@ import {
   getAllMessages
 } from './../../actions/messagesActionCreators';
 import {
-  notifyAboutNewMessage,
   notifyAboutNewRoom
 } from './../../actions/notificationsActionCreators';
 

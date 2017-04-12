@@ -5,7 +5,7 @@ import AuthGate from './../gates/authGate';
 
 import packageJson from './../../../package.json';
 
-class IndexApp extends Component {
+export class IndexApp extends Component {
   render() {
     const version = packageJson ? packageJson.version : " -- ";
     return (
