@@ -5,3 +5,4 @@ const localStorageMock = {
 };
 global.localStorage = localStorageMock;
 global.location = { origin: 'http://localhost' };
+global.IN_TEST = true;

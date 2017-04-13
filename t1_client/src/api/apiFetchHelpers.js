@@ -6,11 +6,14 @@ export const httpVerbs = {
 }
 
 export function buildReqOptions(httpVerb, body) {
-    let headers = new Headers();
-    headers.set("Content-Type", "application/json");
-    headers.set("Cache-Control", "no-cache");
-    headers.set("Pragma", "no-cache");
-    headers.set("Expires", "0");
+    let headers = null;
+    if (!IN_TEST) {
+        let headers = new Headers();
+        headers.set("Content-Type", "application/json");
+        headers.set("Cache-Control", "no-cache");
+        headers.set("Pragma", "no-cache");
+        headers.set("Expires", "0");
+    }
 
     let requestOptions = {
         method: httpVerb,

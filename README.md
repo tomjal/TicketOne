@@ -16,7 +16,7 @@ To run locally:
 
 4. Login on one browser as Employee and on another browser as Client. (Hit F5 to "logout" from fake session)
 
-[Deployed on Heroku ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow!)
+[Deployed on Heroku - ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow!)
 
 ## Client NPM scripts
 
