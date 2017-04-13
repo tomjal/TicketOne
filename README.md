@@ -28,6 +28,6 @@ test - run test watch without DOM
 
 test-with-dom - run test watch with DOM
 
-coverage - analyze code coverage (report in ./coverage/lcov-report/index.html)
+coverage - analyze test code coverage (report generated to ./coverage/lcov-report/index.html)
 
 
