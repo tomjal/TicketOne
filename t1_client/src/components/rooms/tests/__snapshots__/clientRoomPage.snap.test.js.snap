@@ -1,7 +1,60 @@
 exports[`test ClientRoomPage snapshot 1`] = `
 <div
   className="room-flex-container">
-  <Room
-    sendMessageCallback={[Function]} />
+  <div
+    className="room">
+    <div
+      className="widget-header-text">
+      id: 
+    </div>
+    <div>
+      <div
+        style={
+          Object {
+            "marginBottom": "10px",
+            "marginTop": "10xp",
+          }
+        }>
+        <div
+          className="room-chat-body"
+          style={
+            Object {
+              "background": "#f1f3f4",
+              "height": "255px",
+              "marginBottom": "15px",
+              "marginTop": "5px",
+              "overflow": "auto",
+              "padding": "10px",
+              "width": "100%",
+            }
+          } />
+        <div
+          style={
+            Object {
+              "marginLeft": "10px",
+              "marginRight": "10px",
+            }
+          }>
+          <input
+            className="form-control"
+            onKeyUp={[Function]}
+            style={
+              Object {
+                "display": "inline-block",
+                "fontSize": "1.5rem",
+                "marginRight": "20px",
+                "width": "270px",
+              }
+            }
+            type="text" />
+          <button
+            className="btn btn-default"
+            onClick={[Function]}>
+            Send message
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

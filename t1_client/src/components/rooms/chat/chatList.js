@@ -10,10 +10,12 @@ export class ChatList extends Component {
     this.scrollToBottom();
   }
   scrollToBottom() {
-    const scrollHeight = this.messageList.scrollHeight;
-    const height = this.messageList.clientHeight;
-    const maxScrollTop = scrollHeight - height;
-    this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+    if (this.messageList) {
+      const scrollHeight = this.messageList.scrollHeight;
+      const height = this.messageList.clientHeight;
+      const maxScrollTop = scrollHeight - height;
+      this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+    }
   }
   isMyBubble(role) {
     if (role === this.props.role) {

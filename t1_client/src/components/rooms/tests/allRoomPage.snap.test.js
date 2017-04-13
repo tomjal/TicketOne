@@ -6,7 +6,7 @@ import { AllRoomsPage } from './../allRoomsPage';
 
 test('AllRoomsPage snapshot', () => {
   const props = { rooms: [] };
-  const wrap = shallow(<AllRoomsPage {...props}/>);
+  const wrap = shallow(<AllRoomsPage {...props} />);
 
   expect(shallowToJson(wrap)).toMatchSnapshot();
 });

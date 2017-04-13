@@ -1,6 +1,0 @@
-describe('actions - combinedActionCreators', () => {
-
-  it('', () => {
-
-  });
-})

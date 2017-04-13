@@ -1,6 +1,0 @@
-describe('actions - roomsActionCreators', () => {
-
-  it('', () => {
-
-  });
-})
