@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getClientRoom } from './../../actions/roomsActionCreators';
 import { getMessagesByRoom, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
-import Room from './room';
+import RoomWidget from './roomWidget';
 
 const mapStateToProps = (state) => {
   return {
@@ -29,7 +29,6 @@ export class ClientRoomPage extends Component {
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
   }
   componentDidMount() {
-    //this.props.getClientRoom();
     this.props.getMessagesByRoom(this.props.id);
   }
   sendMessageCallback(message, id) {
@@ -39,7 +38,7 @@ export class ClientRoomPage extends Component {
     const { id, role, messages } = this.props;
     return (
       <div className="room-flex-container">
-        <Room
+        <RoomWidget
           id={id}
           role={role}
           sendMessageCallback={this.sendMessageCallback}

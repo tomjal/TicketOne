@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { authManager } from './../../services/authManager';
 import ChatWindow from './chat/chatWindow';
 
-export class Room extends Component {
+export class RoomWidget extends Component {
   constructor() {
     super();
     this.sendMessage = this.sendMessage.bind(this);
@@ -15,10 +15,19 @@ export class Room extends Component {
   render() {
     const { id, role, messages } = this.props;
     const isClientRoom = authManager.isClient(role);
+
     return (
       <div className="room-widget">
-        {isClientRoom && <div className="widget__header-text">Hello {id} - how can we help you?</div>}
-        {!isClientRoom && <div className="widget__header-text">id: {id}</div>}
+        {isClientRoom &&
+          <div className="widget__header-text">
+            Hello {id} - how can we help you?
+          </div>
+        }
+        {!isClientRoom &&
+          <div className="widget__header-text">
+            id: {id}
+          </div>
+        }
         <div>
           {this.state.isOpened &&
             <ChatWindow
@@ -31,4 +40,4 @@ export class Room extends Component {
   }
 }
 
-export default Room;
+export default RoomWidget;

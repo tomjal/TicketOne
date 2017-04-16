@@ -44,9 +44,3 @@ rgba(0, 0, 0, 0.1) 0px 1px 5px 0px;
 .room-chat-body {
     box-shadow: $room-chat-body-shadow;
 }
-
-.room-chat-list {
-    width: $room-width;
-    height: calc(#{$room-height} + #{40px});
-    overflow: hidden;
-}

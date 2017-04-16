@@ -3,9 +3,6 @@ import { Route, HashRouter } from 'react-router-dom';
 import { history } from './../../../store/createHistory';
 
 // eslint-disable-next-line
-import { RoutingMenu } from './../../menu/routingMenu';
-
-// eslint-disable-next-line
 import DashboardPage from './../../dashboard/dashboardPage';
 import AllRoomsPage from './../../rooms/allRoomsPage';
 

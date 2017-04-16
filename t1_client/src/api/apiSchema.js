@@ -23,12 +23,14 @@ function getMessagesAll() {
 }
 
 function getMessagesByRoom(channelId) {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES,
+        buildReqOptions(httpVerbs.GET));
 }
 
 function postMessageToRoom(message, channelId, senderRole, senderId) {
     const data = { message: message, senderRole: senderRole, senderId: senderId };
-    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES, buildReqOptions(httpVerbs.POST, data));
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES,
+        buildReqOptions(httpVerbs.POST, data));
 }
 
 function getRoomsAll() {

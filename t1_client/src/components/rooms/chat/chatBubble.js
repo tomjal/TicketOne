@@ -20,8 +20,14 @@ export class ChatBubble extends Component {
 
     return (
       <div style={bubbleStyle} key={key}>
-        <div style={headerMessageStyle}>{!isMe && <span>{message.author.id} - </span>}{date}:</div>
-        <div style={bodyMessageStyle}>{message.body}</div>
+        <div style={headerMessageStyle}>
+          {!isMe &&
+            <span>{message.author.id} - </span>}
+          {date}:
+        </div>
+        <div style={bodyMessageStyle}>
+          {message.body}
+        </div>
       </div>
     )
   };

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getAllRooms } from './../../actions/roomsActionCreators';
 import { getAllMessages, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
-import Room from './room';
+import RoomWidget from './roomWidget';
 
 const MAX_FLEX_ELEMS_IN_ROW = 3;
 
@@ -48,29 +48,29 @@ export class AllRoomsPage extends Component {
   }
   render() {
     const { role, rooms, messages } = this.props;
-
     const emptyFlexElems = this.getEmptyFlexFillers(MAX_FLEX_ELEMS_IN_ROW, rooms.length);
 
     return (
       <div>
-        {rooms.length !== 0 && <div className="room-flex-container">
-          {rooms.map((roomId, i) => {
-            let localMessages = [];
-            if (messages[roomId]) {
-              localMessages = messages[roomId];
-            }
-            return <div key={i}>
-              <Room
-                sendMessageCallback={this.sendMessageCallback}
-                id={roomId}
-                role={role}
-                messages={localMessages} />
-            </div>;
-          })}
-          {emptyFlexElems.map((roomId, i) => {
-            return <div key={`filler-${i}`} className="room-flex-container__filling"></div>;
-          })}
-        </div>
+        {rooms.length !== 0 &&
+          <div className="room-flex-container">
+            {rooms.map((roomId, i) => {
+              let localMessages = [];
+              if (messages[roomId]) {
+                localMessages = messages[roomId];
+              }
+              return <div key={i}>
+                <RoomWidget
+                  id={roomId}
+                  role={role}
+                  sendMessageCallback={this.sendMessageCallback}
+                  messages={localMessages} />
+              </div>;
+            })}
+            {emptyFlexElems.map((roomId, i) => {
+              return <div key={`filler-${i}`} className="room-flex-container__filling"></div>;
+            })}
+          </div>
         }
       </div>
     );

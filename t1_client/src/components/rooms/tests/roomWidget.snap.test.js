@@ -2,10 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import { Room } from './../room';
+import { RoomWidget } from './../roomWidget';
 
-test('Room snapshot', () => {
-  const wrap = shallow(<Room />);
+test('RoomWidget snapshot', () => {
+  const wrap = shallow(<RoomWidget />);
 
   expect(shallowToJson(wrap)).toMatchSnapshot();
 });
