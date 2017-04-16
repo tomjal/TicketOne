@@ -1,20 +1,25 @@
-const WebSocketServer = require('ws').Server
-const http = require('http')
-const bodyParser = require('body-parser')
-const express = require('express')
-const logger = require('logger').createLogger()
+const WebSocketServer = require('ws').Server,
+    http = require('http'),
+    bodyParser = require('body-parser'),
+    express = require('express'),
+    compression = require('compression'),
+    logger = require('logger').createLogger()
 
-const router = express.Router()
-const app = express()
-const port = process.env.PORT || 8080
+const router = express.Router(),
+    app = express(),
+    port = process.env.PORT || 8080
 
 const CONSTS = require('./server/consts')
 const InMemoryStorage = require('./server/inMemoryStorage')
 const WsService = require('./server/wsService')
 
-app.use(express.static(__dirname + '/react_build/'))
+// Static files
+app.use(compression())
+    .use(express.static(__dirname + '/react_build/'))
+
+// Request parser
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+    .use(bodyParser.json())
 
 // REST prefix
 app.use('/api/v1', router)
