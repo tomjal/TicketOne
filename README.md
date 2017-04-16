@@ -12,11 +12,11 @@ To run locally:
 
 2. Run command 'npm install' in folder 't1_server_node'
 
-3. Run command 'node server.js' in folder 't1_server_node'
+3. Run command 'npm run start' in folder 't1_server_node'
 
 4. Login on one browser as Employee and on another browser as Client. (Hit F5 to "logout" from fake session)
 
-[Deployed on Heroku - ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow!)
+[Deployed on Heroku ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow server!)
 
 ## Client NPM scripts
 
@@ -24,10 +24,8 @@ start - run development mode
 
 build - create production bundle
 
-test - run test watch without DOM
+test - run test watch
 
-test-with-dom - run test watch with DOM
+test-without-dom - run test watch without DOM
 
 coverage - analyze test code coverage (report generated to ./coverage/lcov-report/index.html)
-
-
