@@ -8,11 +8,11 @@ Server mock - Express v4.15
 
 To run locally:
 
-1. Install Node.js v7 [Node.js v7](https://nodejs.org/en/)
+1. Install Node.js v7 [Node.js v7](https://nodejs.org/en/) and run 'npm i -g yarn'
 
-2. Run command 'npm install' in folder 't1_server_node'
+2. Run 'yarn' in folder 't1_server_node'
 
-3. Run command 'npm run start' in folder 't1_server_node'
+3. Run 'yarn start' in folder 't1_server_node'
 
 4. Login on one browser as Employee and on another browser as Client. (Hit F5 to "logout" from fake session)
 

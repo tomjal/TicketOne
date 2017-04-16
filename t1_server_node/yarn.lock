@@ -38,7 +38,7 @@ bl@^1.0.0:
   dependencies:
     readable-stream "^2.0.5"
 
-body-parser@^1.17.1:
+body-parser@~1.17.1:
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.17.1.tgz#75b3bc98ddd6e7e0d8ffe750dfaca5c66993fa47"
   dependencies:
@@ -57,7 +57,7 @@ buffer-shims@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/buffer-shims/-/buffer-shims-1.0.0.tgz#9978ce317388c649ad8793028c3477ef044a8b51"
 
-bufferutil@^3.0.0:
+bufferutil@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bufferutil/-/bufferutil-3.0.0.tgz#afbb831c47229accf0b1f207d4a9942841b0ab0f"
   dependencies:
@@ -87,7 +87,7 @@ compressible@~2.0.8:
   dependencies:
     mime-db ">= 1.27.0 < 2"
 
-compression@^1.6.2:
+compression@~1.6.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/compression/-/compression-1.6.2.tgz#cceb121ecc9d09c52d7ad0c3350ea93ddd402bc3"
   dependencies:
@@ -182,7 +182,7 @@ expand-template@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/expand-template/-/expand-template-1.0.3.tgz#6c303323177a62b1b22c070279f7861287b69b1a"
 
-express@^4.15.2:
+express@~4.15.2:
   version "4.15.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.15.2.tgz#af107fc148504457f2dca9a6f2571d7129b97b35"
   dependencies:
@@ -291,7 +291,7 @@ isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
-logger@^0.0.1:
+logger@~0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/logger/-/logger-0.0.1.tgz#cb08171f8a6f6f674b8499dadf50bed4befb72c4"
 
@@ -405,12 +405,13 @@ path-to-regexp@0.1.7:
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
 
 prebuild-install@~2.1.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-2.1.1.tgz#d0a77ea51b6a00f928cb71bc0ccea24f87ec171e"
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-2.1.2.tgz#d9ae0ca85330e03962d93292f95a8b44c2ebf505"
   dependencies:
     expand-template "^1.0.2"
     github-from-package "0.0.0"
     minimist "^1.2.0"
+    mkdirp "^0.5.1"
     node-abi "^2.0.0"
     noop-logger "^0.1.1"
     npmlog "^4.0.1"
@@ -597,7 +598,7 @@ unzip-response@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/unzip-response/-/unzip-response-1.0.2.tgz#b984f0877fc0a89c2c773cc1ef7b5b232b5b06fe"
 
-utf-8-validate@^3.0.1:
+utf-8-validate@~3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/utf-8-validate/-/utf-8-validate-3.0.1.tgz#5d2b8656b4ddcfded47217b647a98941b63cf213"
   dependencies:
@@ -627,7 +628,7 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
 
-ws@^2.2.3:
+ws@~2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/ws/-/ws-2.2.3.tgz#f36c9719a56dff813f455af912a2078145bbd940"
   dependencies:
