@@ -1,2 +1,1 @@
-export const COLORS = {
-};
+import { StyleSheet } from 'aphrodite';

@@ -2,9 +2,9 @@ exports[`test ClientRoomPage snapshot 1`] = `
 <div
   className="room-flex-container">
   <div
-    className="room">
+    className="room-widget">
     <div
-      className="widget-header-text">
+      className="widget__header-text">
       id: 
     </div>
     <div>

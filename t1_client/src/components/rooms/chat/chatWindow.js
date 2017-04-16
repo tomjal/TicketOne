@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import { StyleSheet, css } from 'aphrodite';
 
 import ChatList from './chatList';
+
+//
+const chatWindowStyle = { marginTop: "10xp", marginBottom: "10px" };
+const inputSpanStyle = { marginLeft: "10px", marginRight: "10px" };
+const inputBoxStyle = { display: "inline-block", width: "270px", fontSize: "1.5rem", marginRight: "20px" };
+//
+
+const KEY_CODES = { ENTER: 13 };
 
 export class ChatWindow extends Component {
   constructor() {
@@ -16,13 +25,12 @@ export class ChatWindow extends Component {
     }
   }
   handleKeyUp(event) {
-    if (event.keyCode === 13) return this.submitSendMessage();
+    if (event.keyCode === KEY_CODES.ENTER) {
+      return this.submitSendMessage();
+    }
   }
   render() {
     const { id, role, messages } = this.props;
-    const chatWindowStyle = { marginTop: "10xp", marginBottom: "10px" };
-    const inputSpanStyle = { marginLeft: "10px", marginRight: "10px" };
-    const inputBoxStyle = { display: "inline-block", width: "270px", fontSize: "1.5rem", marginRight: "20px" };
 
     return (
       <div style={chatWindowStyle}>
@@ -30,7 +38,9 @@ export class ChatWindow extends Component {
         <div style={inputSpanStyle}>
           <input style={inputBoxStyle} type="text" className="form-control"
             onKeyUp={this.handleKeyUp} ref={(input) => { this.chatInput = input; }} />
-          <button className="btn btn-default" onClick={this.submitSendMessage}>Send message</button>
+          <button className="btn btn-default" onClick={this.submitSendMessage}>
+            Send message
+          </button>
         </div>
       </div>
     );
