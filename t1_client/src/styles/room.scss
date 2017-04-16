@@ -1,0 +1,52 @@
+@import './_colors.scss';
+$room-width: 450px;
+$room-height: 360px;
+$room-flex-margin: 15px;
+$room-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16),
+0 2px 4px rgba(0, 0, 0, 0.23);
+$room-chat-body-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px 0px,
+rgba(0, 0, 0, 0.1) 0px 1px 5px 0px;
+
+/*
+* === Chatroom specific style ===
+*/
+
+.room-widget {
+    width: $room-width;
+    height: $room-height;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    background: $primary-text-color;
+    border-radius: 4px;
+    box-shadow: $room-box-shadow;
+}
+
+.room-flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.room-flex-container>div {
+    margin: $room-flex-margin;
+}
+
+.room-flex-container__filling {
+    width: $room-width;
+    height: 0;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+
+.room-chat-body {
+    box-shadow: $room-chat-body-shadow;
+}
+
+.room-chat-list {
+    width: $room-width;
+    height: calc(#{$room-height} + #{40px});
+    overflow: hidden;
+}

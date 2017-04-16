@@ -1,0 +1,43 @@
+@import './_colors.scss';
+$widget-elem-width: 240px;
+$widget-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16),
+0 2px 4px rgba(0, 0, 0, 0.23);
+
+/*
+* === Reusable widget style ===
+*/
+
+.widget {
+    box-shadow: $widget-box-shadow;
+}
+
+.widget>div {
+    margin-bottom: 10px;
+}
+
+.widget>div:last-of-type {
+    margin-bottom: 0;
+}
+
+.widget {
+    input,
+    button,
+    .inputStyle {
+        width: $widget-elem-width;
+    }
+}
+
+.widget__header-text {
+    font-size: 1.8rem;
+}
+
+.widget__block-span>div {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.widget__input-label {
+    color: $widget-input-color;
+    margin-right: 5px;
+}

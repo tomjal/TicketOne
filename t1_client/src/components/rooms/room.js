@@ -16,9 +16,9 @@ export class Room extends Component {
     const { id, role, messages } = this.props;
     const isClientRoom = authManager.isClient(role);
     return (
-      <div className="room">
-        {isClientRoom && <div className="widget-header-text">Hello {id} - how can we help you?</div>}
-        {!isClientRoom && <div className="widget-header-text">id: {id}</div>}
+      <div className="room-widget">
+        {isClientRoom && <div className="widget__header-text">Hello {id} - how can we help you?</div>}
+        {!isClientRoom && <div className="widget__header-text">id: {id}</div>}
         <div>
           {this.state.isOpened &&
             <ChatWindow

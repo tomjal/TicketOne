@@ -8,10 +8,9 @@ import { ModuleHeader } from './../moduleHeader';
 export class EmployeeAppWS extends Component {
   render() {
     return (
-      <div>
-        <EmployeeRouting />
-        <WebsocketGate />
-      </div>
+        <WebsocketGate>
+          <EmployeeRouting />
+        </WebsocketGate>
     );
   }
 }

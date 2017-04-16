@@ -10,13 +10,13 @@ export class IndexApp extends Component {
     const version = packageJson ? packageJson.version : " -- ";
     return (
       <div className="App">
-        <div className="App-header">
+        <div className="App__header">
           TicketOne - customer support web application
         </div>
         <ModuleShell>
           <AuthGate />
         </ModuleShell>
-        <div className="App-footer">
+        <div className="App__footer">
           version {version} (F5 - refresh page to log out mock user)
         </div>
       </div>

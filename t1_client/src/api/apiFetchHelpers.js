@@ -7,8 +7,8 @@ export const httpVerbs = {
 
 export function buildReqOptions(httpVerb, body) {
     let headers = null;
-    if (!IN_TEST) {
-        let headers = new Headers();
+    if (typeof IN_TEST !== undefined) {
+        headers = new Headers();
         headers.set("Content-Type", "application/json");
         headers.set("Cache-Control", "no-cache");
         headers.set("Pragma", "no-cache");

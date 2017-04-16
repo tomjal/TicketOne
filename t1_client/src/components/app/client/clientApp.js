@@ -5,10 +5,9 @@ import ClientRouting from './clientRouting';
 export class ClientAppWS extends Component {
   render() {
     return (
-      <div>
+      <WebsocketGate>
         <ClientRouting />
-        <WebsocketGate />
-      </div>
+      </WebsocketGate>
     );
   }
 }

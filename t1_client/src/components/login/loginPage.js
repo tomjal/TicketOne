@@ -31,9 +31,9 @@ class LoginPage extends Component {
         <div>
           <div className="col-lg-6 col-md-6">
             <div style={loginWidgetInnerStyle} className="thumbnail widget">
-              <div className="row widget-header-text">Log in as Client</div>
-              <div className="row widget-block-span">
-                <div><div className="widget-input-label">Client id:</div>
+              <div className="row widget__header-text">Log in as Client</div>
+              <div className="row widget__block-span">
+                <div><div className="widget__input-label">Client id:</div>
                   <input style={rowInput} type="text" className="form-control" ref={(input) => { this.textInput = input; }}></input></div>
                 <div><button className="btn btn-default" onClick={this.clientSubmitAction}>
                   Log in as TicketOne client</button></div>
@@ -42,9 +42,9 @@ class LoginPage extends Component {
           </div>
           <div className="col-lg-6 col-md-6">
             <div style={loginWidgetInnerStyle} className="thumbnail widget">
-              <div className="row widget-header-text">Log in as Employee</div>
-              <div className="row widget-block-span">
-                <div><div className="widget-input-label">Employee id:</div>
+              <div className="row widget__header-text">Log in as Employee</div>
+              <div className="row widget__block-span">
+                <div><div className="widget__input-label">Employee id:</div>
                   <div style={rowInput} className="inputStyle">Employee_TicketOne</div></div>
                 <div><button className="btn btn-default" onClick={this.employeeSubmitAction}>
                   Log in as TicketOne employee</button></div>

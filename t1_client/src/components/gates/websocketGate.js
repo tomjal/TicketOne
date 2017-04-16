@@ -15,7 +15,7 @@ import { websocketManager } from './../../services/websocketManager';
 import { authManager } from './../../services/authManager';
 
 import { WS_COMMANDS } from './../../consts/commands';
-import { WS } from './../../config/servers';
+import { WS } from './../../serversConfig';
 
 const mapStateToProps = (state) => {
   return {
@@ -87,26 +87,30 @@ class WebsocketGate extends Component {
     console.log(e);
   }
   render() {
+    const { children } = this.props;
     const moduleConnectionFooter = {
-      position: "fixed",
-      bottom: "30px",
+      position: "absolute",
+      top: "0px",
       left: "0px",
       textAlign: "left",
-      margin: "10px",
+      margin: "5px",
       fontSize: "1.7rem",
       zIndex: "1000"
     };
     return (
-      <div style={moduleConnectionFooter}>
-        {!this.state.isOpened &&
-          <div>
-            <span className="label label-warning">Connecting to TicketOne system...</span>
-          </div>}
-        {this.state.isOpened &&
-          <div>
-            <span className="label label-success">Connected to TicketOne system</span>
-          </div>
-        }
+      <div>
+        {children}
+        <div style={moduleConnectionFooter}>
+          {!this.state.isOpened &&
+            <div>
+              <span className="label label-warning">Connecting...</span>
+            </div>}
+          {this.state.isOpened &&
+            <div>
+              <span className="label label-success">Connected</span>
+            </div>
+          }
+        </div>
       </div>
     );
   }

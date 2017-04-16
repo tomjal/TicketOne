@@ -68,6 +68,14 @@ router.post('/rooms/:id/messages', (req, res) => {
     const senderId = req.body.senderId
     const senderRole = req.body.senderRole
     const roomId = req.params.id
+
+    if (typeof message === undefined ||
+        typeof senderId === undefined ||
+        typeof senderRole === undefined ||
+        typeof roomId === undefined) {
+        res.status(400).json({ status: CONSTS.STATUS.BAD_REQUEST })
+    }
+
     // create new message
     const newMessage = {
         body: message,

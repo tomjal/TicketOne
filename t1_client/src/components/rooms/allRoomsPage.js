@@ -7,6 +7,8 @@ import { getAllMessages, sendMessageToRoom } from './../../actions/messagesActio
 
 import Room from './room';
 
+const MAX_FLEX_ELEMS_IN_ROW = 3;
+
 const mapStateToProps = (state) => {
   return {
     id: state.context.id,
@@ -46,17 +48,18 @@ export class AllRoomsPage extends Component {
   }
   render() {
     const { role, rooms, messages } = this.props;
-    const flexChildMarginStyle = { margin: "15px" };
 
-    const emptyFlexElems = this.getEmptyFlexFillers(4, rooms.length);
+    const emptyFlexElems = this.getEmptyFlexFillers(MAX_FLEX_ELEMS_IN_ROW, rooms.length);
 
     return (
       <div>
         {rooms.length !== 0 && <div className="room-flex-container">
           {rooms.map((roomId, i) => {
             let localMessages = [];
-            if (messages[roomId]) localMessages = messages[roomId];
-            return <div style={flexChildMarginStyle} key={i}>
+            if (messages[roomId]) {
+              localMessages = messages[roomId];
+            }
+            return <div key={i}>
               <Room
                 sendMessageCallback={this.sendMessageCallback}
                 id={roomId}
@@ -65,7 +68,7 @@ export class AllRoomsPage extends Component {
             </div>;
           })}
           {emptyFlexElems.map((roomId, i) => {
-            return <div key={`filler-${i}`} className="room-flex-filling"></div>;
+            return <div key={`filler-${i}`} className="room-flex-container__filling"></div>;
           })}
         </div>
         }

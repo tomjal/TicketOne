@@ -8,7 +8,8 @@ module.exports = {
         NEW_ROOM: 'new_room'
     },
     STATUS: {
-        OK: 'ok'
+        OK: 'ok',
+        BAD_REQUEST: 'unacceptable body'
     },
     SEPARATORS: {
         MES: ':',
