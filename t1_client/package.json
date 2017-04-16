@@ -34,8 +34,8 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test",
-    "test-with-dom": "react-scripts test --env=jsdom",
-    "coverage": "npm test-with-dom -- --coverage"
+    "test-without-dom": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
+    "coverage": "npm test -- --coverage"
   }
 }

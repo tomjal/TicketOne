@@ -1,0 +1,13 @@
+/*
+* === Weboscket connection notifier style ===
+*/
+
+.connection-indicator {
+    position: absolute;
+    z-index: 1000;
+    top: 0px;
+    left: 0px;
+    margin: 5px;
+    text-align: left;
+    font-size: 1.7rem;
+}

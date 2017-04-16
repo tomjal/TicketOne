@@ -5,9 +5,9 @@ import EmployeeRouting from './employeeRouting';
 export class EmployeeAppWS extends Component {
   render() {
     return (
-        <WebsocketGate>
-          <EmployeeRouting />
-        </WebsocketGate>
+      <WebsocketGate>
+        <EmployeeRouting />
+      </WebsocketGate>
     );
   }
 }

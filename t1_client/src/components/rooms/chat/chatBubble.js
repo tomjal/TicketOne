@@ -1,31 +1,24 @@
 import React, { Component } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import { css } from 'aphrodite';
 
-//
-const baseBubbleStyle = { width: "300px", background: "white", borderRadius: "5px", marginBottom: "10px", padding: "10px" };
-const leftBubbleStyle = { textAlign: "left" };
-const rightBubbleStyle = { textAlign: "right", marginLeft: "115px" };
-
-const headerMessageStyle = { color: "gray", fontSize: "1.2rem" };
-const bodyMessageStyle = { color: "black", fontSize: "1.4rem", wordWrap: "break-word" };
-//
+import { chatStyles } from './../../../styles/inline/specificStyles';
 
 export class ChatBubble extends Component {
 
   render() {
     const { key, isMe, message, date } = this.props;
-    const bubbleStyle = isMe ?
-      { ...baseBubbleStyle, ...rightBubbleStyle }
-      : { ...baseBubbleStyle, ...leftBubbleStyle };
+    const bubbleClass = isMe ?
+      css(chatStyles.bubbleBase, chatStyles.bubbleRight)
+      : css(chatStyles.bubbleBase, chatStyles.bubbleLeft);
 
     return (
-      <div style={bubbleStyle} key={key}>
-        <div style={headerMessageStyle}>
+      <div className={bubbleClass} key={key}>
+        <div className='message__header'>
           {!isMe &&
             <span>{message.author.id} - </span>}
           {date}:
         </div>
-        <div style={bodyMessageStyle}>
+        <div className='message__body'>
           {message.body}
         </div>
       </div>

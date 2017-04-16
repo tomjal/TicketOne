@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { StyleSheet, css } from 'aphrodite';
 
 import { getAllRooms } from './../../actions/roomsActionCreators';
 import {
@@ -17,18 +16,6 @@ import { authManager } from './../../services/authManager';
 
 import { WS_COMMANDS } from './../../consts/commands';
 import { WS } from './../../serversConfig';
-
-//
-const moduleConnectionFooter = {
-  position: "absolute",
-  top: "0px",
-  left: "0px",
-  textAlign: "left",
-  margin: "5px",
-  fontSize: "1.7rem",
-  zIndex: "1000"
-};
-//
 
 const mapStateToProps = (state) => {
   return {
@@ -104,7 +91,7 @@ class WebsocketGate extends Component {
     return (
       <div>
         {children}
-        <div style={moduleConnectionFooter}>
+        <div className='connection-indicator'>
           {!this.state.isOpened &&
             <div>
               <span className="label label-warning">Connecting...</span>

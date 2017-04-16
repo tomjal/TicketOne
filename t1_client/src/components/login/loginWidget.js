@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import { css } from 'aphrodite';
 
-//
-const loginWidgetInnerStyle = { padding: "20px", paddingLeft: "70px", height: "100%", textAlign: "left" };
-//
+import { loginStyles } from './../../styles/inline/specificStyles';
 
 export class LoginWidget extends Component {
   render() {
     const { children, headerText, inputLabel, buttonLabel, actionCallback } = this.props;
     return (
       <div className="col-lg-6 col-md-6">
-        <div style={loginWidgetInnerStyle} className="thumbnail widget">
+        <div className={`${css(loginStyles.thumbnailWidget)} thumbnail widget`}>
           <div className="row widget__header-text">
             {headerText}
           </div>

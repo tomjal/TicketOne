@@ -8,7 +8,7 @@ import packageJson from './../../../package.json';
 export class IndexApp extends Component {
   render() {
     const version = packageJson ? packageJson.version : " -- ";
-    
+
     return (
       <div className="App">
         <div className="App__header">

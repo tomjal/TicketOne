@@ -44,3 +44,22 @@ rgba(0, 0, 0, 0.1) 0px 1px 5px 0px;
 .room-chat-body {
     box-shadow: $room-chat-body-shadow;
 }
+
+
+/*
+* === Message bubble ===
+*/
+
+$message-header-text-color: gray;
+$message-body-text-color: black;
+$message-base-font-size: 1.4rem;
+.message__header {
+    color: $message-header-text-color;
+    font-size: calc(#{$message-base-font-size} * 0.8);
+}
+
+.message__body {
+    color: $message-body-text-color;
+    font-size: $message-base-font-size;
+    word-wrap: break-word;
+}

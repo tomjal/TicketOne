@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import { css } from 'aphrodite';
 
+import { chatStyles } from './../../../styles/inline/specificStyles';
 import { timestampToDateString } from './../../../helpers/timeUtils';
 import ChatBubble from './chatBubble';
-
-//
-const chatListStyle = {
-  width: "100%", height: "255px", overflow: "auto",
-  padding: "10px", marginTop: "5px", marginBottom: "15px",
-  background: "#f1f3f4"
-}
-//
 
 export class ChatList extends Component {
   componentDidMount() {
@@ -37,7 +30,7 @@ export class ChatList extends Component {
     const { messages } = this.props;
 
     return (
-      <div className="room-chat-body" style={chatListStyle} ref={(div) => { this.messageList = div; }}>
+      <div className={`${css(chatStyles.list)} room-chat-body`} ref={(div) => { this.messageList = div; }}>
         {messages &&
           <div >
             {

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import { css } from 'aphrodite';
+
+import { chatStyles } from './../../../styles/inline/specificStyles';
+import { fontSizes } from './../../../styles/inline/genericStyles';
 
 import ChatList from './chatList';
-
-//
-const chatWindowStyle = { marginTop: "10xp", marginBottom: "10px" };
-const inputSpanStyle = { marginLeft: "10px", marginRight: "10px" };
-const inputBoxStyle = { display: "inline-block", width: "270px", fontSize: "1.5rem", marginRight: "20px" };
-//
 
 const KEY_CODES = { ENTER: 13 };
 
@@ -33,10 +30,10 @@ export class ChatWindow extends Component {
     const { id, role, messages } = this.props;
 
     return (
-      <div style={chatWindowStyle}>
+      <div className={css(chatStyles.window)}>
         <ChatList id={id} role={role} messages={messages} />
-        <div style={inputSpanStyle}>
-          <input style={inputBoxStyle} type="text" className="form-control"
+        <div className={css(chatStyles.span)}>
+          <input type="text" className={`${css(chatStyles.box, fontSizes.bigger)} form-control`}
             onKeyUp={this.handleKeyUp} ref={(input) => { this.chatInput = input; }} />
           <button className="btn btn-default" onClick={this.submitSendMessage}>
             Send message

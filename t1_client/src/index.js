@@ -7,8 +7,9 @@ import IndexApp from './components/app/indexApp.js';
 
 import './styles/index.css';
 import './styles/app.css';
-import './styles/widget.css';
 import './styles/room.css';
+import './styles/widget.css';
+import './styles/websocket.css';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
