@@ -1,1 +1,5 @@
-Small screens compatibility
+Media queries for mobile - RWD
+Move from SASS/Aphrodite to Styled-components with themes support
+Create room via REST instead websocket command
+Refactor to separate files Nodejs Express v4 routes
+Communication/Sequence diagrams
