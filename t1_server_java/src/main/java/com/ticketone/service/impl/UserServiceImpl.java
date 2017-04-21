@@ -13,6 +13,7 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	public User findOne(Long id) {
+	public User findOne(long id) {
+		return null;
 	}
 }
