@@ -2,13 +2,13 @@
 
 WORK IN PROGRESS
 
-Client - React v15.5 / React-Router v4.1 / Redux v3.6
+1. Client - React v15.5 / React-Router v4.1 / Redux v3.6
 
-Node.js server mock - Express v4.15
+2. Node.js server mock - Express v4.15
 
-Java server - Spring Boot 1.5
+3. Java server - Spring Boot 1.5
 
-.NET server - .NET Core 2.0 // for comparision with Java "developer experience"
+4. .NET server - .NET Core 2.0 // for comparision with Java "developer experience"
 
 Recommended IDE: Visual Studio Code / IntelliJ Idea / Visual Studio 2017
 
