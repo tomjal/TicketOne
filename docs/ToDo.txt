@@ -1,5 +1,21 @@
+Client:
 Media queries for mobile - RWD
 Move from SASS/Aphrodite to Styled-components with themes support
+
+Design:
 Create room via REST instead websocket command
+Send only recent new messages to employee instead everything
+Implement session
+
+Nodejs:
 Refactor to separate files Nodejs Express v4 routes
+Implement session
+
+Java:
+Almost everything
+
+.NET:
+Everything
+
+Docs:
 Communication/Sequence diagrams
