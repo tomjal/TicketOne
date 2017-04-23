@@ -16,6 +16,8 @@ Recommended IDE: Visual Studio Code / IntelliJ Idea / Visual Studio 2017
 
 ### Client NPM scripts
 
+Folder '*t1_client_react*'
+
 '*yarn start*' - run development mode
 
 '*yarn build*' - create production bundle
