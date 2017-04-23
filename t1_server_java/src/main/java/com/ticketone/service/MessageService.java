@@ -1,11 +1,15 @@
 package com.ticketone.service;
 
-import java.util.Collection;
-
+import com.ticketone.controller.dto.MessageSaveDTO;
 import com.ticketone.model.entity.Message;
-import com.ticketone.model.entity.Room;
+
+import java.util.Collection;
+import java.util.List;
 
 public interface MessageService {
-	Message save(Message message);
-	Collection<Message> findByRoom(Room room);
+    List<Message> findAll();
+
+    Message save(MessageSaveDTO messageSaveDTO);
+
+    Collection<Message> findByRoomName(String roomName);
 }

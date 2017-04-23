@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
-	@RequestMapping("/")
-	@ResponseBody
-	public String index() {
-		return "TicketOne Java API";
-	}
+    @RequestMapping("/api/v1")
+    @ResponseBody
+    public String index() {
+        return "TicketOne Java API";
+    }
 }

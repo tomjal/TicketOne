@@ -1,21 +1,30 @@
 Client:
-Media queries for mobile - RWD
-Move from SASS/Aphrodite to Styled-components with themes support
+Add media queries for mobile - RWD
+Move from SASS/Aphrodite to Styled-Components with theme support
 
 Design:
-Create room via REST instead websocket command
+Create room via REST request instead websocket command
 Send only recent new messages to employee instead everything
-Implement session
 
 Nodejs:
-Refactor to separate files Nodejs Express v4 routes
-Implement session
+Refactor Nodejs Express v4 routes to separate files 
+Add session, proper auth
 
 Java:
-Almost everything
+API remodel
+Exceptions handling in controllers
+DTO mappers/validators
+Add Websocket
+Add interceptors
+Add session, proper auth
+Add tests
 
 .NET:
 Everything
 
+Optional:
+Introduce Domain Design
+
 Docs:
 Communication/Sequence diagrams
+Add Swagger for REST API 
