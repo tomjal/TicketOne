@@ -14,9 +14,9 @@ Java:
 API remodel
 Exceptions handling in controllers
 DTO mappers/validators
-Add Websocket
-Add interceptors
-Add session, proper auth
+Add Spring Boot Actuator
+Add Aspects
+Add session handling, Spring Security
 Add tests
 
 .NET:
