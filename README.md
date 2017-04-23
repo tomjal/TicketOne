@@ -1,12 +1,12 @@
-## TicketOne client
-
 WORK IN PROGRESS
+
+## TicketOne client
 
 1. Client - React v15.5 / React-Router v4.1 / Redux v3.6
 
 2. Node.js server mock - Express v4.15
 
-3. Java server - Spring Boot 1.5
+3. Java server - Spring Boot v1.5
 
 4. .NET server - .NET Core 2.0 // for comparision with Java "developer experience"
 
@@ -38,12 +38,6 @@ coverage - analyze test code coverage (report generated to ./coverage/lcov-repor
 
 ## To run locally with Java server:
 
-WORK IN PROGRESS
-
 1. Make sure your have Maven 3 and Java JDK 1.8 installed properly
 
 2. Run 'mvn clean package' and then 'mvn spring-boot:run' in folder 't1-server-java'
-
-## To run locally with .NET server:
-
-WORK IN PROGRESS

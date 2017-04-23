@@ -20,10 +20,11 @@ Add session, proper auth
 Add tests
 
 .NET:
-Everything
+Currently waiting for final version of .NET Core 2.0
 
 Optional:
-Introduce Domain Design
+Introduce Domain Driven Design
+Scripts for easy deployment
 
 Docs:
 Communication/Sequence diagrams
