@@ -4,9 +4,9 @@
 
 1. Client - React v15.5 / React-Router v4.1 / Redux v3.6
 
-2. Node.js server mock - Express v4.15
+2. Node.js server mock - Express v4.15 (+ 
 
-3. Java server - Spring Boot v1.5
+3. Java server - Spring Boot v1.5 (+ H2, JPA, WebSocket, AspectJ)
 
 4. .NET server - .NET Core 2.0 // for comparision with Java "developer experience"
 
@@ -43,5 +43,3 @@ Folder '*t1_client_react*'
 1. Make sure your have Maven 3 and JDK 8 installed properly
 
 2. Run '*mvn clean package*' and then '*mvn spring-boot:run*' in folder '*t1-server-java*'
-
-REST API endpoint - '*/api/v1*', WebSocket endpoint - '*/chat*'
