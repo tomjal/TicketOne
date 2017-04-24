@@ -1,4 +1,4 @@
-:construction: WORK IN PROGRESS :construction:
+:construction: WORK IN PROGRESS - partial TODO in docs folder :construction:
 
 ### TicketOne client
 
@@ -30,7 +30,7 @@ Folder '*t1_client_react*'
 
 ### To run locally with Node.js mock server:
 
-1. Install Node.js v7 [Node.js v7](https://nodejs.org/en/) and run '*npm i -g yarn*'
+1. Install [Node.js v7](https://nodejs.org/en/) and run '*npm i -g yarn*'
 
 2. Run '*yarn*' in folder '*t1_server_node*'
 
@@ -40,6 +40,8 @@ Folder '*t1_client_react*'
 
 ### To run locally with Java server:
 
-1. Make sure your have Maven 3 and Java JDK 1.8 installed properly
+1. Make sure your have Maven 3 and JDK 8 installed properly
 
 2. Run '*mvn clean package*' and then '*mvn spring-boot:run*' in folder '*t1-server-java*'
+
+REST API endpoint - '*/api/v1*', WebSocket endpoint - '*/chat*'
