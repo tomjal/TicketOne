@@ -2,6 +2,7 @@ package com.ticketone.websocket;
 
 import com.ticketone.service.WebSocketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -29,9 +30,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
         String room = messageTokens[1];
 
         if (command.equals(WebSocketCommands.NEW_ROOM.toString())) {
-            for (WebSocketSession webSocketSession : sessions) {
-                webSocketService.broadcastNewRoom(webSocketSession, room);
-            }
+            broadcastNewRoomToAllUsers(room);
         }
     }
 
@@ -39,5 +38,11 @@ public class WebSocketHandler extends TextWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 
         sessions.add(session);
+    }
+
+    public void broadcastNewRoomToAllUsers(String roomName) {
+        for (WebSocketSession webSocketSession : sessions) {
+            webSocketService.broadcastNewRoom(webSocketSession, roomName);
+        }
     }
 }
