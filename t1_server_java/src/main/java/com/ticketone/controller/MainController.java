@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
-    @RequestMapping("/api/v1")
+    @RequestMapping(ApiVersion.V1)
     @ResponseBody
     public String index() {
         return "TicketOne Java API";

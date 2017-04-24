@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/messages")
+@RequestMapping(ApiVersion.V1 + "/messages")
 public class MessageController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
