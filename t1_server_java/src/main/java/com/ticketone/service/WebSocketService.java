@@ -6,4 +6,8 @@ public interface WebSocketService {
     void broadcastNewRoom(WebSocketSession wsSession, String room);
 
     void broadcastNewMessage(WebSocketSession wsSession, String room);
+
+    void addSession(WebSocketSession webSocketSession);
+
+    void broadcastNewRoomToAllUsers(String roomName);
 }
