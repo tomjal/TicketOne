@@ -21,6 +21,13 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
+    /**
+     * REST method that returns list of all messages in system.
+     *
+     * @return List of Message
+     * @returnWrapped com.ticketone.model.entity.Message[]
+     * @HTTP 500 when fail of service
+     */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<List<Message>> getAllMessages() {
         return new ResponseEntity<List<Message>>(messageService.findAll(), HttpStatus.OK);

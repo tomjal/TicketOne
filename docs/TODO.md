@@ -14,9 +14,9 @@
 ### Java:
 1. Finish API implementation
 2. Exceptions handling
-3. DTO mappers/validators
-4. Add session handling, Spring Security
-5. Add tests
+3. Add tests
+4. DTO mappers/validators (MapStruct?)
+5. Add session handling, Spring Security
 
 ### .NET:
 1. Currently waiting for final version of .NET Core 2.0
