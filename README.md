@@ -1,4 +1,4 @@
-:construction: WORK IN PROGRESS - partial TODO in docs folder :construction:
+:construction: WORK IN PROGRESS (partial TODO in docs folder) :construction:
 
 ### TicketOne client
 
