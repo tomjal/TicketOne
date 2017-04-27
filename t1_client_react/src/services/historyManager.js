@@ -1,8 +1,8 @@
-import { browserHistory } from 'react-router';
+import { history } from './../store/createHistory';
 
 class HistoryManager {
     goBack() {
-        browserHistory.goBack();
+        history.goBack();
     }
 }
 

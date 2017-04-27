@@ -20,30 +20,26 @@ export function setApplicationContextAsMockEmployee() {
 }
 
 export function getApplicationContext() {
-    return (dispatch) => {
-        return apiSchema.context.get()
-            .then(res => checkIfFetchStatusOk(res))
-            .then(res => res.json())
-            .then(data => {
-                dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data });
-            })
-            .catch(err => {
-                dispatchFetchError(err, authActions.GET_AUTH_CONTEXT.ERROR, dispatch);
-            });
-    }
+    return (dispatch) => apiSchema.context.get()
+        .then(res => checkIfFetchStatusOk(res))
+        .then(res => res.json())
+        .then(data => {
+            dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data });
+        })
+        .catch(err => {
+            dispatchFetchError(err, authActions.GET_AUTH_CONTEXT.ERROR, dispatch);
+        });
 }
 
 export function postAuthorizationData() {
-    return (dispatch) => {
-        return apiSchema.auth.post()
-            .then(res => checkIfFetchStatusOk(res))
-            .then(res => res.json())
-            .then(data => {
-                dispatch({ type: authActions.POST_LOGIN.SUCCESS });
-                dispatch(getApplicationContext());
-            })
-            .catch(err => {
-                dispatchFetchError(err, authActions.POST_LOGIN.ERROR, dispatch);
-            });
-    }
+    return (dispatch) => apiSchema.auth.post()
+        .then(res => checkIfFetchStatusOk(res))
+        .then(res => res.json())
+        .then(data => {
+            dispatch({ type: authActions.POST_LOGIN.SUCCESS });
+            dispatch(getApplicationContext());
+        })
+        .catch(err => {
+            dispatchFetchError(err, authActions.POST_LOGIN.ERROR, dispatch);
+        });
 }
