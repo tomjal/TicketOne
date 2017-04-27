@@ -1,6 +1,7 @@
 ### Client:
 1. Add media queries for responsive design
 2. Move to styled-components with theme support
+3. Introduce Redux-Saga
 
 ### Design:
 1. Create room via REST request instead websocket command
