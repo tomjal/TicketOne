@@ -1,132 +1,53 @@
+// import & setup =====================================================
+const CONSTS = require('./const/consts')
+
 const WebSocketServer = require('ws').Server,
     http = require('http'),
     bodyParser = require('body-parser'),
     express = require('express'),
     compression = require('compression'),
-    logger = require('logger').createLogger()
+    logger = require('logger').createLogger();
 
-const router = express.Router(),
-    app = express(),
+const app = express(),
     port = process.env.PORT || 8080
 
-const CONSTS = require('./server/consts')
-const InMemoryStorage = require('./server/inMemoryStorage')
-const WsService = require('./server/wsService')
-
-// Static files
 app.use(compression())
     .use(express.static(__dirname + '/react_build/'))
 
-// Request parser
 app.use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
 
-// REST prefix
-app.use('/api/v1', router)
+const inMemoryStorage = require('./mock/inMemoryStorage')
+const wsService = require('./service/wsService')
 
+// run server ========================================================
 const server = http.createServer(app)
 server.listen(port)
+const wsServer = new WebSocketServer({ server: server })
+wsService.setWsServer(wsServer)
 
-// error handling
-function handleError(e) {
-    logger.error(e);
-    res.status(500).json({ error: e.message })
-}
+logger.info('server listening on', port)
 
-// WS service
-const wsService = new WsService(logger)
+// REST API router ===================================================
+const roomPrefix = '/rooms';
+const roomsController = require('./controller/roomsController')
 
-// storage
-const inMemoryStorage = new InMemoryStorage()
+app.get(CONSTS.API_PREFIX.V1, (req, res) => {
+    res.send('REST API ' + CONSTS.API_PREFIX.V1);
+});
 
-// API REST
-router.get('/rooms', (req, res) => {
-    try {
-        const listOfRooms = inMemoryStorage.getAllRooms()
-        res.status(200).json(listOfRooms)
-    } catch (e) {
-        handleError(e)
-    }
-})
+app.use(CONSTS.API_PREFIX.V1 + roomPrefix, roomsController)
 
-router.get('/rooms/messages', (req, res) => {
-    try {
-        const listOfAllMessages = inMemoryStorage.getAllMessages()
-        res.status(200).json(listOfAllMessages)
-    } catch (e) {
-        handleError(e)
-    }
-})
-
-router.get('/rooms/:id/messages', (req, res) => {
-    try {
-        const roomId = req.params.id
-        const listOfMessagesById = inMemoryStorage.getAllMessagesByRoomId(roomId)
-        res.status(200).json(listOfMessagesById)
-    } catch (e) {
-        handleError(e)
-    }
-})
-
-router.post('/rooms/:id/messages', (req, res) => {
-    const message = req.body.message
-    const senderId = req.body.senderId
-    const senderRole = req.body.senderRole
-    const roomId = req.params.id
-
-    if (typeof message === undefined ||
-        typeof senderId === undefined ||
-        typeof senderRole === undefined ||
-        typeof roomId === undefined) {
-        res.status(400).json({ status: CONSTS.STATUS.BAD_REQUEST })
-    }
-
-    // create new message
-    const newMessage = {
-        body: message,
-        author: { id: senderId, role: senderRole },
-        timestamp: new Date().getTime()
-    };
-
-    try {
-        // push message to storage
-        inMemoryStorage.addMessage(roomId, newMessage)
-        res.status(200).json({ status: CONSTS.STATUS.OK })
-        // inform subscribers
-        wsService.broadcastNewMessage(wss, roomId)
-    } catch (e) {
-        handleError(e)
-    }
-})
-
-// reset mock storage - just for testing purpose
-router.get('/reset', (req, res) => {
-    try {
-        inMemoryStorage.clearMemory()
-        res.status(200).json({ status: CONSTS.STATUS.OK })
-    } catch (e) {
-        handleError(e)
-    }
-})
-
-logger.info('http server listening on', port)
-
-// WS server
-const wss = new WebSocketServer({ server: server })
-logger.info('websocket server created')
-
-// WS handlers
-wss.on('connection', connection => {
+// WS handler ========================================================
+wsServer.on('connection', connection => {
     logger.info('websocket connection open')
-
     connection.on("message", message => {
         try {
-            wsService.handleNewWsMessage(wss, inMemoryStorage, message)
+            wsService.handleNewWsMessage(inMemoryStorage, message)
         } catch (e) {
             logger.error(e.message)
         }
     })
-
     connection.on('close', () => {
         logger.info('websocket connection close')
     })

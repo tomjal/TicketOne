@@ -14,5 +14,8 @@ module.exports = {
     SEPARATORS: {
         MES: ':',
         COM: '|'
+    },
+    API_PREFIX: {
+        V1: '/api/v1'
     }
 }

@@ -1,15 +1,13 @@
 ### Client:
 1. Add media queries for responsive design
 2. Move to styled-components with theme support
-3. Rethink components
 
 ### Design:
 1. Create room via REST request instead websocket command
 2. Send only recent new messages to employee
 
 ### Nodejs:
-1. Refactor Nodejs Express v4 routes to separate files 
-2. Add session handling, proper auth
+1. Add session handling, proper auth
 
 ### Java:
 1. Finish API implementation

@@ -1,27 +1,33 @@
-const CONSTS = require('./consts');
+const CONSTS = require('./../const/consts')
+const logger = require('logger').createLogger()
 
 class WsService {
     constructor(logger) {
         this.logger = logger;
+        this.wsServer = null;
+    }
+
+    setWsServer(wsServer) {
+        this.wsServer = wsServer;
     }
 
     isClient(role) {
         return role === CONSTS.ROLES.CLIENT;
     }
 
-    broadcastNewMessage(wss, roomId) {
-        wss.clients.forEach(client => {
+    broadcastNewMessage(roomId) {
+        this.wsServer.clients.forEach(client => {
             client.send(CONSTS.COMMANDS.NEW_MESSAGE + CONSTS.SEPARATORS.MES + roomId);
         });
     }
 
-    broadcastNewRoom(wss, roomId) {
-        wss.clients.forEach(client => {
+    broadcastNewRoom(roomId) {
+        this.wsServer.clients.forEach(client => {
             client.send(CONSTS.COMMANDS.NEW_ROOM + CONSTS.SEPARATORS.MES + roomId);
         });
     }
 
-    handleNewWsMessage(wss, storage, message) {
+    handleNewWsMessage(storage, message) {
 
         // message command parser
         const commandsList = message.split(CONSTS.SEPARATORS.COM);
@@ -35,10 +41,10 @@ class WsService {
                 storage.addRoom(userId);
                 this.logger.info('websocket new room created');
                 // inform everyone about new room
-                this.broadcastNewRoom(wss, userId);
+                this.broadcastNewRoom(userId);
             }
         }
     }
 }
 
-module.exports = WsService;
+module.exports = new WsService(logger);
