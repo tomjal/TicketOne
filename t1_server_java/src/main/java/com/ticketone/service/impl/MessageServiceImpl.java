@@ -1,6 +1,6 @@
 package com.ticketone.service.impl;
 
-import com.ticketone.controller.converter.MessageConverterImpl;
+import com.ticketone.controller.converter.MessageSaveConverterImpl;
 import com.ticketone.controller.dto.MessageSaveDTO;
 import com.ticketone.model.entity.Message;
 import com.ticketone.model.entity.Room;
@@ -28,7 +28,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public Message save(MessageSaveDTO messageSaveDTO) {
         Room room = roomRepository.findByName(messageSaveDTO.getRoomName());
-        Message message = new MessageConverterImpl().fromDto(messageSaveDTO, room);
+        Message message = new MessageSaveConverterImpl().fromDto(messageSaveDTO, room);
 
         return messageRepository.save(message);
     }

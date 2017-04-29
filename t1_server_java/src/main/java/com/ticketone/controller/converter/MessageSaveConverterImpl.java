@@ -6,7 +6,7 @@ import com.ticketone.model.entity.Room;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MessageConverterImpl implements GenericConverter<Message, MessageSaveDTO, Room> {
+public class MessageSaveConverterImpl implements GenericConverter<Message, MessageSaveDTO, Room> {
 
     @Override
     public MessageSaveDTO toDto(Message mes) {

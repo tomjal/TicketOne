@@ -13,12 +13,8 @@
 ### Java:
 1. Finish API implementation
 2. Exceptions handling
-3. Add tests
-4. DTO mappers/validators (MapStruct?)
-5. Add session handling, Spring Security
-
-### .NET:
-1. Currently waiting for final version of .NET Core 2.0
+3. DTO factories/mappers/validators (MapStruct?)
+4. Add session handling, Spring Security
 
 ### Optional:
 1. Introduce Domain Driven Design
