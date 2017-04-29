@@ -19,24 +19,17 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
-    /**
-     * REST method that returns list of all chat rooms in system.
-     *
-     * @return List of Room
-     * @returnWrapped com.ticketone.model.entity.Room[]
-     * @HTTP 500 when fail of service
-     */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping("/")
     public ResponseEntity<List<Room>> getAllRooms() {
         return new ResponseEntity<List<Room>>(roomService.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{roomId}", method = RequestMethod.GET)
+    @GetMapping("/{roomId}")
     public ResponseEntity<Room> getRoom(@PathVariable("roomId") Long id) {
         return new ResponseEntity<Room>(roomService.findOne(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @PostMapping("/")
     public ResponseEntity<?> setRoom(@RequestBody Room room) {
         return new ResponseEntity<Room>(roomService.save(room), HttpStatus.OK);
     }

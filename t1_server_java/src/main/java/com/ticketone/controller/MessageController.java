@@ -21,24 +21,17 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    /**
-     * REST method that returns list of all messages in system.
-     *
-     * @return List of Message
-     * @returnWrapped com.ticketone.model.entity.Message[]
-     * @HTTP 500 when fail of service
-     */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping("/")
     public ResponseEntity<List<Message>> getAllMessages() {
         return new ResponseEntity<List<Message>>(messageService.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @PostMapping("/")
     public ResponseEntity<?> setMessage(@RequestBody MessageSaveDTO messageSaveDTO) {
         return new ResponseEntity<Message>(messageService.save(messageSaveDTO), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/room/{roomName}", method = RequestMethod.GET)
+    @GetMapping("/room/{roomName}")
     public ResponseEntity<Collection<Message>> getMessage(@PathVariable("roomName") String roomName) {
         return new ResponseEntity<Collection<Message>>(messageService.findByRoomName(roomName), HttpStatus.OK);
     }
