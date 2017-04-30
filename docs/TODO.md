@@ -14,7 +14,7 @@
 1. Finish API implementation
 2. Exceptions handling
 3. DTO factories/mappers/validators (MapStruct?)
-4. Add session handling, Spring Security
+4. Add session/JWT security, Spring Security or Shiro
 
 ### Optional:
 1. Introduce Domain Driven Design
