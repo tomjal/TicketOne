@@ -43,3 +43,5 @@ Folder '*t1_client_react*'
 1. Make sure your have Maven 3 and JDK 8 installed properly
 
 2. Run '*mvn clean package*' and then '*mvn spring-boot:run*' in folder '*t1-server-java*'
+
+Swagger enabled on '*/swagger-ui.html*'

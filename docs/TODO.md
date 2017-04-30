@@ -18,10 +18,9 @@
 
 ### Optional:
 1. Introduce Domain Driven Design
-2. Introduce OpenID Connect
+2. Introduce OpenID Connect Auth
 3. Scripts for easy deployment
 
 ### Docs:
 1. Communication/Sequence diagrams
-2. Add Swagger for REST API 
-3. Add Spring Boot Actuator
+2. Add Spring Boot Actuator
