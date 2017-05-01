@@ -1,5 +1,6 @@
 @import './_colors.scss';
 $room-width: 450px;
+$room-margin: 15px;
 $room-height: 360px;
 $room-flex-margin: 15px;
 $room-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16),
@@ -14,7 +15,7 @@ rgba(0, 0, 0, 0.1) 0px 1px 5px 0px;
 .room-widget {
     width: $room-width;
     height: $room-height;
-    margin: 15px;
+    margin: $room-margin;
     padding-top: 10px;
     padding-bottom: 10px;
     overflow: hidden;
@@ -32,7 +33,7 @@ rgba(0, 0, 0, 0.1) 0px 1px 5px 0px;
 }
 
 .room-flex-container__filling {
-    width: $room-width;
+    width: $room-width + 2 * $room-margin;
     height: 0;
     margin-top: 0!important;
     margin-bottom: 0!important;
