@@ -10,6 +10,7 @@ import './styles/app.css';
 import './styles/room.css';
 import './styles/widget.css';
 import './styles/websocket.css';
+import './styles/media.css';
 
 import 'bootstrap/dist/css/bootstrap.css';
 

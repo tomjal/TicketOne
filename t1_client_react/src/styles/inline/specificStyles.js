@@ -7,7 +7,10 @@ export const loginStyles = StyleSheet.create({
         height: "100%",
         padding: "20px",
         paddingLeft: "70px",
-        textAlign: "left"
+        textAlign: "left",
+        '@media (max-width: 400px)': {
+            paddingLeft: "45px"
+        }
     },
     inputRow: {
         verticalAlign: "top",
@@ -29,7 +32,10 @@ export const chatStyles = StyleSheet.create({
     box: {
         display: "inline-block",
         width: "270px",
-        marginRight: "20px"
+        marginRight: "20px",
+        '@media (max-width: 400px)': {
+            width: "150px",
+        }
     },
     list: {
         width: "100%",
@@ -45,7 +51,10 @@ export const chatStyles = StyleSheet.create({
         padding: "10px",
         marginBottom: "10px",
         borderRadius: "5px",
-        background: "white"
+        background: "white",
+        '@media (max-width: 400px)': {
+            width: "200px",
+        }
     },
     bubbleLeft: {
         textAlign: "left"

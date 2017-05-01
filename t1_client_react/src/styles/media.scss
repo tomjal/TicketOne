@@ -1,0 +1,14 @@
+/*
+* === Small app size test ===
+*/
+
+@media all and (max-width: 400px) {
+    .App__module {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}

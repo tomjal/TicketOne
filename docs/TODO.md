@@ -1,5 +1,5 @@
 ### Client:
-1. Add media queries for responsive design
+1. Make chat fully responsive (media queries redesign)
 2. Move to styled-components with theme support
 3. Introduce Redux-Saga
 

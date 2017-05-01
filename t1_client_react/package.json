@@ -6,9 +6,10 @@
   "proxy": "http://localhost:8080",
   "private": true,
   "dependencies": {
+    "aphrodite": "~1.2.1",
     "bootstrap": "~3.3.7",
     "history": "^4.6.1",
-    "immutability-helper": "~2.1.2",
+    "immutability-helper": "~2.2.0",
     "moment": "~2.18.1",
     "prop-types": "~15.5.8",
     "react": "~15.5.4",
@@ -16,12 +17,11 @@
     "react-redux": "~5.0.4",
     "react-router-dom": "~4.1.1",
     "redux": "~3.6.0",
-    "redux-saga": "~0.14.8",
+    "redux-saga": "~0.15.0",
     "redux-thunk": "~2.2.0",
     "styled-components": "^1.4.5"
   },
   "devDependencies": {
-    "aphrodite": "~1.2.0",
     "enzyme": "~2.8.2",
     "enzyme-to-json": "~1.5.1",
     "fetch-mock": "~5.10.0",

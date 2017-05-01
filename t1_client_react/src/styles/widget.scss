@@ -29,6 +29,7 @@ $widget-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16),
 
 .widget__header-text {
     font-size: 1.8rem;
+    white-space: nowrap;
 }
 
 .widget__block-span>div {

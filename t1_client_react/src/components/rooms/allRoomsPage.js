@@ -59,13 +59,11 @@ export class AllRoomsPage extends Component {
               if (messages[roomId]) {
                 localMessages = messages[roomId];
               }
-              return <div key={i}>
-                <RoomWidget
-                  id={roomId}
-                  role={role}
-                  sendMessageCallback={this.sendMessageCallback}
-                  messages={localMessages} />
-              </div>;
+              return <RoomWidget key={i}
+                id={roomId}
+                role={role}
+                sendMessageCallback={this.sendMessageCallback}
+                messages={localMessages} />;
             })}
             {emptyFlexElems.map((roomId, i) => {
               return <div key={`filler-${i}`} className="room-flex-container__filling"></div>;
