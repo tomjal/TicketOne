@@ -5,11 +5,9 @@ $room-height: 360px;
 $room-flex-margin: 15px;
 $room-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16),
 0 2px 4px rgba(0, 0, 0, 0.23);
-$room-chat-body-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px 0px,
-rgba(0, 0, 0, 0.1) 0px 1px 5px 0px;
 
 /*
-* === Chatroom specific style ===
+* === Room specific style ===
 */
 
 .room-widget {
@@ -32,32 +30,9 @@ rgba(0, 0, 0, 0.1) 0px 1px 5px 0px;
     justify-content: center;
 }
 
-.room-flex-container__filling {
+.room-flex-container__filler {
     width: $room-width + 2 * $room-margin;
     height: 0;
     margin-top: 0!important;
     margin-bottom: 0!important;
-}
-
-.room-chat-body {
-    box-shadow: $room-chat-body-shadow;
-}
-
-
-/*
-* === Message bubble ===
-*/
-
-$message-header-text-color: gray;
-$message-body-text-color: black;
-$message-base-font-size: 1.4rem;
-.message__header {
-    color: $message-header-text-color;
-    font-size: calc(#{$message-base-font-size} * 0.8);
-}
-
-.message__body {
-    color: $message-body-text-color;
-    font-size: $message-base-font-size;
-    word-wrap: break-word;
 }

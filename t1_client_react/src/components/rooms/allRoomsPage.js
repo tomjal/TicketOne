@@ -66,7 +66,7 @@ export class AllRoomsPage extends Component {
                 messages={localMessages} />;
             })}
             {emptyFlexElems.map((roomId, i) => {
-              return <div key={`filler-${i}`} className="room-flex-container__filling"></div>;
+              return <div key={`filler-${i}`} className="room-flex-container__filler"></div>;
             })}
           </div>
         }

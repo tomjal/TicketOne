@@ -16,18 +16,12 @@ export class RoomWidget extends Component {
     const { id, role, messages } = this.props;
     const isClientRoom = authManager.isClient(role);
 
+    const chatHeaderText = isClientRoom ? `Hello ${id}!` : `id: ${id}`;
     return (
       <div className="room-widget">
-        {isClientRoom &&
-          <div className="widget__header-text">
-            Hello {id} - how can we help you?
-          </div>
-        }
-        {!isClientRoom &&
-          <div className="widget__header-text">
-            id: {id}
-          </div>
-        }
+        <div className="widget__header">
+          {chatHeaderText}
+        </div>
         <div>
           {this.state.isOpened &&
             <ChatWindow

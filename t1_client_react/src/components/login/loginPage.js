@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'aphrodite';
-
-import { loginStyles } from './../../styles/inline/specificStyles';
-import { fontSizes } from './../../styles/inline/genericStyles';
 
 import { LoginWidget } from './loginWidget';
 
@@ -29,26 +25,31 @@ class LoginPage extends Component {
     this.props.mockEmployeeCallback()
   }
   render() {
-    const clientLoginWidgetBody = <input type="text" className={`${css(loginStyles.inputRow, fontSizes.bigger)} form-control`}
+    const clientLoginWidgetBody = <input type="text" className="input form-control"
       ref={(input) => { this.textInput = input; }} />;
-    const employeeLoginWidgetBody = <div className={`${css(loginStyles.inputRow)} input--full-width`}>Employee_TicketOne</div>;
+    const employeeLoginWidgetBody = <div className="input">Employee_TicketOne</div>;
 
+    const containerElemClass = "col-lg-6 col-md-6";
     return (
       <div className="container">
-        <LoginWidget
-          headerText="Log in as Client"
-          inputLabel="Client id:"
-          buttonLabel="Log in as TicketOne client"
-          actionCallback={this.clientSubmitAction}>
-          {clientLoginWidgetBody}
-        </LoginWidget>
-        <LoginWidget
-          headerText="Log in as Employee"
-          inputLabel="Employee id:"
-          buttonLabel="Log in as TicketOne employee"
-          actionCallback={this.employeeSubmitAction}>
-          {employeeLoginWidgetBody}
-        </LoginWidget>
+        <div className={containerElemClass}>
+          <LoginWidget
+            headerText="Log in as Client"
+            inputLabel="Client id:"
+            buttonLabel="Log in as TicketOne client"
+            actionCallback={this.clientSubmitAction}>
+            {clientLoginWidgetBody}
+          </LoginWidget>
+        </div>
+        <div className={containerElemClass}>
+          <LoginWidget
+            headerText="Log in as Employee"
+            inputLabel="Employee id:"
+            buttonLabel="Log in as TicketOne employee"
+            actionCallback={this.employeeSubmitAction}>
+            {employeeLoginWidgetBody}
+          </LoginWidget>
+        </div>
       </div>
     );
   }

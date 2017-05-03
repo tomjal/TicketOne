@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'aphrodite';
 
-import { chatStyles } from './../../../styles/inline/specificStyles';
+import { chatWindowStyles } from './../../../styles/inline/specificStyles';
 import { fontSizes } from './../../../styles/inline/genericStyles';
 
 import ChatList from './chatList';
@@ -30,10 +30,10 @@ export class ChatWindow extends Component {
     const { id, role, messages } = this.props;
 
     return (
-      <div className={css(chatStyles.window)}>
+      <div className={css(chatWindowStyles.chatWindow)}>
         <ChatList id={id} role={role} messages={messages} />
-        <div className={css(chatStyles.span)}>
-          <input type="text" className={`${css(chatStyles.box, fontSizes.bigger)} form-control`}
+        <div className={css(chatWindowStyles.actionBlock)}>
+          <input type="text" className={`${css(chatWindowStyles.chatInput, fontSizes.bigger)} form-control`}
             onKeyUp={this.handleKeyUp} ref={(input) => { this.chatInput = input; }} />
           <button className="btn btn-default" onClick={this.submitSendMessage}>
             Send message

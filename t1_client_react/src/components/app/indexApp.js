@@ -12,13 +12,13 @@ export class IndexApp extends Component {
     return (
       <div className="App">
         <div className="App__header">
-          TicketOne - customer support web application
+          TicketOne - web support app
         </div>
         <ModuleShell>
           <AuthGate />
         </ModuleShell>
         <div className="App__footer">
-          version {version} (F5 - refresh page to log out mock user)
+          v{version} (refresh page to log out mock user)
         </div>
       </div>
     );

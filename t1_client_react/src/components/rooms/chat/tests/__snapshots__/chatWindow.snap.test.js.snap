@@ -1,11 +1,11 @@
 exports[`test ChatWindow snapshot 1`] = `
 <div
-  className="window_ji3w17">
+  className="chatWindow_ji3w17">
   <ChatList />
   <div
-    className="span_1o6grbo">
+    className="actionBlock_1o6grbo">
     <input
-      className="box_1l6x5pd-o_O-bigger_tou7b3 form-control"
+      className="chatInput_r3suy5-o_O-bigger_tou7b3 form-control"
       onKeyUp={[Function]}
       type="text" />
     <button

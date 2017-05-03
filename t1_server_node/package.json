@@ -1,21 +1,24 @@
 {
   "name": "t1_server_node",
-  "version": "1.0.4",
-  "engines": {
-    "node": "7.9.0"
-  },
+  "version": "1.0.5",
   "description": "Mock server for TicketOne app",
+  "author": "Tomasz Jałoszyński",
+  "license": "GNU GPLv3",
+  "private": true,
   "main": "server.js",
+  "engines": {
+    "node": "7.10.0"
+  },
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
-  "author": "Tomasz Jałoszyński",
   "dependencies": {
     "body-parser": "~1.17.1",
     "bufferutil": "~3.0.0",
     "compression": "~1.6.2",
     "express": "~4.15.2",
+    "express-session": "^1.15.2",
     "logger": "~0.0.1",
     "utf-8-validate": "~3.0.1",
     "ws": "~2.3.1"

@@ -2,8 +2,8 @@ exports[`test RoomWidget snapshot 1`] = `
 <div
   className="room-widget">
   <div
-    className="widget__header-text">
-    id: 
+    className="widget__header">
+    id: undefined
   </div>
   <div>
     <ChatWindow

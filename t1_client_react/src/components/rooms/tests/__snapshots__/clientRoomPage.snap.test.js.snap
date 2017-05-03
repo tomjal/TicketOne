@@ -4,18 +4,18 @@ exports[`test ClientRoomPage snapshot 1`] = `
   <div
     className="room-widget">
     <div
-      className="widget__header-text">
-      id: 
+      className="widget__header">
+      id: undefined
     </div>
     <div>
       <div
-        className="window_ji3w17">
+        className="chatWindow_ji3w17">
         <div
-          className="list_y16a99 room-chat-body" />
+          className="listBlock_1deey0y" />
         <div
-          className="span_1o6grbo">
+          className="actionBlock_1o6grbo">
           <input
-            className="box_1l6x5pd-o_O-bigger_tou7b3 form-control"
+            className="chatInput_r3suy5-o_O-bigger_tou7b3 form-control"
             onKeyUp={[Function]}
             type="text" />
           <button

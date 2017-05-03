@@ -1,4 +1,4 @@
 exports[`test ChatList snapshot 1`] = `
 <div
-  className="list_y16a99 room-chat-body" />
+  className="listBlock_1deey0y" />
 `;

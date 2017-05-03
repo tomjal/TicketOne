@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import { css } from 'aphrodite';
 
-import { chatStyles } from './../../../styles/inline/specificStyles';
+import { chatBubbleStyles } from './../../../styles/inline/specificStyles';
 
 export class ChatBubble extends Component {
 
   render() {
     const { isMe, message, date } = this.props;
     const bubbleClass = isMe ?
-      css(chatStyles.bubbleBase, chatStyles.bubbleRight)
-      : css(chatStyles.bubbleBase, chatStyles.bubbleLeft);
+      css(chatBubbleStyles.chatBubbleBase, chatBubbleStyles.chatBubbleRight)
+      : css(chatBubbleStyles.chatBubbleBase, chatBubbleStyles.chatBubbleLeft);
 
     return (
       <div className={bubbleClass}>
-        <div className='message__header'>
+        <div className={css(chatBubbleStyles.chatMessageHeader)}>
           {!isMe &&
             <span>{message.author.id} - </span>}
           {date}:
         </div>
-        <div className='message__body'>
+        <div className={css(chatBubbleStyles.chatMessageContent)}>
           {message.body}
         </div>
       </div>
