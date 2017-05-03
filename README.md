@@ -14,7 +14,7 @@ Recommended IDE: Visual Studio Code / IntelliJ Idea / Visual Studio 2017
 
 [Deployed with Node.js server mock on Heroku ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow server!)
 
-### Client NPM scripts
+##### Client NPM scripts
 
 Folder '*t1_client_react*'
 
