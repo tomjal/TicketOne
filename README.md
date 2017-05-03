@@ -18,15 +18,15 @@ Recommended IDE: Visual Studio Code / IntelliJ Idea / Visual Studio 2017
 
 Folder '*t1_client_react*'
 
-'*yarn start*' - run development mode
+* '*yarn start*' - run development mode
 
-'*yarn build*' - create production bundle
+* '*yarn build*' - create production bundle
 
-'*yarn test*' - run test watch
+* '*yarn test*' - run test watch
 
-'*yarn test-without-dom*' - run test watch without DOM
+* '*yarn test-without-dom*' - run test watch without DOM
 
-'*yarn coverage*' - analyze test code coverage (report generated to ./coverage/lcov-report/index.html)
+* '*yarn coverage*' - analyze test code coverage (report generated to ./coverage/lcov-report/index.html)
 
 ### To run locally with Node.js mock server:
 
