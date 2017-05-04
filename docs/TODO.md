@@ -1,6 +1,6 @@
 ### Client:
 1. Make chat fully responsive (media queries redesign)
-2. Move to styled-components with theme support
+2. Fully move to styled-components with theme support
 3. Introduce Redux-Saga
 
 ### Design:
@@ -22,5 +22,5 @@
 3. Scripts for easy deployment
 
 ### Docs:
-1. Communication/Sequence diagrams
+1. UML diagrams
 2. Add Spring Boot Actuator
