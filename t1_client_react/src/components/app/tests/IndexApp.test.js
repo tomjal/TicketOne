@@ -5,6 +5,6 @@ import { IndexApp } from './../indexApp';
 
 describe('IndexApp', () => {
   it('renders without crashing', () => {
-    shallow(<IndexApp />)
+    const wrapper = shallow(<IndexApp />);
   });
 })

@@ -9,7 +9,7 @@ export function getAllMessages() {
         .then(data => {
             dispatch({ type: messagesActions.GET_MESSAGES_ALL.SUCCESS, data });
         })
-        .catch(err => dispatchFetchError(err, dispatch));
+        .catch(err => dispatchFetchError(err, null, dispatch));
 }
 
 export function getMessagesByRoom(channelId) {
@@ -19,7 +19,7 @@ export function getMessagesByRoom(channelId) {
         .then(data => {
             dispatch({ type: messagesActions.GET_MESSAGES_BY_ROOM.SUCCESS, data });
         })
-        .catch(err => dispatchFetchError(err, dispatch));
+        .catch(err => dispatchFetchError(err, null, dispatch));
 }
 
 export function sendMessageToRoom(message, channelId, senderRole, senderId) {
@@ -29,5 +29,5 @@ export function sendMessageToRoom(message, channelId, senderRole, senderId) {
         .then(data => {
             dispatch({ type: messagesActions.POST_MESSAGE.SUCCESS, data });
         })
-        .catch(err => dispatchFetchError(err, dispatch));
+        .catch(err => dispatchFetchError(err, null, dispatch));
 }

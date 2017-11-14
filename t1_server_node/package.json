@@ -6,21 +6,18 @@
   "license": "GNU GPLv3",
   "private": true,
   "main": "server.js",
-  "engines": {
-    "node": "7.10.0"
-  },
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
   "dependencies": {
-    "body-parser": "~1.17.1",
-    "bufferutil": "~3.0.0",
-    "compression": "~1.6.2",
-    "express": "~4.15.2",
-    "express-session": "^1.15.2",
+    "body-parser": "~1.18.2",
+    "bufferutil": "~3.0.3",
+    "compression": "~1.7.1",
+    "express": "~4.16.2",
+    "express-session": "^1.15.6",
     "logger": "~0.0.1",
-    "utf-8-validate": "~3.0.1",
-    "ws": "~2.3.1"
+    "utf-8-validate": "~3.0.4",
+    "ws": "~3.3.1"
   }
 }

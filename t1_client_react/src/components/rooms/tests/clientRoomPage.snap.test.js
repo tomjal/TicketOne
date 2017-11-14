@@ -1,11 +1,12 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import { shallowToJson } from 'enzyme-to-json';
 
 import { ClientRoomPage } from './../clientRoomPage';
 
 test('ClientRoomPage snapshot', () => {
-  const props = { getMessagesByRoom: () => null };
-  const tree = renderer.create(<ClientRoomPage {...props} />).toJSON();
+  const props = { getMessagesByRoom: jest.fn() };
+  const wrap = shallow(<ClientRoomPage {...props} />);
 
-  expect(tree).toMatchSnapshot();
+  expect(shallowToJson(wrap)).toMatchSnapshot();
 });

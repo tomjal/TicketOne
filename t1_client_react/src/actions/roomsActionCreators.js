@@ -9,7 +9,7 @@ export function getAllRooms() {
         .then(data => {
             dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data });
         })
-        .catch(err => dispatchFetchError(err, dispatch));
+        .catch(err => dispatchFetchError(err, null, dispatch));
 }
 
 export function getClientRoom() {
@@ -19,5 +19,5 @@ export function getClientRoom() {
         .then(data => {
             dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data });
         })
-        .catch(err => dispatchFetchError(err, dispatch));
+        .catch(err => dispatchFetchError(err, null, dispatch));
 }

@@ -1,10 +1,12 @@
 :construction: WORK IN PROGRESS (partial TODO in docs folder) :construction:
 
+v1.0.6
+
 ### TicketOne client
 
-1. Client - React v15.5 / React-Router v4.1 / Redux v3.6
+1. Client - React v16 / React-Router v4 / Redux v3
 
-2. Node.js server mock - Express v4.15
+2. Node.js server mock - Express v4
 
 3. Java server - Spring Boot v1.5 (+ H2, JPA, WebSocket, AspectJ)
 
