@@ -47,3 +47,9 @@ Folder '*t1_client_react*'
 2. Run '*mvn clean package*' and then '*mvn spring-boot:run*' in folder '*t1-server-java*'
 
 Swagger enabled on '*/swagger-ui.html*'
+
+## To run locally with ASP .NET server:
+
+1. Make sure your have .NET Core 2.0 installed properly
+
+2. Run 'dotnet restore' and then 'dotnet run' in folder 't1-server-dotnet'
