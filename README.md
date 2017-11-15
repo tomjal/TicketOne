@@ -48,7 +48,7 @@ Folder '*t1_client_react*'
 
 Swagger enabled on '*/swagger-ui.html*'
 
-## To run locally with ASP .NET server:
+### To run locally with ASP .NET server (only info page available):
 
 1. Make sure your have .NET Core 2.0 installed properly
 
