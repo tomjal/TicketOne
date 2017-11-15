@@ -10,7 +10,7 @@ v1.0.6
 
 3. Java server - Spring Boot v1.5 (+ H2, JPA, WebSocket, AspectJ)
 
-4. .NET server - .NET Core 2.0 (+ Nancy) // for comparision with Java "developer experience"
+4. .NET server - ASP .NET Core 2.0 API
 
 Recommended IDE: Visual Studio Code / IntelliJ Idea / Visual Studio 2017
 
