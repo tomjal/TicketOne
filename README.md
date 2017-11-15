@@ -1,6 +1,6 @@
 :construction: WORK IN PROGRESS (partial TODO in docs folder) :construction:
 
-v1.0.6
+Current client version: 1.0.6
 
 ### TicketOne client
 
