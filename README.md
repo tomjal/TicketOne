@@ -1,6 +1,6 @@
 :construction: WORK IN PROGRESS (partial TODO in docs folder) :construction:
 
-v1.0.6
+Current client version: 1.0.6
 
 ### TicketOne client
 
@@ -10,11 +10,11 @@ v1.0.6
 
 3. Java server - Spring Boot v1.5 (+ H2, JPA, WebSocket, AspectJ)
 
-4. .NET server - .NET Core 2.0 (+ Nancy) // for comparision with Java "developer experience"
+4. .NET server - ASP .NET Core 2.0 API
 
 Recommended IDE: Visual Studio Code / IntelliJ Idea / Visual Studio 2017
 
-[Deployed with Node.js server mock on Heroku ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow server!)
+[ v1.0.5 (React 15) Deployed with Node.js server mock on Heroku ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow server!)
 
 ##### Client NPM scripts
 
@@ -47,3 +47,9 @@ Folder '*t1_client_react*'
 2. Run '*mvn clean package*' and then '*mvn spring-boot:run*' in folder '*t1-server-java*'
 
 Swagger enabled on '*/swagger-ui.html*'
+
+### To run locally with ASP .NET server (only info page available):
+
+1. Make sure your have .NET Core 2.0 installed properly
+
+2. Run 'dotnet restore' and then 'dotnet run' in folder 't1-server-dotnet'
