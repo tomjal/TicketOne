@@ -4,7 +4,7 @@ import { history } from './../../../store/createHistory';
 
 // eslint-disable-next-line
 import DashboardPage from './../../dashboard/dashboardPage';
-import AllRoomsPage from './../../rooms/allRoomsPage';
+import EmployeeRoomsPage from './../../rooms/employeeRoomsPage';
 
 const EmployeeRouting = () => (
   <Router history={history}>
@@ -12,7 +12,7 @@ const EmployeeRouting = () => (
       {/*<RoutingMenu />*/}
       {/*<Redirect to='/' />*/}
       {/*<Route exact path='/' component={DashboardPage} />*/}
-      <Route path='/' component={AllRoomsPage} />
+      <Route path='/' component={EmployeeRoomsPage} />
     </div>
   </Router>
 );

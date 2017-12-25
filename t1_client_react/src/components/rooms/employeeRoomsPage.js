@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getAllRooms } from './../../actions/roomsActionCreators';
+import { getAllOpenRoomsIds } from './../../actions/roomsActionCreators';
 import { getAllMessages, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
 import RoomWidget from './roomWidget';
@@ -20,18 +20,19 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getAllRooms,
+    getAllOpenRoomsIds,
     getAllMessages,
     sendMessageToRoom
   }, dispatch);
 };
 
-export class AllRoomsPage extends Component {
+export class EmployeeRoomsPage extends Component {
   constructor(props) {
     super(props)
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
   }
   componentDidMount() {
+    this.props.getAllOpenRoomsIds();
     //this.props.getAllRooms();
     //this.props.getAllMessages();
   }
@@ -78,4 +79,4 @@ export class AllRoomsPage extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AllRoomsPage);
+)(EmployeeRoomsPage);

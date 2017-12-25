@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getClientRooms } from './../../actions/roomsActionCreators';
+import { createClientRoom } from './../../actions/roomsActionCreators';
 import { getMessagesByRoom, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
 import RoomWidget from './roomWidget';
@@ -18,9 +18,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getClientRooms,
-    getMessagesByRoom,
-    sendMessageToRoom
+    createClientRoom
   }, dispatch);
 };
 
@@ -39,6 +37,7 @@ export class ClientRoomPage extends Component {
     console.log("createRoomCallback")
     console.log(roomTopic)
     console.log(this.props.id)
+    this.props.createClientRoom(this.props.id, roomTopic);
     //
   }
   render() {

@@ -51,6 +51,7 @@ function getClientRoomDetails(clientId, roomId) {
         buildReqOptions(httpVerbs.GET));
 }
 
+//todo
 function postClientRoom(clientId, roomTopic) {
     const newRoomData = { clientId: clientId, roomTopic: roomTopic };
     return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + "new",

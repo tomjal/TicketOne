@@ -2,8 +2,8 @@ import { checkIfFetchStatusOk, dispatchFetchError } from "./actionFetchHelpers";
 import { apiSchema } from "./../api/apiSchema";
 import { roomsActions } from "./actionTypes";
 
-export function getAllRooms() {
-    return (dispatch) => apiSchema.rooms.getAll()
+export function getAllOpenRoomsIds() {
+    return (dispatch) => apiSchema.rooms.getAllOpenRoomsIds()
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())
         .then(data => {
@@ -12,12 +12,24 @@ export function getAllRooms() {
         .catch(err => dispatchFetchError(err, null, dispatch));
 }
 
-export function getClientRooms() {
-    return (dispatch) => apiSchema.rooms.getClient()
+export function getClientRooms(clientId) {
+    return (dispatch) => apiSchema.rooms.getClientRoomsIds(clientId)
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())
         .then(data => {
-            dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data });
+            console.log("getClientRooms(clientId)")
+            console.log(clientId)
+            //dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data });
+        })
+        .catch(err => dispatchFetchError(err, null, dispatch));
+}
+
+export function createClientRoom(clientId, roomTopic) {
+    return (dispatch) => apiSchema.rooms.postClientRoom(clientId, roomTopic)
+        .then(res => checkIfFetchStatusOk(res))
+        .then(res => res.json())
+        .then(data => {
+            dispatch(getClientRooms(clientId));
         })
         .catch(err => dispatchFetchError(err, null, dispatch));
 }
