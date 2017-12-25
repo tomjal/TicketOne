@@ -3,6 +3,7 @@ import { apiSchema } from "./../api/apiSchema";
 import { roomsActions } from "./actionTypes";
 
 export function getAllOpenRoomsIds() {
+    console.log("getAllOpenRoomsIds()")
     return (dispatch) => apiSchema.rooms.getAllOpenRoomsIds()
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())

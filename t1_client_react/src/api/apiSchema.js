@@ -39,6 +39,7 @@ function getRoomsStats() {
 }
 
 function getAllOpenRoomsIds() {
+    console.log("fetch getAllOpenRoomsIds")
     return fetch(apiPrefix + apiURIs.ROOMS + "/open", buildReqOptions(httpVerbs.GET));
 }
 

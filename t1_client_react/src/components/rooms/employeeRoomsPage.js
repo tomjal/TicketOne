@@ -50,7 +50,7 @@ export class EmployeeRoomsPage extends Component {
   render() {
     const { role, rooms, messages } = this.props;
     const emptyFlexElems = this.getEmptyFlexFillers(MAX_FLEX_ELEMS_IN_ROW, rooms.length);
-
+    console.log("employee render is working");
     return (
       <div>
         {rooms.length !== 0 &&

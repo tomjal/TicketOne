@@ -78,8 +78,8 @@ roomsController
             inMemoryStorage.updateSolvedSatus(roomId, isSolved)
             res.status(200).json({ status: CONSTS.STATUS.OK })
             // inform subscribers
-            //console.log(roomId)
-            //wsService.broadcastNewRoom(roomId)
+            console.log(roomId)
+            wsService.broadcastNewRoom(roomId)
         } catch (e) {
             handleError(e)
         }

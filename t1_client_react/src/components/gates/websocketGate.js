@@ -28,6 +28,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getMessagesByRoom,
+    getAllOpenRoomsIds,
     //getAllRooms,
     getAllMessages,
     notifyAboutNewRoom
@@ -81,7 +82,7 @@ class WebsocketGate extends Component {
   onNewRoomAction(data) {
     if (authManager.isEmployee(this.props.role)) {
       console.log("NEW ROOOM")
-      getAllOpenRoomsIds();
+      this.props.getAllOpenRoomsIds();
       //getAllOpenRoomsIds
       //messages getByRooms
       //this.props.notifyAboutNewRoom(data.split(":")[1]);
