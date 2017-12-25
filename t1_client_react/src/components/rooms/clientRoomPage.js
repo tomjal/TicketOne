@@ -30,27 +30,39 @@ export class ClientRoomPage extends Component {
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
   }
   componentDidMount() {
-    this.props.getMessagesByRoom(this.props.id);
+    //this.props.getMessagesByRoom(this.props.id);
   }
   sendMessageCallback(message, id) {
     this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
+  }
+  createRoomCallback = (roomTopic) => {
+    console.log("createRoomCallback")
+    console.log(roomTopic)
+    console.log(this.props.id)
+    //
   }
   render() {
     //TRANSFORM TO LIST
     //isOpened redux
     //create channel box
+    const fakeRooms = [];
     const { id, role, messages } = this.props;
     return (
       <div className="room-flex-container">
-
-        <RoomWidget
-          isOpened={true}
-          id={id}
-          role={role}
-          sendMessageCallback={this.sendMessageCallback}
-          messages={messages} />
+        {fakeRooms.map((roomId, i) => {
+          let localMessages = [];
+          if (messages[roomId]) {
+            localMessages = messages[roomId];
+          }
+          return <RoomWidget key={i}
+            isOpened={true}
+            id={roomId}
+            role={role}
+            sendMessageCallback={this.sendMessageCallback}
+            messages={localMessages} />;
+        })}
         <CreateNewRoomWidget
-          createRoomCallback={null} />
+          createRoomCallback={this.createRoomCallback} />
       </div>
     );
   }

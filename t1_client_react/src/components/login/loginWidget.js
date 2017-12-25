@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export class LoginWidget extends Component {
   render() {
-    const { children, headerText, inputLabel, buttonLabel, actionCallback } = this.props;
+    const { children, headerText, inputLabel } = this.props;
     return (
       <div className="generic-widget">
         <div className="row widget__header">

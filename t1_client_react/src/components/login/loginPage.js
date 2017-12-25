@@ -8,32 +8,27 @@ const propTypes = {
 };
 
 class LoginPage extends Component {
-  constructor() {
-    super();
-    this.state = { login: '', pass: '' };
-    this.clientSubmitAction = this.clientSubmitAction.bind(this);
-    this.employeeSubmitAction = this.employeeSubmitAction.bind(this);
-  }
-  submitAction() {
+  submitAction = () => {
     this.props.authCallback();
   }
-  clientSubmitAction() {
-    var id = this.textInput.value ? this.textInput.value : 'Default Client';
-    this.props.mockClientCallback(id);
+  clientSubmitAction1 = () => {
+    const fakeId1 = 101;
+    this.props.mockClientCallback(fakeId1);
   }
-  employeeSubmitAction() {
+  clientSubmitAction2 = () => {
+    const fakeId2 = 102;
+    this.props.mockClientCallback(fakeId2);
+  }
+  employeeSubmitAction = () => {
     this.props.mockEmployeeCallback()
   }
   render() {
-    //const clientLoginWidgetBody = <input type="text" className="input form-control"
-    //  ref={(input) => { this.textInput = input; }} />;
     const clientLoginWidgetBody = <div>
-      <button className="btn btn-default" onClick={null}>login as fake client1</button>
-      <button className="btn btn-default" onClick={null}>login as fake client2</button>
+      <button className="btn btn-default" onClick={this.clientSubmitAction1}>login as fake client1</button>
+      <button className="btn btn-default" onClick={this.clientSubmitAction2}>login as fake client2</button>
     </div>;
-    //const employeeLoginWidgetBody = <div className="input">Employee_TicketOne</div>;
     const employeeLoginWidgetBody = <div>
-      <button className="btn btn-default" onClick={null}>login as fake employee1</button>
+      <button className="btn btn-default" onClick={this.employeeSubmitAction}>login as fake employee1</button>
     </div>;
 
     const containerElemClass = "col-lg-6 col-md-6";
