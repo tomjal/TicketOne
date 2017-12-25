@@ -44,7 +44,8 @@ class WebsocketGate extends Component {
   }
   componentDidUpdate() {
     if (authManager.isClient(this.props.role)) {
-      websocketManager.createChannel(this.props.role, this.props.id);
+      //to redux on create channel websocketManager.createChannel(this.props.role, this.props.id);
+      //create topic?
     }
   }
   initGate(addr) {
@@ -70,17 +71,21 @@ class WebsocketGate extends Component {
   }
   onNewMessageAction(data) {
     if (authManager.isClient(this.props.role)) {
-      this.props.getMessagesByRoom(data.split(":")[1]);
+      ////this.props.getMessagesByRoom(data.split(":")[1]);
+      //messages getByRooms
     }
     if (authManager.isEmployee(this.props.role)) {
-      this.props.getAllMessages()
+      //messages getByRooms
     }
   }
   onNewRoomAction(data) {
     if (authManager.isEmployee(this.props.role)) {
-      this.props.getAllRooms();
-      this.props.getAllMessages();
-      this.props.notifyAboutNewRoom(data.split(":")[1]);
+      //getAllOpenRoomsIds
+      //messages getByRooms
+      //this.props.notifyAboutNewRoom(data.split(":")[1]);
+      
+      ////this.props.getAllRooms();
+      ////this.props.getAllMessages();
     }
   }
   onClose(e) {

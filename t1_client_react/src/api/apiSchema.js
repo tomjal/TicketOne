@@ -9,6 +9,11 @@ const apiURIs = {
     AUTH: "/login"
 }
 
+const apiWords = {
+    ROOM: "/room/",
+    client: "/client/"
+}
+
 function getAuthContext() {
     return fetch(apiPrefix + apiURIs.CONTEXT, buildReqOptions(httpVerbs.GET));
 }
@@ -18,27 +23,44 @@ function postAuthData(login, pass) {
     return fetch(apiPrefix + apiURIs.AUTH, buildReqOptions(httpVerbs.POST, authObject));
 }
 
-function getMessagesAll() {
-    return fetch(apiPrefix + apiURIs.ROOMS + apiURIs.MESSAGES, buildReqOptions(httpVerbs.GET));
+function getMessagesByRooms(roomsIdsList) {
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + apiURIs.MESSAGES,
+        buildReqOptions(httpVerbs.GET, { roomsIdsList: roomsIdsList }));
 }
 
-function getMessagesByRoom(channelId) {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES,
+function postMessageToRoom(message, roomId, senderRole, senderId) {
+    const messageData = { message: message, senderRole: senderRole, senderId: senderId };
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + roomId + apiURIs.MESSAGES,
+        buildReqOptions(httpVerbs.POST, messageData));
+}
+
+function getRoomsStats() {
+    return fetch(apiPrefix + apiURIs.ROOMS + "/stats", buildReqOptions(httpVerbs.GET));
+}
+
+function getAllOpenRoomsIds() {
+    return fetch(apiPrefix + apiURIs.ROOMS + "/open", buildReqOptions(httpVerbs.GET));
+}
+
+function getClientRoomsIds(clientId) {
+    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + clientId, buildReqOptions(httpVerbs.GET));
+}
+
+function getClientRoomDetails(clientId, roomId) {
+    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + clientId + apiWords.ROOM + roomId,
         buildReqOptions(httpVerbs.GET));
 }
 
-function postMessageToRoom(message, channelId, senderRole, senderId) {
-    const data = { message: message, senderRole: senderRole, senderId: senderId };
-    return fetch(apiPrefix + apiURIs.ROOMS + "/" + channelId + apiURIs.MESSAGES,
-        buildReqOptions(httpVerbs.POST, data));
+function postClientRoom(clientId, roomTopic) {
+    const newRoomData = { clientId: clientId, roomTopic: roomTopic };
+    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + "new",
+        buildReqOptions(httpVerbs.POST, newRoomData));
 }
 
-function getRoomsAll() {
-    return fetch(apiPrefix + apiURIs.ROOMS, buildReqOptions(httpVerbs.GET));
-}
-
-function getClientRoom() {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/client", buildReqOptions(httpVerbs.GET));
+function putClientRoomSolved(clientId, roomId, isSolved) {
+    const roomSolvedData = { solved: isSolved };
+    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + clientId + apiWords.ROOM + roomId,
+        buildReqOptions(httpVerbs.PUT, roomSolvedData));
 }
 
 export const apiSchema = {
@@ -49,12 +71,14 @@ export const apiSchema = {
         post: postAuthData
     },
     messages: {
-        getAll: getMessagesAll,
-        getByRoom: getMessagesByRoom,
+        getByRooms: getMessagesByRooms,
         post: postMessageToRoom
     },
     rooms: {
-        getAll: getRoomsAll,
-        getClient: getClientRoom
+        getRoomsStats: getRoomsStats,
+        getAllOpenRoomsIds: getAllOpenRoomsIds,
+        getClientRoomsIds: getClientRoomsIds,
+        postClientRoom: postClientRoom,
+        putClientRoomSolved: putClientRoomSolved
     }
 }

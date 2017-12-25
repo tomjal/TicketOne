@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getClientRoom } from './../../actions/roomsActionCreators';
+import { getClientRooms } from './../../actions/roomsActionCreators';
 import { getMessagesByRoom, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
 import RoomWidget from './roomWidget';
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getClientRoom,
+    getClientRooms,
     getMessagesByRoom,
     sendMessageToRoom
   }, dispatch);
@@ -35,14 +35,21 @@ export class ClientRoomPage extends Component {
     this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
   }
   render() {
+    //TRANSFORM TO LIST
+    //isOpened redux
+    //create channel box
     const { id, role, messages } = this.props;
     return (
       <div className="room-flex-container">
+      
         <RoomWidget
+          isOpened={true}
           id={id}
           role={role}
           sendMessageCallback={this.sendMessageCallback}
           messages={messages} />
+        <NewRoomWidget
+          createRoomCallback={null} />
       </div>
     );
   }

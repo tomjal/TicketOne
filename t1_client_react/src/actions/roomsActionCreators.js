@@ -12,7 +12,7 @@ export function getAllRooms() {
         .catch(err => dispatchFetchError(err, null, dispatch));
 }
 
-export function getClientRoom() {
+export function getClientRooms() {
     return (dispatch) => apiSchema.rooms.getClient()
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())
