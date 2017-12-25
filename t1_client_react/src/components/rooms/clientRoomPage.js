@@ -6,6 +6,7 @@ import { getClientRooms } from './../../actions/roomsActionCreators';
 import { getMessagesByRoom, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
 import RoomWidget from './roomWidget';
+import CreateNewRoomWidget from './createNewRoomWidget';
 
 const mapStateToProps = (state) => {
   return {
@@ -41,14 +42,14 @@ export class ClientRoomPage extends Component {
     const { id, role, messages } = this.props;
     return (
       <div className="room-flex-container">
-      
+
         <RoomWidget
           isOpened={true}
           id={id}
           role={role}
           sendMessageCallback={this.sendMessageCallback}
           messages={messages} />
-        <NewRoomWidget
+        <CreateNewRoomWidget
           createRoomCallback={null} />
       </div>
     );

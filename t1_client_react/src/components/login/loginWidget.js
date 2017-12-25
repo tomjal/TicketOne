@@ -15,11 +15,6 @@ export class LoginWidget extends Component {
             </div>
             {children}
           </div>
-          <div>
-            <button className="btn btn-default" onClick={actionCallback}>
-              {buttonLabel}
-            </button>
-          </div>
         </div>
       </div>
     );

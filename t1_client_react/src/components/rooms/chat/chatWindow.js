@@ -8,6 +8,7 @@ import ChatList from './chatList';
 
 const KEY_CODES = { ENTER: 13 };
 
+//resolved unresolved and close
 export class ChatWindow extends Component {
   constructor() {
     super();
@@ -31,6 +32,7 @@ export class ChatWindow extends Component {
 
     return (
       <div className={css(chatWindowStyles.chatWindow)}>
+
         <ChatList id={id} role={role} messages={messages} />
         <div className={css(chatWindowStyles.actionBlock)}>
           <input type="text" className={`${css(chatWindowStyles.chatInput, fontSizes.bigger)} form-control`}
@@ -38,6 +40,9 @@ export class ChatWindow extends Component {
           <button className="btn btn-default" onClick={this.submitSendMessage}>
             Send message
           </button>
+          <div>
+            <button>set as resolved</button> <button>set as unresolved</button>
+          </div>
         </div>
       </div>
     );

@@ -25,9 +25,16 @@ class LoginPage extends Component {
     this.props.mockEmployeeCallback()
   }
   render() {
-    const clientLoginWidgetBody = <input type="text" className="input form-control"
-      ref={(input) => { this.textInput = input; }} />;
-    const employeeLoginWidgetBody = <div className="input">Employee_TicketOne</div>;
+    //const clientLoginWidgetBody = <input type="text" className="input form-control"
+    //  ref={(input) => { this.textInput = input; }} />;
+    const clientLoginWidgetBody = <div>
+      <button className="btn btn-default" onClick={null}>login as fake client1</button>
+      <button className="btn btn-default" onClick={null}>login as fake client2</button>
+    </div>;
+    //const employeeLoginWidgetBody = <div className="input">Employee_TicketOne</div>;
+    const employeeLoginWidgetBody = <div>
+      <button className="btn btn-default" onClick={null}>login as fake employee1</button>
+    </div>;
 
     const containerElemClass = "col-lg-6 col-md-6";
     return (

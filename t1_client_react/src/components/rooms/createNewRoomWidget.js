@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class NewRoomWidget extends Component {
+export class CreateNewRoomWidget extends Component {
   constructor() {
     super();
   }
@@ -21,4 +21,4 @@ export class NewRoomWidget extends Component {
   }
 }
 
-export default NewRoomWidget;
+export default CreateNewRoomWidget;

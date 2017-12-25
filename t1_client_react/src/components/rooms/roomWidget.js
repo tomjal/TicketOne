@@ -24,10 +24,12 @@ export class RoomWidget extends Component {
         </div>
         <div>
           {this.state.isOpened &&
-            <ChatWindow
-              role={role}
-              sendMessage={this.sendMessage}
-              messages={messages} />}
+           
+              <ChatWindow
+                role={role}
+                sendMessage={this.sendMessage}
+                messages={messages} />
+          }
         </div>
       </div>
     );
