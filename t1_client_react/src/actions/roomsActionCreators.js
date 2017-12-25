@@ -19,13 +19,34 @@ export function getClientRooms(clientId) {
         .then(data => {
             console.log("getClientRooms(clientId)")
             console.log(clientId)
-            //dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data });
+            //TODO
+            dispatch({ type: roomsActions.GET_ROOMS_ALL.SUCCESS, data });
         })
         .catch(err => dispatchFetchError(err, null, dispatch));
 }
 
 export function createClientRoom(clientId, roomTopic) {
     return (dispatch) => apiSchema.rooms.postClientRoom(clientId, roomTopic)
+        .then(res => checkIfFetchStatusOk(res))
+        .then(res => res.json())
+        .then(data => {
+            dispatch(getClientRooms(clientId));
+        })
+        .catch(err => dispatchFetchError(err, null, dispatch));
+}
+
+export function markRoomAsResolved(clientId, roomId) {
+    return (dispatch) => apiSchema.rooms.putMarkRoomAsResolved(roomId)
+        .then(res => checkIfFetchStatusOk(res))
+        .then(res => res.json())
+        .then(data => {
+            dispatch(getClientRooms(clientId));
+        })
+        .catch(err => dispatchFetchError(err, null, dispatch));
+}
+
+export function markRoomAsUnresolved(clientId, roomId) {
+    return (dispatch) => apiSchema.rooms.putMarkRoomAsUnresolved(roomId)
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())
         .then(data => {

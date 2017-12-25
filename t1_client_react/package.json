@@ -4,8 +4,6 @@
   "description": "TicketOne client app",
   "author": "Tomasz Jałoszyński",
   "license": "GNU GPLv3",
-  "private": true,
-  "proxy": "http://localhost:8080",
   "dependencies": {
     "aphrodite": "~1.2.5",
     "bootstrap": "~3.3.7",
@@ -30,7 +28,7 @@
     "fetch-mock": "~5.13.1",
     "node-sass": "~4.7.2",
     "npm-run-all": "~4.1.2",
-    "react-scripts": "~1.0.17",
+    "react-scripts": "1.0.14",
     "react-test-renderer": "~16.2.0",
     "redux-devtools": "~3.4.1",
     "redux-logger": "~3.0.6",
@@ -45,5 +43,6 @@
     "test-without-dom": "react-scripts test",
     "test": "react-scripts test --env=jsdom",
     "coverage": "npm test -- --coverage"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }

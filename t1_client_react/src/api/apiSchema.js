@@ -1,6 +1,6 @@
 import { httpVerbs, buildReqOptions } from "./apiFetchHelpers";
 
-const apiPrefix = "/api/v1";
+const apiPrefix = "http://localhost:8080/api/v1";
 
 const apiURIs = {
     MESSAGES: "/messages",
@@ -54,13 +54,19 @@ function getClientRoomDetails(clientId, roomId) {
 //todo
 function postClientRoom(clientId, roomTopic) {
     const newRoomData = { clientId: clientId, roomTopic: roomTopic };
-    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + "new",
+    return fetch(apiPrefix + apiURIs.ROOMS + "/new",
         buildReqOptions(httpVerbs.POST, newRoomData));
 }
 
-function putClientRoomSolved(clientId, roomId, isSolved) {
-    const roomSolvedData = { solved: isSolved };
-    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + clientId + apiWords.ROOM + roomId,
+function putMarkRoomAsResolved(roomId) {
+    const roomSolvedData = { solved: true };
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + roomId,
+        buildReqOptions(httpVerbs.PUT, roomSolvedData));
+}
+
+function putMarkRoomAsUnresolved(roomId) {
+    const roomSolvedData = { solved: false };
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + roomId,
         buildReqOptions(httpVerbs.PUT, roomSolvedData));
 }
 
@@ -80,6 +86,7 @@ export const apiSchema = {
         getAllOpenRoomsIds: getAllOpenRoomsIds,
         getClientRoomsIds: getClientRoomsIds,
         postClientRoom: postClientRoom,
-        putClientRoomSolved: putClientRoomSolved
+        putMarkRoomAsResolved: putMarkRoomAsResolved,
+        putMarkRoomAsUnresolved: putMarkRoomAsUnresolved
     }
 }

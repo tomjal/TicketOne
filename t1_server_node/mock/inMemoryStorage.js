@@ -3,11 +3,43 @@ class InMemoryStorage {
         this.innerMap = {};
     }
     getAllRooms() {
-        return Object.keys(this.innerMap);
+        const newMap = Object.keys(this.innerMap);
+        const all = [];
+        newMap.forEach(roomId => {
+            all.push(this.innerMap[roomId])
+        })
+        return all;
     }
-    addRoom(roomId) {
-        const newRoom = { subscribers: [], messages: [] };
-        this.innerMap[roomId] = newRoom;
+    getAllOpenRooms() {
+        const newMap = Object.keys(this.innerMap);
+        const areOpened = [];
+        newMap.forEach(roomId => {
+            if (this.innerMap[roomId].isOpened == true)
+                areOpened.push(this.innerMap[roomId])
+        })
+        return areOpened;
+    }
+    getAllClientsRooms(clientId) {
+        const newMap = Object.keys(this.innerMap);
+        console.log(newMap)
+        const listFilteredByClientId = [];
+        newMap.forEach(roomId => {
+            if (this.innerMap[roomId].clientId == clientId)
+                listFilteredByClientId.push(this.innerMap[roomId])
+        })
+        return listFilteredByClientId
+    }
+    addRoom(newRoom) {
+        console.log(newRoom)
+        this.innerMap[newRoom.id] = newRoom;
+        console.log(this.innerMap)
+    }
+    updateSolvedSatus(roomId, solved) {
+        this.innerMap[roomId].isSolved = solved;
+        this.markRoomAsClosed(roomId);
+    }
+    markRoomAsClosed(roomId) {
+        this.innerMap[roomId].isOpened = false;
     }
     hasRoom(roomId) {
         return this.innerMap[roomId] ? true : false;

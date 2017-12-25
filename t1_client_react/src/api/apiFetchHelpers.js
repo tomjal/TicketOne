@@ -19,7 +19,7 @@ export function buildReqOptions(httpVerb, body) {
     let requestOptions = {
         method: httpVerb,
         headers: headers,
-        credentials: 'include',
+        //credentials: 'include',
         mode: 'cors',
         cache: 'reload',
         redirect: 'follow'

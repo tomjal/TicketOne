@@ -34,7 +34,6 @@ $widget-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16),
 
 .generic-widget {
     input,
-    button,
     .input {
         width: $widget-elem-width;
     }
@@ -50,8 +49,15 @@ $widget-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16),
 }
 
 .widget__header {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     white-space: nowrap;
+}
+
+.widget__header-menu {
+    .btn {
+        margin: 5px 5px 5px 5px;
+        font-size: 1.4rem;
+    }
 }
 
 .widget__content>div {

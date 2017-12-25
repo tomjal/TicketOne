@@ -55,13 +55,16 @@ export class EmployeeRoomsPage extends Component {
       <div>
         {rooms.length !== 0 &&
           <div className="room-flex-container">
-            {rooms.map((roomId, i) => {
+            {rooms.map((room, i) => {
               let localMessages = [];
-              if (messages[roomId]) {
-                localMessages = messages[roomId];
+              if (messages[room.id]) {
+                localMessages = messages[room.id];
               }
               return <RoomWidget key={i}
-                id={roomId}
+                topic={room.roomTopic}
+                isOpened={room.isOpened}
+                id={room.id}
+                creatorId={room.clientId}
                 role={role}
                 sendMessageCallback={this.sendMessageCallback}
                 messages={localMessages} />;

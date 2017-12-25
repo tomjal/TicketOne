@@ -14,6 +14,7 @@ export const chatWindowStyles = StyleSheet.create({
     },
     chatInput: {
         display: "inline-block",
+        verticalAlign: "top",
         width: "270px",
         marginRight: "20px",
         '@media (max-width: 400px)': {

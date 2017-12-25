@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getAllRooms } from './../../actions/roomsActionCreators';
+import { getAllRooms, getAllOpenRoomsIds } from './../../actions/roomsActionCreators';
 import {
   getMessagesByRoom,
-  getAllMessages
+  getAllMessages,
 } from './../../actions/messagesActionCreators';
 import {
   notifyAboutNewRoom
@@ -40,7 +40,7 @@ class WebsocketGate extends Component {
     this.state = { isOpened: false };
   }
   componentDidMount() {
-    this.initGate(WS.SERVER_ADDRESS);
+    this.initGate(WS.MOCKS_SERVER_ADDRESS);
   }
   componentDidUpdate() {
     if (authManager.isClient(this.props.role)) {
@@ -80,10 +80,12 @@ class WebsocketGate extends Component {
   }
   onNewRoomAction(data) {
     if (authManager.isEmployee(this.props.role)) {
+      console.log("NEW ROOOM")
+      getAllOpenRoomsIds();
       //getAllOpenRoomsIds
       //messages getByRooms
       //this.props.notifyAboutNewRoom(data.split(":")[1]);
-      
+
       ////this.props.getAllRooms();
       ////this.props.getAllMessages();
     }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { createClientRoom } from './../../actions/roomsActionCreators';
+import { createClientRoom, getClientRooms, markRoomAsResolved, markRoomAsUnresolved } from './../../actions/roomsActionCreators';
 import { getMessagesByRoom, sendMessageToRoom } from './../../actions/messagesActionCreators';
 
 import RoomWidget from './roomWidget';
@@ -12,13 +12,17 @@ const mapStateToProps = (state) => {
   return {
     id: state.context.id,
     role: state.context.role,
-    messages: state.messages
+    messages: state.messages,
+    rooms: state.rooms
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    createClientRoom
+    createClientRoom,
+    getClientRooms,
+    markRoomAsResolved,
+    markRoomAsUnresolved
   }, dispatch);
 };
 
@@ -28,6 +32,7 @@ export class ClientRoomPage extends Component {
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
   }
   componentDidMount() {
+    this.props.getClientRooms(this.props.id);
     //this.props.getMessagesByRoom(this.props.id);
   }
   sendMessageCallback(message, id) {
@@ -38,26 +43,27 @@ export class ClientRoomPage extends Component {
     console.log(roomTopic)
     console.log(this.props.id)
     this.props.createClientRoom(this.props.id, roomTopic);
-    //
   }
   render() {
-    //TRANSFORM TO LIST
-    //isOpened redux
-    //create channel box
-    const fakeRooms = [];
-    const { id, role, messages } = this.props;
+    const { id, role, messages, rooms } = this.props;
     return (
       <div className="room-flex-container">
-        {fakeRooms.map((roomId, i) => {
+        {rooms.map((room, i) => {
           let localMessages = [];
-          if (messages[roomId]) {
-            localMessages = messages[roomId];
+          if (messages[room.id]) {
+            localMessages = messages[room.id];
           }
+          console.log(room)
           return <RoomWidget key={i}
-            isOpened={true}
-            id={roomId}
+            topic={room.roomTopic}
+            isOpened={room.isOpened}
+            isSolved={room.isSolved}
+            clientId={id}
+            id={room.id}
             role={role}
             sendMessageCallback={this.sendMessageCallback}
+            markAsResolvedCallback={this.props.markRoomAsResolved}
+            markAsUnresolvedCallback={this.props.markRoomAsUnresolved}
             messages={localMessages} />;
         })}
         <CreateNewRoomWidget

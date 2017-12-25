@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 import { LoginWidget } from './loginWidget';
 
 const propTypes = {
-  authCallback: PropTypes.func.isRequired
+  //authCallback: PropTypes.func.isRequired
 };
 
 class LoginPage extends Component {
   submitAction = () => {
-    this.props.authCallback();
+    //this.props.authCallback();
   }
   clientSubmitAction1 = () => {
     const fakeId1 = 101;
@@ -24,7 +24,7 @@ class LoginPage extends Component {
   }
   render() {
     const clientLoginWidgetBody = <div>
-      <button className="btn btn-default" onClick={this.clientSubmitAction1}>login as fake client1</button>
+      <button style={{"margin-right": 5}} className="btn btn-default" onClick={this.clientSubmitAction1}>login as fake client1</button>
       <button className="btn btn-default" onClick={this.clientSubmitAction2}>login as fake client2</button>
     </div>;
     const employeeLoginWidgetBody = <div>

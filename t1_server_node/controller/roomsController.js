@@ -23,6 +23,67 @@ roomsController
             handleError(e)
         }
     })
+    .get('/open', (req, res) => {
+        try {
+            const listOfRooms = inMemoryStorage.getAllOpenRooms()
+            res.status(200).json(listOfRooms)
+        } catch (e) {
+            handleError(e)
+        }
+    })
+    .get('/client/:clientId', (req, res) => {
+        try {
+            const listOfRooms = inMemoryStorage.getAllClientsRooms(req.params.clientId)
+            console.log("get client rooms")
+            console.log(listOfRooms)
+            res.status(200).json(listOfRooms)
+        } catch (e) {
+            handleError(e)
+        }
+    })
+    .post('/new', (req, res) => {
+        const clientId = req.body.clientId
+        const roomTopic = req.body.roomTopic
+
+        if (typeof clientId === undefined ||
+            typeof roomTopic === undefined ) {
+            res.status(400).json({ status: CONSTS.STATUS.BAD_REQUEST })
+        }
+
+        // create new room
+        const newRoom = {
+            roomTopic: roomTopic,
+            clientId: clientId,
+            isOpened: true,
+            subscribers: [], 
+            messages: [],
+            id: new Date().getTime()
+        };
+
+        try {
+            // push room to storage
+            inMemoryStorage.addRoom(newRoom)
+            res.status(200).json({ status: CONSTS.STATUS.OK })
+            // inform subscribers
+            console.log(newRoom.id)
+            wsService.broadcastNewRoom(newRoom.id)
+        } catch (e) {
+            handleError(e)
+        }
+    })
+    .put('/:id', (req, res) => {
+        const roomId = req.params.id;
+        const isSolved = req.body.solved
+        try {
+            inMemoryStorage.updateSolvedSatus(roomId, isSolved)
+            res.status(200).json({ status: CONSTS.STATUS.OK })
+            // inform subscribers
+            //console.log(roomId)
+            //wsService.broadcastNewRoom(roomId)
+        } catch (e) {
+            handleError(e)
+        }
+    })
     .get('/messages', (req, res) => {
         try {
             const listOfAllMessages = inMemoryStorage.getAllMessages()

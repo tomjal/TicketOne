@@ -8,7 +8,6 @@ import ChatList from './chatList';
 
 const KEY_CODES = { ENTER: 13 };
 
-//resolved unresolved and close
 export class ChatWindow extends Component {
   constructor() {
     super();
@@ -32,18 +31,21 @@ export class ChatWindow extends Component {
 
     return (
       <div className={css(chatWindowStyles.chatWindow)}>
-
         <ChatList id={id} role={role} messages={messages} />
-        <div className={css(chatWindowStyles.actionBlock)}>
-          <input type="text" className={`${css(chatWindowStyles.chatInput, fontSizes.bigger)} form-control`}
-            onKeyUp={this.handleKeyUp} ref={(input) => { this.chatInput = input; }} />
-          <button className="btn btn-default" onClick={this.submitSendMessage}>
-            Send message
+        {this.props.isOpened &&
+          <div className={css(chatWindowStyles.actionBlock)}>
+            <input type="text" className={`${css(chatWindowStyles.chatInput, fontSizes.bigger)} form-control`}
+              onKeyUp={this.handleKeyUp} ref={(input) => { this.chatInput = input; }} />
+            <button className="btn btn-default" onClick={this.submitSendMessage}>
+              Send message
           </button>
-          <div>
-            <button>set as resolved</button> <button>set as unresolved</button>
           </div>
-        </div>
+        }
+        {!this.props.isOpened &&
+          <div className={css(chatWindowStyles.actionBlock)}>
+            Conversation closed. Read only mode
+         </div>
+        }
       </div>
     );
   }
