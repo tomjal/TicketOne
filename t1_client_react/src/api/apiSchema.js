@@ -6,7 +6,8 @@ const apiURIs = {
     MESSAGES: "/messages",
     ROOMS: "/rooms",
     CONTEXT: "/context",
-    AUTH: "/login"
+    AUTH: "/login",
+    STATS: "/stats"
 }
 
 const apiWords = {
@@ -70,6 +71,11 @@ function putMarkRoomAsUnresolved(roomId) {
         buildReqOptions(httpVerbs.PUT, roomSolvedData));
 }
 
+function getGlobalSolvedUnsolvedStats() {
+    return fetch(apiPrefix + apiURIs.STATS + "/employee",
+        buildReqOptions(httpVerbs.GET));
+}
+
 export const apiSchema = {
     context: {
         get: getAuthContext
@@ -89,5 +95,8 @@ export const apiSchema = {
         postClientRoom: postClientRoom,
         putMarkRoomAsResolved: putMarkRoomAsResolved,
         putMarkRoomAsUnresolved: putMarkRoomAsUnresolved
+    },
+    stats: {
+        getGlobalSolvedUnsolvedStats: getGlobalSolvedUnsolvedStats
     }
 }

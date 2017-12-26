@@ -45,6 +45,13 @@ export const roomsActions = {
     }
 }
 
+export const statsActions = {
+    GET_STATS_ALL: {
+        SUCCESS: "GET_STATS_ALL_SUCCESS",
+        ERROR: "GET_STATS_ALL_ERROR"
+    }
+}
+
 export const websocketActions = {
 }
 

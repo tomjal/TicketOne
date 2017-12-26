@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getAllOpenRoomsIds } from './../../actions/roomsActionCreators';
 import { getAllMessages, sendMessageToRoom } from './../../actions/messagesActionCreators';
 import { getEmployeeInitRoomsData } from './../../actions/combinedActionCreators';
+import { getGlobalSolvedUnsolvedStatistics } from './../../actions/statsActionCreators';
 
 import RoomWidget from './roomWidget';
 
@@ -15,7 +16,8 @@ const mapStateToProps = (state) => {
     id: state.context.id,
     role: state.context.role,
     rooms: state.rooms,
-    messages: state.messages
+    messages: state.messages,
+    stats: state.stats
   }
 };
 
@@ -24,9 +26,14 @@ const mapDispatchToProps = (dispatch) => {
     getAllOpenRoomsIds,
     getAllMessages,
     sendMessageToRoom,
-    getEmployeeInitRoomsData
+    getEmployeeInitRoomsData,
+    getGlobalSolvedUnsolvedStatistics
   }, dispatch);
 };
+
+const StatsWidget = ({ statsObject }) => (
+  <div>Solved cases: {statsObject.solved}, Unsolved cases: {statsObject.unsolved}</div>
+);
 
 export class EmployeeRoomsPage extends Component {
   constructor(props) {
@@ -36,6 +43,7 @@ export class EmployeeRoomsPage extends Component {
   componentDidMount() {
     //combined init data employee
     this.props.getEmployeeInitRoomsData();
+    this.props.getGlobalSolvedUnsolvedStatistics();
   }
   sendMessageCallback(message, id) {
     this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
@@ -53,6 +61,8 @@ export class EmployeeRoomsPage extends Component {
     const emptyFlexElems = this.getEmptyFlexFillers(MAX_FLEX_ELEMS_IN_ROW, rooms.length);
     return (
       <div>
+        {this.props.stats &&
+          <StatsWidget statsObject={this.props.stats} />}
         {rooms.length !== 0 &&
           <div className="room-flex-container">
             {rooms.map((room, i) => {

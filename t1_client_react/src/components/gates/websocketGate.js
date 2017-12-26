@@ -10,6 +10,7 @@ import {
 import {
   notifyAboutNewRoom
 } from './../../actions/notificationsActionCreators';
+import { getGlobalSolvedUnsolvedStatistics } from './../../actions/statsActionCreators';
 
 import { websocketManager } from './../../services/websocketManager';
 import { authManager } from './../../services/authManager';
@@ -31,7 +32,8 @@ const mapDispatchToProps = (dispatch) => {
     getAllOpenRoomsIds,
     //getAllRooms,
     getMessagesByRooms,
-    notifyAboutNewRoom
+    notifyAboutNewRoom,
+    getGlobalSolvedUnsolvedStatistics
   }, dispatch);
 };
 
@@ -70,6 +72,7 @@ class WebsocketGate extends Component {
   onNewRoomAction(data) {
     if (authManager.isEmployee(this.props.role)) {
       this.props.getAllOpenRoomsIds();
+      this.props.getGlobalSolvedUnsolvedStatistics();
     }
   }
   onClose(e) {
