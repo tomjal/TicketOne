@@ -74,6 +74,11 @@ export class EmployeeRoomsPage extends Component {
             })}
           </div>
         }
+        {rooms.length === 0 &&
+          <div style={{ fontSize: 16 }}>
+            There are no open chats currently
+          </div>
+        }
       </div>
     );
   }

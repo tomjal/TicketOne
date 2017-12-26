@@ -43,12 +43,6 @@ class WebsocketGate extends Component {
   componentDidMount() {
     this.initGate(WS.MOCKS_SERVER_ADDRESS);
   }
-  componentDidUpdate() {
-    if (authManager.isClient(this.props.role)) {
-      //to redux on create channel websocketManager.createChannel(this.props.role, this.props.id);
-      //create topic?
-    }
-  }
   initGate(addr) {
     websocketManager.initNewConnection(
       addr,
