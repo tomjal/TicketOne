@@ -1,6 +1,6 @@
 :construction: WORK IN PROGRESS (partial TODO in docs folder) :construction:
 
-Current client version: 1.0.6
+Current client version: 1.1.0
 
 ### TicketOne client
 
@@ -14,7 +14,7 @@ Current client version: 1.0.6
 
 Recommended IDE: Visual Studio Code / IntelliJ Idea / Visual Studio 2017
 
-[ v1.0.5 (React 15) Deployed with Node.js server mock on Heroku ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow server!)
+[ v1.1.0 Deployed with Node.js server mock on Heroku ticketone.herokuapp.com](https://ticketone.herokuapp.com) (slow server!)
 
 ##### Client NPM scripts
 
