@@ -3,7 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { createClientRoom, getClientRooms, markRoomAsResolved, markRoomAsUnresolved } from './../../actions/roomsActionCreators';
-import { getMessagesByRoom, sendMessageToRoom } from './../../actions/messagesActionCreators';
+import { sendMessageToRoom } from './../../actions/messagesActionCreators';
+import { getClientInitRoomsData } from './../../actions/combinedActionCreators';
 
 import RoomWidget from './roomWidget';
 import CreateNewRoomWidget from './createNewRoomWidget';
@@ -23,14 +24,15 @@ const mapDispatchToProps = (dispatch) => {
     getClientRooms,
     sendMessageToRoom,
     markRoomAsResolved,
-    markRoomAsUnresolved
+    markRoomAsUnresolved,
+    getClientInitRoomsData
   }, dispatch);
 };
 
 export class ClientRoomPage extends Component {
   componentDidMount() {
     //combined init data client
-    this.props.getClientRooms(this.props.id);
+    this.props.getClientInitRoomsData(this.props.id);
   }
   sendMessageCallback = (message, roomId) => {
     this.props.sendMessageToRoom(message, roomId, this.props.role, this.props.id);
@@ -47,7 +49,6 @@ export class ClientRoomPage extends Component {
           if (messages[room.id]) {
             localMessages = messages[room.id];
           }
-          console.log(room)
           return <RoomWidget key={i}
             topic={room.roomTopic}
             isOpened={room.isOpened}

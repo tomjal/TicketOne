@@ -37,14 +37,14 @@ export class RoomWidget extends Component {
               Closed and marked as: {this.props.isSolved ? "Solved" : "Unsolved"}</p>
           }
           {!isClientRoom &&
-            <p>
+            <div>
               <div>
                 room id: {id.toString()}
               </div>
               <div>
                 client id: {this.props.creatorId.toString()}
               </div>
-            </p>
+            </div>
           }
         </div>
         <div>

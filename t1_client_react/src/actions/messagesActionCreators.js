@@ -23,11 +23,7 @@ export function getMessagesByRoom(channelId) {
 }
 
 export function getMessagesByRooms(rooms) {
-    console.log("getMessagesByRooms ddddddddddddd")
-    console.log(rooms)
     const onlyIds = rooms.map((room) => { return room.id })
-    console.log("onlyIds")
-    console.log(onlyIds)
     return (dispatch) => apiSchema.messages.getByRooms(onlyIds)
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())

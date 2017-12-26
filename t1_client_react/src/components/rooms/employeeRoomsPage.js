@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { getAllOpenRoomsIds } from './../../actions/roomsActionCreators';
 import { getAllMessages, sendMessageToRoom } from './../../actions/messagesActionCreators';
+import { getEmployeeInitRoomsData } from './../../actions/combinedActionCreators';
 
 import RoomWidget from './roomWidget';
 
@@ -22,7 +23,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getAllOpenRoomsIds,
     getAllMessages,
-    sendMessageToRoom
+    sendMessageToRoom,
+    getEmployeeInitRoomsData
   }, dispatch);
 };
 
@@ -33,7 +35,7 @@ export class EmployeeRoomsPage extends Component {
   }
   componentDidMount() {
     //combined init data employee
-    this.props.getAllOpenRoomsIds();
+    this.props.getEmployeeInitRoomsData();
   }
   sendMessageCallback(message, id) {
     this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
@@ -49,7 +51,6 @@ export class EmployeeRoomsPage extends Component {
   render() {
     const { role, rooms, messages } = this.props;
     const emptyFlexElems = this.getEmptyFlexFillers(MAX_FLEX_ELEMS_IN_ROW, rooms.length);
-    console.log("employee render is working");
     return (
       <div>
         {rooms.length !== 0 &&
