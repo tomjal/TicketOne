@@ -24,8 +24,13 @@ function postAuthData(login, pass) {
 }
 
 function getMessagesByRooms(roomsIdsList) {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/" + apiURIs.MESSAGES,
-        buildReqOptions(httpVerbs.GET, { roomsIdsList: roomsIdsList }));
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + apiURIs.MESSAGES + "/byRoomsIdsList",
+        buildReqOptions(httpVerbs.PUT, { roomsIdsList: roomsIdsList }));
+}
+
+function getMessagesByRoom(roomId) {
+    return fetch(apiPrefix + apiURIs.ROOMS + "/" + roomId + apiURIs.MESSAGES,
+        buildReqOptions(httpVerbs.GET));
 }
 
 function postMessageToRoom(message, roomId, senderRole, senderId) {
@@ -45,11 +50,6 @@ function getAllOpenRoomsIds() {
 
 function getClientRoomsIds(clientId) {
     return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + clientId, buildReqOptions(httpVerbs.GET));
-}
-
-function getClientRoomDetails(clientId, roomId) {
-    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + clientId + apiWords.ROOM + roomId,
-        buildReqOptions(httpVerbs.GET));
 }
 
 //todo
@@ -80,6 +80,7 @@ export const apiSchema = {
     },
     messages: {
         getByRooms: getMessagesByRooms,
+        getByRoom: getMessagesByRoom,
         post: postMessageToRoom
     },
     rooms: {

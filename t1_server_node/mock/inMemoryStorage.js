@@ -21,7 +21,6 @@ class InMemoryStorage {
     }
     getAllClientsRooms(clientId) {
         const newMap = Object.keys(this.innerMap);
-        console.log(newMap)
         const listFilteredByClientId = [];
         newMap.forEach(roomId => {
             if (this.innerMap[roomId].clientId == clientId)
@@ -30,9 +29,7 @@ class InMemoryStorage {
         return listFilteredByClientId
     }
     addRoom(newRoom) {
-        console.log(newRoom)
         this.innerMap[newRoom.id] = newRoom;
-        console.log(this.innerMap)
     }
     updateSolvedSatus(roomId, solved) {
         this.innerMap[roomId].isSolved = solved;
@@ -58,6 +55,15 @@ class InMemoryStorage {
             messagesById = this.innerMap[roomId].messages;
         }
         return messagesById;
+    }
+    getAllMessagesByRoomsList(roomsList) {
+        let messagesList = {};
+        roomsList.forEach(roomId => {
+            if (this.innerMap[roomId]) {
+                messagesList[roomId] = this.innerMap[roomId].messages;
+            }
+        })
+        return messagesList;
     }
     addMessage(roomId, message) {
         if (this.hasRoom(roomId)) {

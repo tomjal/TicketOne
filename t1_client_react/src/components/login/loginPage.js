@@ -24,7 +24,7 @@ class LoginPage extends Component {
   }
   render() {
     const clientLoginWidgetBody = <div>
-      <button style={{"margin-right": 5}} className="btn btn-default" onClick={this.clientSubmitAction1}>login as fake client1</button>
+      <button style={{"marginRight": 5}} className="btn btn-default" onClick={this.clientSubmitAction1}>login as fake client1</button>
       <button className="btn btn-default" onClick={this.clientSubmitAction2}>login as fake client2</button>
     </div>;
     const employeeLoginWidgetBody = <div>

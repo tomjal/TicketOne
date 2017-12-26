@@ -21,27 +21,21 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     createClientRoom,
     getClientRooms,
+    sendMessageToRoom,
     markRoomAsResolved,
     markRoomAsUnresolved
   }, dispatch);
 };
 
 export class ClientRoomPage extends Component {
-  constructor() {
-    super();
-    this.sendMessageCallback = this.sendMessageCallback.bind(this);
-  }
   componentDidMount() {
+    //combined init data client
     this.props.getClientRooms(this.props.id);
-    //this.props.getMessagesByRoom(this.props.id);
   }
-  sendMessageCallback(message, id) {
-    this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
+  sendMessageCallback = (message, roomId) => {
+    this.props.sendMessageToRoom(message, roomId, this.props.role, this.props.id);
   }
   createRoomCallback = (roomTopic) => {
-    console.log("createRoomCallback")
-    console.log(roomTopic)
-    console.log(this.props.id)
     this.props.createClientRoom(this.props.id, roomTopic);
   }
   render() {

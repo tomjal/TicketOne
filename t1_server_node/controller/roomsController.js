@@ -34,8 +34,6 @@ roomsController
     .get('/client/:clientId', (req, res) => {
         try {
             const listOfRooms = inMemoryStorage.getAllClientsRooms(req.params.clientId)
-            console.log("get client rooms")
-            console.log(listOfRooms)
             res.status(200).json(listOfRooms)
         } catch (e) {
             handleError(e)
@@ -65,7 +63,6 @@ roomsController
             inMemoryStorage.addRoom(newRoom)
             res.status(200).json({ status: CONSTS.STATUS.OK })
             // inform subscribers
-            console.log(newRoom.id)
             wsService.broadcastNewRoom(newRoom.id)
         } catch (e) {
             handleError(e)
@@ -78,16 +75,17 @@ roomsController
             inMemoryStorage.updateSolvedSatus(roomId, isSolved)
             res.status(200).json({ status: CONSTS.STATUS.OK })
             // inform subscribers
-            console.log(roomId)
             wsService.broadcastNewRoom(roomId)
         } catch (e) {
             handleError(e)
         }
     })
-    .get('/messages', (req, res) => {
+    //TO CHANGE FROM PUT AND URI
+    .put('/messages/byRoomsIdsList', (req, res) => {
         try {
-            const listOfAllMessages = inMemoryStorage.getAllMessages()
-            res.status(200).json(listOfAllMessages)
+            const roomsIdsList = req.body.roomsIdsList;
+            let messagesList = inMemoryStorage.getAllMessagesByRoomsList(roomsIdsList);
+            res.status(200).json(messagesList)
         } catch (e) {
             handleError(e)
         }

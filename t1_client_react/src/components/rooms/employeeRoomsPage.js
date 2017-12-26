@@ -32,12 +32,11 @@ export class EmployeeRoomsPage extends Component {
     this.sendMessageCallback = this.sendMessageCallback.bind(this);
   }
   componentDidMount() {
+    //combined init data employee
     this.props.getAllOpenRoomsIds();
-    //this.props.getAllRooms();
-    //this.props.getAllMessages();
   }
   sendMessageCallback(message, id) {
-    //this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
+    this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
   }
   getEmptyFlexFillers(numbInRow, numbOfAll) {
     let emptyElemsNumber = numbInRow - (numbOfAll % numbInRow);
