@@ -1,6 +1,6 @@
 import { httpVerbs, buildReqOptions } from "./apiFetchHelpers";
 
-const apiPrefix = "http://localhost:8080/api/v1";
+const apiPrefix = "/api/v1";
 
 const apiURIs = {
     MESSAGES: "/messages",

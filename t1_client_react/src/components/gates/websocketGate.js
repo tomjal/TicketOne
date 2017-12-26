@@ -43,7 +43,7 @@ class WebsocketGate extends Component {
     this.state = { isOpened: false };
   }
   componentDidMount() {
-    this.initGate(WS.MOCKS_SERVER_ADDRESS);
+    this.initGate(WS.SERVER_ADDRESS);
   }
   initGate(addr) {
     websocketManager.initNewConnection(
