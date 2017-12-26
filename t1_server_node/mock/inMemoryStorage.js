@@ -2,6 +2,21 @@ class InMemoryStorage {
     constructor() {
         this.innerMap = {};
     }
+    getSolvedUnsolvedStats() {
+        let statsObj = { solved: 0, unsolved: 0 };
+        const newMap = Object.keys(this.innerMap);
+        newMap.forEach(roomId => {
+            if(this.innerMap[roomId].isSolved !== undefined){
+                if(this.innerMap[roomId].isSolved === true){
+                    statsObj.solved++;
+                }
+                if(this.innerMap[roomId].isSolved === false){
+                    statsObj.unsolved++;
+                }
+            }
+        })
+        return statsObj;
+    }
     getAllRooms() {
         const newMap = Object.keys(this.innerMap);
         const all = [];

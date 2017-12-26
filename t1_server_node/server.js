@@ -32,11 +32,15 @@ logger.info('server listening on', port)
 const roomPrefix = '/rooms';
 const roomsController = require('./controller/roomsController')
 
+const statsPrefix = '/stats';
+const statsController = require('./controller/statsController')
+
 app.get(CONSTS.API_PREFIX.V1, (req, res) => {
     res.send('REST API ' + CONSTS.API_PREFIX.V1);
 });
 
 app.use(CONSTS.API_PREFIX.V1 + roomPrefix, roomsController)
+app.use(CONSTS.API_PREFIX.V1 + statsPrefix, statsController)
 
 // WS handler ========================================================
 wsServer.on('connection', connection => {
