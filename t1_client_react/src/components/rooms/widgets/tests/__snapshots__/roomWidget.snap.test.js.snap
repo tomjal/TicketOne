@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoomWidget snapshot 1`] = `
+<div
+  className="room-widget"
+>
+  <div
+    className="widget__header"
+  >
+    topic: undefined
+    <div>
+      <div>
+        room id: 
+        0
+      </div>
+      <div>
+        client id: 
+        1
+      </div>
+    </div>
+  </div>
+  <div>
+    <ChatWindow
+      messages={Array []}
+      role=""
+      sendMessage={[Function]}
+    />
+  </div>
+</div>
+`;
