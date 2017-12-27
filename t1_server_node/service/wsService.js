@@ -26,25 +26,6 @@ class WsService {
             client.send(CONSTS.COMMANDS.NEW_ROOM + CONSTS.SEPARATORS.MES + roomId);
         });
     }
-
-    handleNewWsMessage(storage, message) {
-
-        // message command parser
-        const commandsList = message.split(CONSTS.SEPARATORS.COM);
-        const role = commandsList[0].split(CONSTS.SEPARATORS.MES)[0];
-        const userId = commandsList[0].split(CONSTS.SEPARATORS.MES)[1]; // chatroom id
-
-        // logic for client
-        if (this.isClient(role)) {
-            // if room does not exist, create
-            if (!storage.hasRoom(userId)) {
-                storage.addRoom(userId);
-                this.logger.info('websocket new room created');
-                // inform everyone about new room
-                this.broadcastNewRoom(userId);
-            }
-        }
-    }
 }
 
 module.exports = new WsService(logger);

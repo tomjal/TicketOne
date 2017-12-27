@@ -29,7 +29,8 @@ function postAuthData(login, pass) {
 // === MESSAGES ===
 
 function getMessagesByRooms(roomsIdsList) {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/" + apiURIs.MESSAGES + "/byRoomsIdsList",
+    // TODO: Worth to discuss, maybe GET instead PUT
+    return fetch(apiPrefix + apiURIs.ROOMS + "/roomsIdsListView" + apiURIs.MESSAGES,
         buildReqOptions(httpVerbs.PUT, { roomsIdsList: roomsIdsList }));
 }
 

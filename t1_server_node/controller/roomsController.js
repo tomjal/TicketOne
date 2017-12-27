@@ -15,6 +15,7 @@ function handleError(e) {
 
 // REST API ==========================================================
 roomsController
+    // == Rooms
     .get('/', (req, res) => {
         try {
             const listOfRooms = inMemoryStorage.getAllRooms()
@@ -25,7 +26,7 @@ roomsController
     })
     .get('/open', (req, res) => {
         try {
-            const listOfRooms = inMemoryStorage.getAllOpenRooms()
+            const listOfRooms = inMemoryStorage.getOpenRooms()
             res.status(200).json(listOfRooms)
         } catch (e) {
             handleError(e)
@@ -33,7 +34,7 @@ roomsController
     })
     .get('/client/:clientId', (req, res) => {
         try {
-            const listOfRooms = inMemoryStorage.getAllClientsRooms(req.params.clientId)
+            const listOfRooms = inMemoryStorage.getClientsRooms(req.params.clientId)
             res.status(200).json(listOfRooms)
         } catch (e) {
             handleError(e)
@@ -44,7 +45,7 @@ roomsController
         const roomTopic = req.body.roomTopic
 
         if (typeof clientId === undefined ||
-            typeof roomTopic === undefined ) {
+            typeof roomTopic === undefined) {
             res.status(400).json({ status: CONSTS.STATUS.BAD_REQUEST })
         }
 
@@ -53,7 +54,7 @@ roomsController
             roomTopic: roomTopic,
             clientId: clientId,
             isOpened: true,
-            subscribers: [], 
+            subscribers: [],
             messages: [],
             id: new Date().getTime()
         };
@@ -72,7 +73,7 @@ roomsController
         const roomId = req.params.id;
         const isSolved = req.body.solved
         try {
-            inMemoryStorage.updateSolvedSatus(roomId, isSolved)
+            inMemoryStorage.updateRoomSolvedSatus(roomId, isSolved)
             res.status(200).json({ status: CONSTS.STATUS.OK })
             // inform subscribers
             wsService.broadcastNewRoom(roomId)
@@ -80,11 +81,11 @@ roomsController
             handleError(e)
         }
     })
-    //TO CHANGE FROM PUT AND URI
-    .put('/messages/byRoomsIdsList', (req, res) => {
+    // == Rooms == Messages controller
+    .put('/roomsIdsListView/messages', (req, res) => {
         try {
             const roomsIdsList = req.body.roomsIdsList;
-            let messagesList = inMemoryStorage.getAllMessagesByRoomsList(roomsIdsList);
+            const messagesList = inMemoryStorage.getMessagesByRoomsIdsList(roomsIdsList);
             res.status(200).json(messagesList)
         } catch (e) {
             handleError(e)
@@ -93,7 +94,7 @@ roomsController
     .get('/:id/messages', (req, res) => {
         try {
             const roomId = req.params.id
-            const listOfMessagesById = inMemoryStorage.getAllMessagesByRoomId(roomId)
+            const listOfMessagesById = inMemoryStorage.getMessagesByRoomId(roomId)
             res.status(200).json(listOfMessagesById)
         } catch (e) {
             handleError(e)

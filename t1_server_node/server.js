@@ -46,11 +46,7 @@ app.use(CONSTS.API_PREFIX.V1 + statsPrefix, statsController)
 wsServer.on('connection', connection => {
     logger.info('websocket connection open')
     connection.on("message", message => {
-        try {
-            wsService.handleNewWsMessage(inMemoryStorage, message)
-        } catch (e) {
-            logger.error(e.message)
-        }
+        logger.info('new message')
     })
     connection.on('close', () => {
         logger.info('websocket connection close')

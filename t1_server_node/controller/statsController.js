@@ -17,7 +17,7 @@ function handleError(e) {
 statsController
     .get('/employee', (req, res) => {
         try {
-            let statsObj = inMemoryStorage.getSolvedUnsolvedStats();
+            const statsObj = inMemoryStorage.getSolvedUnsolvedStats()
             res.status(200).json(statsObj)
         } catch (e) {
             handleError(e)

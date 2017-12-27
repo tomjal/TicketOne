@@ -1,22 +1,26 @@
+// Fake main storage/data service, using simple javascript map
+
 class InMemoryStorage {
     constructor() {
         this.innerMap = {};
     }
+    // == Stats
     getSolvedUnsolvedStats() {
         let statsObj = { solved: 0, unsolved: 0 };
         const newMap = Object.keys(this.innerMap);
         newMap.forEach(roomId => {
-            if(this.innerMap[roomId].isSolved !== undefined){
-                if(this.innerMap[roomId].isSolved === true){
+            if (this.innerMap[roomId].isSolved !== undefined) {
+                if (this.innerMap[roomId].isSolved === true) {
                     statsObj.solved++;
                 }
-                if(this.innerMap[roomId].isSolved === false){
+                if (this.innerMap[roomId].isSolved === false) {
                     statsObj.unsolved++;
                 }
             }
         })
         return statsObj;
     }
+    // == Rooms
     getAllRooms() {
         const newMap = Object.keys(this.innerMap);
         const all = [];
@@ -25,7 +29,7 @@ class InMemoryStorage {
         })
         return all;
     }
-    getAllOpenRooms() {
+    getOpenRooms() {
         const newMap = Object.keys(this.innerMap);
         const areOpened = [];
         newMap.forEach(roomId => {
@@ -34,7 +38,7 @@ class InMemoryStorage {
         })
         return areOpened;
     }
-    getAllClientsRooms(clientId) {
+    getClientRooms(clientId) {
         const newMap = Object.keys(this.innerMap);
         const listFilteredByClientId = [];
         newMap.forEach(roomId => {
@@ -46,7 +50,7 @@ class InMemoryStorage {
     addRoom(newRoom) {
         this.innerMap[newRoom.id] = newRoom;
     }
-    updateSolvedSatus(roomId, solved) {
+    updateRoomSolvedSatus(roomId, solved) {
         this.innerMap[roomId].isSolved = solved;
         this.markRoomAsClosed(roomId);
     }
@@ -56,22 +60,15 @@ class InMemoryStorage {
     hasRoom(roomId) {
         return this.innerMap[roomId] ? true : false;
     }
-    getAllMessages() {
-        const listOfRooms = this.getAllRooms();
-        let listOfAllMessages = {};
-        listOfRooms.forEach(roomId => {
-            listOfAllMessages[roomId] = this.innerMap[roomId].messages;
-        })
-        return listOfAllMessages;
-    }
-    getAllMessagesByRoomId(roomId) {
+    // == Messages
+    getMessagesByRoomId(roomId) {
         let messagesById = [];
         if (this.innerMap[roomId]) {
             messagesById = this.innerMap[roomId].messages;
         }
         return messagesById;
     }
-    getAllMessagesByRoomsList(roomsList) {
+    getMessagesByRoomsIdsList(roomsList) {
         let messagesList = {};
         roomsList.forEach(roomId => {
             if (this.innerMap[roomId]) {
@@ -85,6 +82,7 @@ class InMemoryStorage {
             this.innerMap[roomId].messages.push(message);
         }
     }
+    // == Util
     clearMemory() {
         this.innerMap = {};
     }

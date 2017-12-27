@@ -1,6 +1,6 @@
 {
   "name": "t1_server_node",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Mock server for TicketOne app",
   "author": "Tomasz Jałoszyński",
   "license": "GNU GPLv3",
