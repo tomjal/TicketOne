@@ -4,14 +4,15 @@
 3. Introduce JWT tokens
 4. Rethink REST api design and payloads
 
+### Would be nice to have:
+1. Fold/unfold functionality of every room
+2. "New message" indicator on room until read/focused
+3. Separate message update channel for every room
+
 #### Client:
 1. Make chat fully responsive (media queries redesign)
 2. Fully move to styled-components with theme support
 3. Introduce Redux-Saga
-
-#### Design:
-1. Create room via REST request instead websocket command
-2. Send only recent new messages to employee
 
 #### Nodejs:
 1. Add session handling, proper auth
