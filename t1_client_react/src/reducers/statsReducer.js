@@ -2,7 +2,7 @@
 import update from 'immutability-helper';
 import { statsActions } from '../actions/actionTypes';
 
-const initState = [];
+const initState = { solved: 0, unsolved: 0 };
 
 export function statsReducer(state = initState, action) {
     switch (action.type) {
