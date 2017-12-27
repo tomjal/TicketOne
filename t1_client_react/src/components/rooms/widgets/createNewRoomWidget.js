@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 
 export class CreateNewRoomWidget extends Component {
   createNewRoom = () => {
-    const { createRoomCallback } = this.props;
-    createRoomCallback(this.topicInput.value);
-    this.cleanData();
+    this.props.createRoomCallback(this.topicInput.value);
+    this.clearInputValue();
   }
-  cleanData = () => {
+  clearInputValue = () => {
     this.topicInput.value = "";
   }
   render() {

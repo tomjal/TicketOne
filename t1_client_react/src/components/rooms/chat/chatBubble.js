@@ -4,7 +4,6 @@ import { css } from 'aphrodite';
 import { chatBubbleStyles } from './../../../styles/inline/specificStyles';
 
 export class ChatBubble extends Component {
-
   render() {
     const { isMe, message, date } = this.props;
     const bubbleClass = isMe ?

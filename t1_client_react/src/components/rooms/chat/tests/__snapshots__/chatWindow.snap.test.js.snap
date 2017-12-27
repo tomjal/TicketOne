@@ -1,3 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatWindow snapshot 1`] = `
+<div
+  className="chatWindow_ji3w17"
+>
+  <ChatList />
+  <div
+    className="actionBlock_1o6grbo"
+  >
+    Conversation closed. Read only mode
+  </div>
+</div>
+`;
+
 exports[`test ChatWindow snapshot 1`] = `
 <div
   className="chatWindow_ji3w17">

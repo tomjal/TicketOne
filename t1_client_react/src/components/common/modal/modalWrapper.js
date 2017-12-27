@@ -7,17 +7,11 @@ const propTypes = {
 
 export const ModalWrapper = InnerComponent =>
   class extends Component {
-    constructor() {
-      super();
-      this.hide = this.hide.bind(this);
-    }
-
-    hide() {
+    hide = () => {
       if (this.props.onHide) {
         this.props.onHide();
       }
     }
-
     render() {
       return (
         <div>

@@ -9,19 +9,14 @@ import ChatList from './chatList';
 const KEY_CODES = { ENTER: 13 };
 
 export class ChatWindow extends Component {
-  constructor() {
-    super();
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-    this.submitSendMessage = this.submitSendMessage.bind(this);
-  }
-  submitSendMessage() {
+  submitSendMessage = () => {
     let message = this.chatInput.value;
     if (message && message.length > 0) {
       this.props.sendMessage(message);
       this.chatInput.value = "";
     }
   }
-  handleKeyUp(event) {
+  handleKeyUp = (event) => {
     if (event.keyCode === KEY_CODES.ENTER) {
       return this.submitSendMessage();
     }

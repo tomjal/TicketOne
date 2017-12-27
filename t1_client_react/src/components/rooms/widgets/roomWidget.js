@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 
-import { authManager } from './../../services/authManager';
-import ChatWindow from './chat/chatWindow';
+import { authManager } from './../../../services/authManager';
+import ChatWindow from './../chat/chatWindow';
 
 export class RoomWidget extends Component {
-  constructor() {
-    super();
-    this.sendMessage = this.sendMessage.bind(this);
-  }
-  sendMessage(message) {
+  sendMessage = (message) => {
     this.props.sendMessageCallback(message, this.props.id);
   }
   markAsResolved = () => {

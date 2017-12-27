@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { createClientRoom, getClientRoomsIds, markRoomAsResolved, markRoomAsUnresolved } from './../../actions/roomsActionCreators';
+import {
+  createClientRoom,
+  markRoomAsResolved,
+  markRoomAsUnresolved
+} from './../../actions/roomsActionCreators';
 import { sendMessageToRoom } from './../../actions/messagesActionCreators';
 import { getClientInitRoomsData } from './../../actions/combinedActionCreators';
 
-import RoomWidget from './roomWidget';
-import CreateNewRoomWidget from './createNewRoomWidget';
+import RoomWidget from './widgets/roomWidget';
+import CreateNewRoomWidget from './widgets/createNewRoomWidget';
 
 const mapStateToProps = (state) => {
   return {
@@ -20,18 +24,16 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    getClientInitRoomsData,
     createClientRoom,
-    getClientRoomsIds,
     sendMessageToRoom,
     markRoomAsResolved,
     markRoomAsUnresolved,
-    getClientInitRoomsData
   }, dispatch);
 };
 
-export class ClientRoomPage extends Component {
+export class ClientRoomsPage extends Component {
   componentDidMount() {
-    //combined init data client
     this.props.getClientInitRoomsData(this.props.id);
   }
   sendMessageCallback = (message, roomId) => {
@@ -50,11 +52,11 @@ export class ClientRoomPage extends Component {
             localMessages = messages[room.id];
           }
           return <RoomWidget key={i}
+            id={room.id}
             topic={room.roomTopic}
             isOpened={room.isOpened}
             isSolved={room.isSolved}
             clientId={id}
-            id={room.id}
             role={role}
             sendMessageCallback={this.sendMessageCallback}
             markAsResolvedCallback={this.props.markRoomAsResolved}
@@ -71,4 +73,4 @@ export class ClientRoomPage extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ClientRoomPage);
+)(ClientRoomsPage);

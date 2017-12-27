@@ -6,6 +6,7 @@ import {
   setApplicationContextAsMockClient,
   setApplicationContextAsMockEmployee,
 } from './../../actions/authActionCreators';
+
 import { authManager } from './../../services/authManager';
 
 import { ClientAppWS } from './../app/client/clientApp';

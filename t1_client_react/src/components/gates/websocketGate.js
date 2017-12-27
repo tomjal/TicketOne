@@ -3,13 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getAllOpenRoomsIds } from './../../actions/roomsActionCreators';
-import {
-  getMessagesByRoom,
-  getMessagesByRooms,
-} from './../../actions/messagesActionCreators';
-import {
-  notifyAboutNewRoom
-} from './../../actions/notificationsActionCreators';
+import { getMessagesByRooms } from './../../actions/messagesActionCreators';
 import { getGlobalSolvedUnsolvedStatistics } from './../../actions/statsActionCreators';
 
 import { websocketManager } from './../../services/websocketManager';
@@ -20,7 +14,6 @@ import { WS } from './../../serversConfig';
 
 const mapStateToProps = (state) => {
   return {
-    id: state.context.id,
     role: state.context.role,
     rooms: state.rooms
   }
@@ -28,11 +21,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getMessagesByRoom,
     getAllOpenRoomsIds,
-    //getAllRooms,
     getMessagesByRooms,
-    notifyAboutNewRoom,
     getGlobalSolvedUnsolvedStatistics
   }, dispatch);
 };
@@ -58,7 +48,7 @@ class WebsocketGate extends Component {
   }
   onMessage(e) {
     console.log(e);
-    let data = e.data;
+    const data = e.data;
     if (data.split(":")[0] === WS_COMMANDS.NEW_MESSAGE) {
       this.onNewMessageAction(data);
     }
@@ -67,7 +57,7 @@ class WebsocketGate extends Component {
     }
   }
   onNewMessageAction(data) {
-      this.props.getMessagesByRooms(this.props.rooms);
+    this.props.getMessagesByRooms(this.props.rooms);
   }
   onNewRoomAction(data) {
     if (authManager.isEmployee(this.props.role)) {

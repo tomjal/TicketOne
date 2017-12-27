@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getAllOpenRoomsIds } from './../../actions/roomsActionCreators';
-import { getAllMessages, sendMessageToRoom } from './../../actions/messagesActionCreators';
 import { getEmployeeInitRoomsData } from './../../actions/combinedActionCreators';
 import { getGlobalSolvedUnsolvedStatistics } from './../../actions/statsActionCreators';
+import { sendMessageToRoom } from './../../actions/messagesActionCreators';
 
-import RoomWidget from './roomWidget';
+import RoomWidget from './widgets/roomWidget';
+import StatsWidget from './widgets/statsWidget';
 
 const MAX_FLEX_ELEMS_IN_ROW = 3;
 
 const mapStateToProps = (state) => {
   return {
-    id: state.context.id,
     role: state.context.role,
     rooms: state.rooms,
     messages: state.messages,
@@ -23,29 +22,18 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getAllOpenRoomsIds,
-    getAllMessages,
-    sendMessageToRoom,
     getEmployeeInitRoomsData,
-    getGlobalSolvedUnsolvedStatistics
+    getGlobalSolvedUnsolvedStatistics,
+    sendMessageToRoom
   }, dispatch);
 };
 
-const StatsWidget = ({ statsObject }) => (
-  <div>Solved cases: {statsObject.solved}, Unsolved cases: {statsObject.unsolved}</div>
-);
-
 export class EmployeeRoomsPage extends Component {
-  constructor(props) {
-    super(props)
-    this.sendMessageCallback = this.sendMessageCallback.bind(this);
-  }
   componentDidMount() {
-    //combined init data employee
     this.props.getEmployeeInitRoomsData();
     this.props.getGlobalSolvedUnsolvedStatistics();
   }
-  sendMessageCallback(message, id) {
+  sendMessageCallback = (message, id) => {
     this.props.sendMessageToRoom(message, id, this.props.role, this.props.id);
   }
   getEmptyFlexFillers(numbInRow, numbOfAll) {
@@ -57,12 +45,12 @@ export class EmployeeRoomsPage extends Component {
     return emptyFlexElems;
   }
   render() {
-    const { role, rooms, messages } = this.props;
+    const { role, rooms, messages, stats } = this.props;
     const emptyFlexElems = this.getEmptyFlexFillers(MAX_FLEX_ELEMS_IN_ROW, rooms.length);
     return (
       <div>
         {this.props.stats &&
-          <StatsWidget statsObject={this.props.stats} />}
+          <StatsWidget statsObject={stats} />}
         {rooms.length !== 0 &&
           <div className="room-flex-container">
             {rooms.map((room, i) => {
