@@ -1,11 +1,8 @@
 #### Important:
-1. Update JAVA backend
+1. Update JAVA backend, add SPRING DATA events
 2. Introduce NOSQL DB
 3. Introduce JWT tokens
-4. Cleanup project - remove unused API/services/components
-5. Rethink REST api design and payloads
-6. Update tests
-7. Upload latest vesrion to Heroku
+4. Rethink REST api design and payloads
 
 ### Client:
 1. Make chat fully responsive (media queries redesign)
