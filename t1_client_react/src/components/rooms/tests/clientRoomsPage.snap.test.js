@@ -2,11 +2,22 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import { ClientRoomPage } from './../clientRoomPage';
+import { ClientRoomsPage } from './../clientRoomsPage';
 
-test('ClientRoomPage snapshot', () => {
-  const props = { getMessagesByRoom: jest.fn() };
-  const wrap = shallow(<ClientRoomPage {...props} />);
+test('ClientRoomsPage snapshot', () => {
+  const props = {
+    id: 0,
+    role: "",
+    messages: [],
+    rooms: [],
+    getClientInitRoomsData: jest.fn(),
+    createClientRoom: jest.fn(),
+    sendMessageToRoom: jest.fn(),
+    markRoomAsResolved: jest.fn(),
+    markRoomAsUnresolved: jest.fn()
+  }
+
+  const wrap = shallow(<ClientRoomsPage {...props} />);
 
   expect(shallowToJson(wrap)).toMatchSnapshot();
 });

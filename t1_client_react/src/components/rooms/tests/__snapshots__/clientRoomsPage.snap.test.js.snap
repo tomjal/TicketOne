@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClientRoomsPage snapshot 1`] = `
+<div
+  className="room-flex-container"
+>
+  <CreateNewRoomWidget
+    createRoomCallback={[Function]}
+  />
+</div>
+`;

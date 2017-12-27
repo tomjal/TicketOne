@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmployeeRoomsPage snapshot 1`] = `
+<div>
+  <StatsWidget
+    statsObject={
+      Object {
+        "solved": 0,
+        "unsolved": 0,
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "fontSize": 16,
+      }
+    }
+  >
+    There are no open chats currently
+  </div>
+</div>
+`;
