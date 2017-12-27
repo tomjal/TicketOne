@@ -12,8 +12,10 @@ const apiURIs = {
 
 const apiWords = {
     ROOM: "/room/",
-    client: "/client/"
+    CLIENT: "/client/"
 }
+
+// === AUTH ===
 
 function getAuthContext() {
     return fetch(apiPrefix + apiURIs.CONTEXT, buildReqOptions(httpVerbs.GET));
@@ -23,6 +25,8 @@ function postAuthData(login, pass) {
     const authObject = { login: login, pass: pass };
     return fetch(apiPrefix + apiURIs.AUTH, buildReqOptions(httpVerbs.POST, authObject));
 }
+
+// === MESSAGES ===
 
 function getMessagesByRooms(roomsIdsList) {
     return fetch(apiPrefix + apiURIs.ROOMS + "/" + apiURIs.MESSAGES + "/byRoomsIdsList",
@@ -40,19 +44,18 @@ function postMessageToRoom(message, roomId, senderRole, senderId) {
         buildReqOptions(httpVerbs.POST, messageData));
 }
 
-function getRoomsStats() {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/stats", buildReqOptions(httpVerbs.GET));
-}
+// === ROOMS ===
 
 function getAllOpenRoomsIds() {
-    return fetch(apiPrefix + apiURIs.ROOMS + "/open", buildReqOptions(httpVerbs.GET));
+    return fetch(apiPrefix + apiURIs.ROOMS + "/open",
+        buildReqOptions(httpVerbs.GET));
 }
 
 function getClientRoomsIds(clientId) {
-    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.client + clientId, buildReqOptions(httpVerbs.GET));
+    return fetch(apiPrefix + apiURIs.ROOMS + apiWords.CLIENT + clientId,
+        buildReqOptions(httpVerbs.GET));
 }
 
-//todo
 function postClientRoom(clientId, roomTopic) {
     const newRoomData = { clientId: clientId, roomTopic: roomTopic };
     return fetch(apiPrefix + apiURIs.ROOMS + "/new",
@@ -70,6 +73,8 @@ function putMarkRoomAsUnresolved(roomId) {
     return fetch(apiPrefix + apiURIs.ROOMS + "/" + roomId,
         buildReqOptions(httpVerbs.PUT, roomSolvedData));
 }
+
+// === STATS ===
 
 function getGlobalSolvedUnsolvedStats() {
     return fetch(apiPrefix + apiURIs.STATS + "/employee",
@@ -89,14 +94,13 @@ export const apiSchema = {
         post: postMessageToRoom
     },
     rooms: {
-        getRoomsStats: getRoomsStats,
-        getAllOpenRoomsIds: getAllOpenRoomsIds,
-        getClientRoomsIds: getClientRoomsIds,
-        postClientRoom: postClientRoom,
-        putMarkRoomAsResolved: putMarkRoomAsResolved,
-        putMarkRoomAsUnresolved: putMarkRoomAsUnresolved
+        getAllOpen: getAllOpenRoomsIds,
+        getByClientId: getClientRoomsIds,
+        createNew: postClientRoom,
+        markAsResolved: putMarkRoomAsResolved,
+        markAsUnresolved: putMarkRoomAsUnresolved
     },
     stats: {
-        getGlobalSolvedUnsolvedStats: getGlobalSolvedUnsolvedStats
+        getGlobal: getGlobalSolvedUnsolvedStats
     }
 }

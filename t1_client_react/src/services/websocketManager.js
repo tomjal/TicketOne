@@ -15,11 +15,6 @@ class WebsocketManager {
         this.connection.close();
         this.connection = null;
     }
-    //createChannel(role, id) {
-        //this.sendOnChannel(
-        //    `${role}:${id}|`
-        //)
-    //}
     sendOnChannel(message) {
         this.connection.send(message);
     }

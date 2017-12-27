@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { createClientRoom, getClientRooms, markRoomAsResolved, markRoomAsUnresolved } from './../../actions/roomsActionCreators';
+import { createClientRoom, getClientRoomsIds, markRoomAsResolved, markRoomAsUnresolved } from './../../actions/roomsActionCreators';
 import { sendMessageToRoom } from './../../actions/messagesActionCreators';
 import { getClientInitRoomsData } from './../../actions/combinedActionCreators';
 
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     createClientRoom,
-    getClientRooms,
+    getClientRoomsIds,
     sendMessageToRoom,
     markRoomAsResolved,
     markRoomAsUnresolved,

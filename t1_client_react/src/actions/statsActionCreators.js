@@ -3,7 +3,7 @@ import { apiSchema } from "./../api/apiSchema";
 import { statsActions } from "./actionTypes";
 
 export function getGlobalSolvedUnsolvedStatistics() {
-    return (dispatch) => apiSchema.stats.getGlobalSolvedUnsolvedStats()
+    return (dispatch) => apiSchema.stats.getGlobal()
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())
         .then(data => {

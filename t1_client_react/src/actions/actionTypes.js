@@ -34,14 +34,6 @@ export const roomsActions = {
     GET_ROOMS_ALL: {
         SUCCESS: "GET_ROOMS_ALL_SUCCESS",
         ERROR: "GET_ROOMS_ALL_ERROR"
-    },
-    SUBSCRIBE_ROOM: {
-        SUCCESS: "SUBSCRIBE_ROOM_SUCCESS",
-        ERROR: "SUBSCRIBE_ROOM_ERROR"
-    },
-    UNSUBSCRIBE_ROOM: {
-        SUCCESS: "UNSUBSCRIBE_ROOM_SUCCESS",
-        ERROR: "UNSUBSCRIBE_ROOM_ERROR"
     }
 }
 
@@ -50,10 +42,4 @@ export const statsActions = {
         SUCCESS: "GET_STATS_ALL_SUCCESS",
         ERROR: "GET_STATS_ALL_ERROR"
     }
-}
-
-export const websocketActions = {
-}
-
-export const combinedActions = {
 }

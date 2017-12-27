@@ -1,7 +1,9 @@
 import { checkIfFetchStatusOk, dispatchFetchError } from "./actionFetchHelpers";
 import { apiSchema } from "./../api/apiSchema";
 import { authActions } from "./actionTypes";
+
 import { ROLES } from './../consts/roles';
+const MASTER_EMPLOYEE_ID = 201;
 
 export function setApplicationContextAsMockClient(idNumber) {
     const mockAuth = { role: ROLES.CLIENT, id: idNumber };
@@ -11,7 +13,6 @@ export function setApplicationContextAsMockClient(idNumber) {
 }
 
 export function setApplicationContextAsMockEmployee() {
-    const MASTER_EMPLOYEE_ID = 201;
     const mockAuth = { role: ROLES.EMPLOYEE, id: MASTER_EMPLOYEE_ID };
     return (dispatch) => {
         dispatch({ type: authActions.GET_AUTH_CONTEXT.SUCCESS, data: mockAuth })
