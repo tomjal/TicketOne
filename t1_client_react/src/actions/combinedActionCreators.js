@@ -5,7 +5,7 @@ import { roomsActions } from "./actionTypes";
 import { getMessagesByRooms } from "./messagesActionCreators";
 
 export function getClientInitRoomsData(clientId) {
-    return (dispatch) => apiSchema.rooms.getClientRoomsIds(clientId)
+    return (dispatch) => apiSchema.rooms.getByClientId(clientId)
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())
         .then(data => {
@@ -16,7 +16,7 @@ export function getClientInitRoomsData(clientId) {
 }
 
 export function getEmployeeInitRoomsData() {
-    return (dispatch) => apiSchema.rooms.getAllOpenRoomsIds()
+    return (dispatch) => apiSchema.rooms.getAllOpen()
         .then(res => checkIfFetchStatusOk(res))
         .then(res => res.json())
         .then(data => {
