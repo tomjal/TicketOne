@@ -14,10 +14,27 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class MessageServiceImpl implements MessageService {
-    @Autowired
+public class JpaMessageServiceImpl {
+    /*@Autowired
     private MessageRepository messageRepository;
     @Autowired
     private RoomRepository roomRepository;
 
+    @Override
+    public List<Message> findAll() {
+        return messageRepository.findAll();
+    }
+
+    @Override
+    public Message save(MessageSaveDTO messageSaveDTO) {
+        Room room = roomRepository.findByName(messageSaveDTO.getRoomName());
+        Message message = new MessageSaveConverterImpl().fromDto(messageSaveDTO, room);
+
+        return messageRepository.save(message);
+    }
+
+    @Override
+    public Collection<Message> findByRoomName(String roomName) {
+        return messageRepository.findByRoomName(roomName);
+    }*/
 }

@@ -1,36 +1,29 @@
 package com.ticketone.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "messages")
+import javax.persistence.Id;
+
+import org.springframework.data.mongodb.core.mapping.Field;
+
 public class Message implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Field("id")
     private long id;
 
-    @Column(name = "author")
+    @Field("author")
     private String author;
 
-    @Column(name = "body")
+    @Field("body")
     private String body;
-
-    @ManyToOne
-    @JoinColumn(name = "room_id")
-    private Room room;
 
     public Message() {
     }
 
-    public Message(String author, String body, Room room) {
+    public Message(String author, String body) {
         this.author = author;
         this.body = body;
-        this.room = room;
     }
 
     public long getId() {
@@ -51,14 +44,5 @@ public class Message implements Serializable {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    @JsonIgnore
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
     }
 }

@@ -13,7 +13,6 @@ public class MessageSaveConverterImpl implements GenericConverter<Message, Messa
         MessageSaveDTO messageSaveDto = new MessageSaveDTO();
         messageSaveDto.setAuthor(mes.getAuthor());
         messageSaveDto.setBody(mes.getBody());
-        messageSaveDto.setRoomName(mes.getRoom().getName());
         return messageSaveDto;
     }
 
@@ -22,7 +21,6 @@ public class MessageSaveConverterImpl implements GenericConverter<Message, Messa
         Message message = new Message();
         message.setAuthor(dto.getAuthor());
         message.setBody(dto.getBody());
-        message.setRoom(room);
         return message;
     }
 }

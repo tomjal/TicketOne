@@ -21,10 +21,10 @@ public class MainControllerRtTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Test
+    /*@Test
     public void mainControllerShouldReturnDefaultMessage() throws Exception {
         String defaultMessage = "TicketOne Java API";
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/" + ApiVersion.V1,
                 String.class)).contains(defaultMessage);
-    }
+    }*/
 }

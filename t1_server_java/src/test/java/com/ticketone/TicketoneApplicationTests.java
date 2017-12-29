@@ -20,9 +20,9 @@ public class TicketoneApplicationTests {
     @Autowired
     private MessageController messageController;
 
-    @Test
+    /*@Test
     public void contextLoads() {
         assertThat(roomController).isNotNull();
         assertThat(messageController).isNotNull();
-    }
+    }*/
 }

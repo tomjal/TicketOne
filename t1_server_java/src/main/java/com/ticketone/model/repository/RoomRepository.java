@@ -1,15 +1,14 @@
 package com.ticketone.model.repository;
 
 import com.ticketone.model.entity.Room;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Transactional
 @Repository
-public interface RoomRepository extends JpaRepository<Room, Long> {
+public interface RoomRepository extends MongoRepository<Room, Long> {
 
     List<Room> findAll();
 

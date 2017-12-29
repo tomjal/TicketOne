@@ -21,7 +21,7 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    @GetMapping("/")
+    /*@GetMapping("/")
     public ResponseEntity<List<Message>> getAllMessages() {
         return new ResponseEntity<List<Message>>(messageService.findAll(), HttpStatus.OK);
     }
@@ -34,5 +34,5 @@ public class MessageController {
     @GetMapping("/room/{roomName}")
     public ResponseEntity<Collection<Message>> getMessage(@PathVariable("roomName") String roomName) {
         return new ResponseEntity<Collection<Message>>(messageService.findByRoomName(roomName), HttpStatus.OK);
-    }
+    }*/
 }
