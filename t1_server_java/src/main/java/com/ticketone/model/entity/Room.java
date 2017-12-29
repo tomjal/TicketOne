@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -20,6 +21,7 @@ public class Room implements Serializable {
     @Field("name")
     private String name;
 
+    @DBRef
     private List<Message> messages;
 
     public Room() {

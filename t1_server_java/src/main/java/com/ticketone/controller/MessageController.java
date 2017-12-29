@@ -21,12 +21,12 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    /*@GetMapping("/")
+    @GetMapping("/")
     public ResponseEntity<List<Message>> getAllMessages() {
         return new ResponseEntity<List<Message>>(messageService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    /*@PostMapping("/")
     public ResponseEntity<?> setMessage(@RequestBody MessageSaveDTO messageSaveDTO) {
         return new ResponseEntity<Message>(messageService.save(messageSaveDTO), HttpStatus.OK);
     }
