@@ -10,13 +10,24 @@ import java.util.List;
 @Table(name = "rooms")
 public class Room implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name", unique = true)
-    private String name;
+    @Column(name = "topic", unique = true)
+    private String topic;
+
+    @Column(name = "open")
+    private boolean open;
+
+    @Column(name = "solved")
+    private boolean solved;
+
+    @Column(name = "client")
+    private Long client;
 
     @OneToMany(mappedBy = "room")
     private List<Message> messages;
@@ -28,8 +39,8 @@ public class Room implements Serializable {
         this.id = id;
     }
 
-    public Room(String name) {
-        this.name = name;
+    public Room(String topic) {
+        this.topic = topic;
     }
 
     public long getId() {
@@ -40,12 +51,36 @@ public class Room implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTopic() {
+        return topic;
     }
 
-    public void setName(String author) {
-        this.name = author;
+    public void setTopic(String author) {
+        this.topic = author;
+    }
+
+    public Boolean getOpen() {
+        return open;
+    }
+
+    public void setOpen(Boolean open) {
+        this.open = open;
+    }
+
+    public Boolean getSolved() {
+        return solved;
+    }
+
+    public void setSolved(Boolean solved) {
+        this.solved = solved;
+    }
+
+    public long getClient() {
+        return client;
+    }
+
+    public void setClient(Long client) {
+        this.client = client;
     }
 
     @JsonIgnore

@@ -1,5 +1,6 @@
 package com.ticketone.service;
 
+import com.ticketone.controller.dto.RoomSaveDTO;
 import com.ticketone.model.entity.Room;
 
 import java.util.List;
@@ -9,5 +10,17 @@ public interface RoomService {
 
     Room findOne(long id);
 
-    Room save(Room room);
+    List<Room> findByOpened();
+
+    List<Room> findByClient(long clientId);
+
+    List<Room> findByTopic(String topic);
+
+    Integer countSolved();
+
+    Integer countUnsolved();
+
+    Room updateSolvedStatus(Long roomId, Boolean isSolved);
+
+    Room save(RoomSaveDTO room);
 }

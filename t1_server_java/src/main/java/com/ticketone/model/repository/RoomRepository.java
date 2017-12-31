@@ -12,10 +12,18 @@ import java.util.List;
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
     List<Room> findAll();
-
+    
     Room findOne(long id);
 
-    Room findByName(String roomName);
+    List<Room> findByOpenTrue();
+
+    List<Room> findBySolvedTrue();
+
+    List<Room> findBySolvedFalse();
+
+    List<Room> findByClient(long clientId);
+
+    List<Room> findByTopic(String topic);
 
     Room save(Room room);
 }

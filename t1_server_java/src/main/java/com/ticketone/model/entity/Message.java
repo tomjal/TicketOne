@@ -9,13 +9,15 @@ import java.io.Serializable;
 @Table(name = "messages")
 public class Message implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 
     @Column(name = "author")
-    private String author;
+    private Long author;
 
     @Column(name = "body")
     private String body;
@@ -27,7 +29,7 @@ public class Message implements Serializable {
     public Message() {
     }
 
-    public Message(String author, String body, Room room) {
+    public Message(Long author, String body, Room room) {
         this.author = author;
         this.body = body;
         this.room = room;
@@ -37,11 +39,11 @@ public class Message implements Serializable {
         return id;
     }
 
-    public String getAuthor() {
+    public Long getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Long author) {
         this.author = author;
     }
 

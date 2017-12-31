@@ -3,16 +3,28 @@ package com.ticketone.controller.dto;
 import java.io.Serializable;
 
 public class MessageSaveDTO implements Serializable {
-    private String author;
-    private String body;
-    private String roomName;
 
-    public String getAuthor() {
+    private static final long serialVersionUID = 1L;
+
+    private Long author;
+    private String authorRole;
+    private String body;
+    private Long roomId;
+
+    public Long getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Long author) {
         this.author = author;
+    }
+
+    public String getAuthorRole() {
+        return authorRole;
+    }
+
+    public void setAuthorRole(String authorRole) {
+        this.authorRole = authorRole;
     }
 
     public String getBody() {
@@ -23,11 +35,11 @@ public class MessageSaveDTO implements Serializable {
         this.body = body;
     }
 
-    public String getRoomName() {
-        return roomName;
+    public Long getRoomId() {
+        return roomId;
     }
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 }
