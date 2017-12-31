@@ -19,7 +19,7 @@ public class RoomServiceWsAspect {
             pointcut = "execution(* com.ticketone.service.RoomService.save(..))",
             returning = "result")
     public void broadcastWsInfoAfterNewRoomSave(JoinPoint joinPoint, Room result) {
-        String roomName = result.getName();
+        String roomName = result.getTopic();
         webSocketService.broadcastNewRoomToAllUsers(roomName);
     }
 }
