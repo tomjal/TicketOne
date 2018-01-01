@@ -1,1 +1,4 @@
 http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+
+http://localhost:8080/v2/api-docs YAML file
+http://editor.swagger.io/ swagger api specification check
