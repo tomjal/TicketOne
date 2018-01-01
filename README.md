@@ -1,5 +1,3 @@
-:construction: WORK IN PROGRESS (partial TODO in docs folder) :construction:
-
 Current client version: 1.1.1
 
 ### TicketOne client
@@ -9,6 +7,7 @@ Current client version: 1.1.1
 2. Node.js server mock - Express v4
 
 3. Java server - Spring Boot v1.5 (+ H2, JPA, WebSocket, AspectJ)
+    (MongoDB branch - '*mongo-test*')
 
 4. .NET server - ASP .NET Core 2.0 API
 
@@ -32,13 +31,13 @@ Folder '*t1_client_react*'
 
 ### To run locally with Node.js mock server:
 
-1. Install [Node.js v7](https://nodejs.org/en/) and run '*npm i -g yarn*'
+1. Install [Node.js](https://nodejs.org/en/) and run '*npm i -g yarn*'
 
 2. Run '*yarn*' in folder '*t1_server_node*'
 
 3. Run '*yarn start*' in folder '*t1_server_node*'
 
-4. Login on one browser as Employee and on another browser as Client. (Hit F5 to "logout" from fake session)
+4. Login on one browser/tab as Employee and on another browser/tab as Client. (Hit F5 to "logout" from fake session)
 
 ### To run locally with Java server:
 
@@ -47,9 +46,10 @@ Folder '*t1_client_react*'
 2. Run '*mvn clean package*' and then '*mvn spring-boot:run*' in folder '*t1-server-java*'
 
 Swagger enabled on '*/swagger-ui.html*'
+Latest offline copy in folder '*/docs/swagger-html2-client*'
 
 ### To run locally with ASP .NET server (only info page available):
 
 1. Make sure your have .NET Core 2.0 installed properly
 
-2. Run 'dotnet restore' and then 'dotnet run' in folder 't1-server-dotnet'
+2. Run '*dotnet restore*' and then '*dotnet run*' in folder '*t1-server-dotnet*'

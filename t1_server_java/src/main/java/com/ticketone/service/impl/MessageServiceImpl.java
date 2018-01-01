@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MessageServiceImpl implements MessageService {
-    //@Autowired
-    //private MessageRepository messageRepository;
+    @Autowired
+    private MessageRepository messageRepository;
     @Autowired
     private RoomRepository roomRepository;
 
@@ -27,7 +27,7 @@ public class MessageServiceImpl implements MessageService {
         return room.getMessages();
     }
 
-    /*@Override
+    @Override
     public List<Message> findByRooms(List<Long> roomIds) {
         // Stream API probably should be used here, flatten
         List<Message> list = new ArrayList<Message>();
@@ -45,5 +45,5 @@ public class MessageServiceImpl implements MessageService {
         Room room = roomRepository.findOne(messageSaveDTO.getRoomId());
         Message message = new MessageSaveConverterImpl().fromDto(messageSaveDTO, room);
         return messageRepository.save(message);
-    }*/
+    }
 }

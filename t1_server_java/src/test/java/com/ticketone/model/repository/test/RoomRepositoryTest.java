@@ -24,13 +24,13 @@ public class RoomRepositoryTest {
 
     @Test
     public void shouldFindTwoMockRooms() {
-        String name = "Lopez";
-        Room room = new Room(name);
+        String topic = "Lopez";
+        Room room = new Room(topic);
         entityManager.persist(room);
 
         List<Room> rooms = roomRepository.findAll();
 
         assertThat(rooms).isNotEmpty();
-        assertThat(rooms.get(1).getName()).isEqualTo(name);
+        assertThat(rooms.get(1).getTopic()).isEqualTo(topic);
     }
 }
