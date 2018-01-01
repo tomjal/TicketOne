@@ -1,0 +1,1 @@
+INSERT INTO rooms VALUES (1, 101, false, true, 'Sample topic');

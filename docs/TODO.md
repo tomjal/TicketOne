@@ -1,8 +1,5 @@
 ## Important:
-1. Update JAVA backend, add SPRING DATA events
-2. Introduce NOSQL DB
-3. Introduce JWT tokens
-4. Rethink REST api design and payloads
+1. Rethink REST api design and payloads, Swagger docs copy
 
 ### Would be nice to have:
 1. Fold/unfold functionality of every room
@@ -18,10 +15,9 @@
 1. Add session handling, proper auth
 
 #### Java:
-1. Finish API implementation
-2. Exceptions handling
-3. DTO factories/mappers/validators (MapStruct?)
-4. Add session/JWT security, Spring Security or Shiro
+1. Exceptions handling
+2. DTO factories/mappers/validators (MapStruct?)
+3. Add session/JWT auth, Spring Security
 
 #### Optional:
 1. Introduce Domain Driven Design

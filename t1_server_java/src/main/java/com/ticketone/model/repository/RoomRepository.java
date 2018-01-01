@@ -1,11 +1,13 @@
 package com.ticketone.model.repository;
 
-import com.ticketone.model.entity.Room;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 import javax.transaction.Transactional;
-import java.util.List;
+
+import com.ticketone.model.entity.Room;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 @Transactional
 @Repository

@@ -1,9 +1,9 @@
 package com.ticketone.service;
 
+import java.util.List;
+
 import com.ticketone.controller.dto.RoomSaveDTO;
 import com.ticketone.model.entity.Room;
-
-import java.util.List;
 
 public interface RoomService {
     List<Room> findAll();
